@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.10.1] - 2025-12-05
+
+### 🧹 Maintenance
+
+- Memindahkan source code dari repository pribadi ke repository perusahaan.
+- Menyesuaikan struktur awal project agar sesuai standar internal tim.
+- Melakukan penyesuaian konfigurasi awal tanpa perubahan fitur maupun bug fix.
+
+
 ## [0.10.0] - 2025-12-04
 
 ### Detail Versi 0.10.0
