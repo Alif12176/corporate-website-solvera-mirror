@@ -1,93 +1,144 @@
-# Corporate Website
+# Solvera Landing Page Revamp
 
+Project revamp website landing page untuk PT Solvera Indonesia, perusahaan inovatif di bidang teknologi informasi.
 
+## 🚀 Tech Stack
 
-## Getting started
+- **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components:** [HeroUI](https://heroui.com/) (formerly NextUI)
+- **Icons:** [React Icons](https://react-icons.github.io/react-icons/)
+- **Animation:** [Framer Motion](https://www.framer.com/motion/)
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## ✨ Fitur Utama
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### 1. Responsive Navigation
+- **Mega Menu:** Dropdown menu responsif untuk kategori "Produk" dengan layout grid.
+- **Mobile Menu:** Menu navigasi mobile yang intuitif dengan accordion untuk sub-menu dan akses cepat ke tombol aksi.
+- **Sticky Navbar:** Navigasi tetap terlihat saat scrolling.
 
-## Add your files
+### 2. Halaman Layanan & Konsultasi
+- **Hero Section:** Visualisasi menarik dengan overlay gambar dan tipografi yang kuat.
+- **Grid Layanan:** Tampilan kartu layanan yang responsif.
+- **Timeline Proses:** Visualisasi alur kerja "Proses Kami" (Strategy, Planning, Development, Quick Launch).
+- **Kompetensi:** Grafik progress bar untuk menampilkan keahlian tim.
+- **CTA Section:** Formulir berlangganan newsletter yang terintegrasi.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+### 3. Halaman Informasi
+- **Kebijakan Privasi:** Halaman legal dengan navigasi "Table of Contents" yang sticky (sidebar di desktop, accordion di mobile).
+- **Footer Responsif:** Informasi perusahaan, tautan sosial media, dan navigasi cepat.
 
+## 🛠️ Instalasi & Menjalankan Project
+
+1. **Clone repository:**
+   ```bash
+   git clone [repository-url]
+   cd landing-page-solvera-revamp
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Jalankan development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **Buka di browser:**
+   Kunjungi [http://localhost:3000](http://localhost:3000)
+
+## 🎨 Design System
+
+Project ini menggunakan sistem desain berbasis token CSS untuk konsistensi:
+- **Colors:** `brand-primary`, `brand-secondary`, `brand-text-secondary`, dll.
+- **Typography:** Font **Poppins** dengan skala tipografi kustom (`text-h1`, `text-body`, dll).
+- **Spacing:** Token spacing responsif (`page-global`, `section-large`, dll).
+
+## 🏢 Tentang Solvera
+
+**Solvera Indonesia** adalah perusahaan inovatif di bidang teknologi informasi yang berfokus pada transformasi tantangan operasional menjadi keunggulan kompetitif.
+
+**Layanan Kami:**
+- Konsultasi Bisnis
+- Managed Services
+- Transformasi Digital
+- Layanan Bidang Industri
+- Pelatihan & Sertifikasi
+
+**Kontak:**
+- 📍 The Prominence Office Tower Level 28 Unit C, Alam Sutera, Tangerang
+- 📧 info@solvera.id
+- 📞 +62 813-9000-9640
+
+## 📂 Struktur Project & Migrasi
+
+Project ini menggunakan arsitektur **Feature-Based** untuk menjaga kode tetap terorganisir, scalable, dan mudah di-maintain.
+
+### Filosofi
+Setiap fitur dalam aplikasi (misalnya: blog, layanan, manajemen) dianggap sebagai modul mandiri yang memiliki komponen, hooks, dan logic-nya sendiri. `src/app` hanya bertugas sebagai **Router** dan entry point, sedangkan implementasi detail ada di `src/features`.
+
+### Struktur Direktori
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/solvera-official/corporate-website.git
-git branch -M main
-git push -uf origin main
+src/
+├── app/                 # Routing & Page Entry Points
+│   ├── blog/            # Route: /blog
+│   ├── layanan/         # Route: /layanan
+│   └── page.tsx         # Home Page Entry
+├── features/            # Implementasi Fitur
+│   ├── blog/            # Fitur Blog
+│   │   ├── components/  # Komponen khusus blog (Card, List, dll)
+│   │   └── data/        # Data statis/mock khusus blog
+│   ├── home/            # Komponen khusus Home Page
+│   └── layout/          # Komponen Global (Navbar, Footer)
+└── ...
 ```
 
-## Integrate with your tools
+### Panduan Migrasi (Step-by-Step)
 
-- [ ] [Set up project integrations](https://gitlab.com/solvera-official/corporate-website/-/settings/integrations)
+Jika Anda ingin memigrasikan pekerjaan dari repository lain atau folder lama ke struktur ini, ikuti langkah berikut:
 
-## Collaborate with your team
+#### 1. Identifikasi Fitur
+Tentukan nama fitur yang sedang Anda kerjakan. Contoh: `auth`, `dashboard`, `payment`.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+#### 2. Buat Folder Fitur
+Buat folder baru di dalam `src/features/<nama-fitur>`.
+```bash
+mkdir -p src/features/dashboard
+```
 
-## Test and Deploy
+#### 3. Struktur Folder Fitur
+Di dalam folder fitur tersebut, organisir file Anda seperti ini:
+- `components/`: Komponen UI yang hanya dipakai di fitur ini.
+- `hooks/`: Custom hooks spesifik fitur.
+- `types/`: TypeScript interfaces/types.
+- `utils/`: Helper functions.
+- `api/`: API calls (jika ada).
 
-Use the built-in continuous integration in GitLab.
+#### 4. Pindahkan Komponen
+Pindahkan komponen dari folder lama ke `src/features/<nama-fitur>/components`.
+**PENTING:** Jangan taruh komponen UI kompleks di `src/app`. `src/app` sebaiknya hanya berisi `page.tsx`, `layout.tsx`, dan `loading.tsx`.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+#### 5. Update Import
+Perbaiki path import di file-file Anda. Gunakan alias `@/features/...` jika sudah dikonfigurasi, atau relative path yang sesuai.
 
-***
+#### 6. Setup Routing
+Buat folder route di `src/app/<nama-route>` dan buat file `page.tsx`. Import komponen utama fitur Anda ke sini.
 
-# Editing this README
+**Contoh `src/app/dashboard/page.tsx`:**
+```tsx
+import { DashboardView } from '@/features/dashboard/components/DashboardView';
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+export default function DashboardPage() {
+  return <DashboardView />;
+}
+```
 
-## Suggestions for a good README
+### Aturan Main (Rules) ⚠️
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+1. **Keep `src/app` Clean:** Folder `app` jangan diisi logic berat atau komponen UI yang panjang. Delegasikan ke `features`.
+2. **Colocation:** Taruh file yang berhubungan berdekatan. Jika sebuah komponen butuh gambar atau data json spesifik, taruh di folder fitur yang sama.
+3. **Shared Components:** Jika ada komponen yang dipakai di BANYAK fitur (misal: Button, Input, Card generic), taruh di `src/features/ui` atau `src/components` (sesuai kesepakatan tim, saat ini bisa gunakan `src/features/layout` untuk komponen layout global atau buat `src/features/common`).
 
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.

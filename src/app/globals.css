@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@plugin "../hero.ts";
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-poppins);
+
+  /* Custom Color Tokens */
+  --color-brand-primary: #1E41C6;
+  --color-brand-primary-subtle: #E7EBFB;
+  --color-brand-border-subtle: #C0CAF2;
+
+  --color-brand-danger: #E14A3E;
+  --color-brand-danger-subtle: #FDECEB;
+
+  --color-brand-success: #4CAF31;
+  --color-brand-success-subtle: #F5FCF7;
+
+  --color-brand-disabled: #C8C8C8;
+  --color-brand-disabled-content: #4A4A4A;
+
+  --color-brand-text-primary: #000000;
+  --color-brand-text-inverse: #FFFFFF;
+
+  --color-brand-text-secondary: #000804;
+
+  /* Heading Tokens */
+  --text-h1: 72px;
+  --leading-h1: 120%;
+
+  --text-h2: 52px;
+  --leading-h2: 120%;
+
+  --text-h3: 44px;
+  --leading-h3: 120%;
+
+  --text-h4: 36px;
+  --leading-h4: 130%;
+
+  --text-h5: 28px;
+  --leading-h5: 140%;
+
+  --text-h6: 22px;
+  --leading-h6: 140%;
+
+  /* Body Text Tokens */
+  --text-body-lg: 22px;
+  --leading-body-lg: 150%;
+
+  --text-body-md: 18px;
+  --leading-body-md: 150%;
+
+  --text-body: 16px;
+  --leading-body: 150%;
+
+  --text-body-sm: 14px;
+  --leading-body-sm: 150%;
+
+  --text-body-tiny: 12px;
+  --leading-body-tiny: 150%;
+
+  /* Custom Spacing Tokens */
+  --spacing-page-global: 64px;
+  --spacing-page-mobile: 20px;
+  --spacing-section-large-desktop: 112px;
+  --spacing-section-large-mobile: 64px;
+  --spacing-section-medium-desktop: 80px;
+  --spacing-section-medium-mobile: 48px;
+  --spacing-section-small-desktop: 48px;
+  --spacing-section-small-mobile: 32px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins);
+}
