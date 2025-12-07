@@ -33,7 +33,7 @@ export default function HeroBanner({
         <div className="absolute inset-0 bg-black/60 z-10"></div>
       </div>
 
-      <div className="relative z-20 max-w-4xl mx-auto text-center px-4 pt-16">
+      <div className="relative z-20 max-w-4xl mx-auto text-center px-4 ">
         <h1 className="animate-in text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
           {title}
         </h1>
