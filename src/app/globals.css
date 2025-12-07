@@ -7,6 +7,155 @@
   --foreground: #171717;
 }
 
+/* ===================================
+   TYPOGRAPHY SCALE — MOBILE (default)
+   =================================== */
+@layer base {
+  h1 {
+    font-size: 44px;
+    line-height: 120%;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 120%;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 32px;
+    line-height: 120%;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 24px;
+    line-height: 130%;
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 20px;
+    line-height: 140%;
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: 18px;
+    line-height: 140%;
+    font-weight: 600;
+  }
+}
+
+/* =======================================
+   TYPOGRAPHY — DESKTOP (≥ 1024px)
+   ======================================= */
+@media (width >= 1024px) {
+  @layer base {
+    h1 {
+      font-size: 72px;
+      line-height: 120%;
+    }
+
+    h2 {
+      font-size: 52px;
+      line-height: 120%;
+    }
+
+    h3 {
+      font-size: 44px;
+      line-height: 120%;
+    }
+
+    h4 {
+      font-size: 36px;
+      line-height: 130%;
+    }
+
+    h5 {
+      font-size: 28px;
+      line-height: 140%;
+    }
+
+    h6 {
+      font-size: 22px;
+      line-height: 140%;
+    }
+  }
+}
+
+/* ===================================
+   TAGLINES
+   =================================== */
+@layer base {
+  .tagline-lg {
+    font-size: 22px;
+    line-height: 150%;
+  }
+  .tagline-md {
+    font-size: 18px;
+    line-height: 150%;
+  }
+  .tagline-sm {
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .tagline-xs {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .tagline-tiny {
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
+
+/* ===================================
+   TEXT SIZES
+   =================================== */
+@layer base {
+  .text-large {
+    font-size: 22px;
+  }
+  .text-medium {
+    font-size: 18px;
+  }
+  .text-regular {
+    font-size: 16px;
+  }
+  .text-small {
+    font-size: 14px;
+  }
+  .text-tiny {
+    font-size: 12px;
+  }
+}
+
+/* ===================================
+   FONT WEIGHTS
+   =================================== */
+@layer utilities {
+  .extra-bold {
+    font-weight: 800;
+  }
+  .bold {
+    font-weight: 700;
+  }
+  .semi-bold {
+    font-weight: 600;
+  }
+  .medium {
+    font-weight: 500;
+  }
+  .normal {
+    font-weight: 400;
+  }
+  .light {
+    font-weight: 300;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
