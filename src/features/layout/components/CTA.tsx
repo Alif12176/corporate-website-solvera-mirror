@@ -1,8 +1,8 @@
 import React from 'react'
 import { Input } from './Input'
-import { Button } from './Button'
+import { BaseButton } from './BaseButton'
 
-export default function CTA() {
+export const CTA = () => {
   return (
     <div className='md:py-28 py-10 md:px-16 px-6'>
         <div className='flex md:flex-row flex-col gap-8'>
@@ -13,7 +13,7 @@ export default function CTA() {
             <div className='space-y-4'>
                 <div className='flex gap-4'>
                     <Input placeholder='Alamat Email Anda' type='email'/>
-                    <Button>Bergabung</Button>
+                    <BaseButton>Bergabung</BaseButton>
                 </div>
                     <p className='text-tiny'>Dengan berlangganan, Anda menerima Kebijakan Privasi kami dan setuju untuk menerima pembaruan.</p>
             </div>
