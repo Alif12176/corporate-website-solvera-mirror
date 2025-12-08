@@ -12,16 +12,16 @@ export const PelatihanPage = () => {
   return (
     <main>
       <Hero
-        image='/images/hero-pelatihan.jpg'
+        image="/images/hero-pelatihan.jpg"
         title="Pelatihan & Sertifikasi Talenta Digital"
         subtitle="Kami menyediakan program pelatihan dan sertifikasi yang dirancang untuk meningkatkan kompetensi tim Anda. Layanan ini memastikan tenaga profesional Anda siap mengadopsi dan mengoperasionalkan perkembangan teknologi terbaru secara efektif"
         action={<BaseButton>Jadwalkan Konsultasi</BaseButton>}
       />
       <div className="max-w-full mx-auto">
-      <Stats />
-      <Layout />
-      <Content />
-      <CTA />
+        <Stats />
+        <Layout />
+        <Content />
+        <CTA />
       </div>
     </main>
   );
