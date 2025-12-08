@@ -1,6 +1,6 @@
 "use client"
 
-import { CTA } from "../layout/components/CTA"
+import { ConsultationCTA } from "../layout/components/ConsultationCTA"
 import { Hero } from "../layout/components/Hero"
 import { Layout } from "./components/TalentaLayout"
 import { Content } from "./components/TalentaContent"
@@ -12,7 +12,7 @@ export const TalentaDigitalPage = () => {
       <Hero image='/images/hero-pelatihan.jpg' title='Akselerasi Bisnis dengan Talenta Digital Unggul' subtitle='Kami membantu Anda membangun dan mengelola tim talenta digital yang kompeten untuk mendukung dan mengakselerasi operasional serta inovasi teknologi bisnis Anda' action={<Button variant="default" radius="normal" size="base">Jadwalkan Konsultasi</Button>} />
       <Layout />
       <Content />
-      <CTA />
+      <ConsultationCTA />
     </>
   )
 }

@@ -5,7 +5,7 @@ import { Stats } from "./components/PelatihanStat";
 import { Layout } from "./components/PelatihanLayout";
 import { Hero } from "../layout/components/Hero";
 import { Content } from "./components/PelatihanContent";
-import { CTA } from "../layout/components/CTA";
+import { ConsultationCTA } from "../layout/components/ConsultationCTA";
 import { Button } from "../layout/components/Button";
 
 export const PelatihanPage = () => {
@@ -21,7 +21,7 @@ export const PelatihanPage = () => {
         <Stats />
         <Layout />
         <Content />
-        <CTA />
+        <ConsultationCTA />
       </div>
     </main>
   );
