@@ -16,24 +16,32 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
+# 1. Tentukan Image Docker yang memiliki Node.js dan NPM
+image: node:latest 
+
 include:
   - template: Security/Secret-Detection.gitlab-ci.yml
   - template: Security/Dependency-Scanning.gitlab-ci.yml
 
 stages:
 - lint
-- test     # <--- DITAMBAHKAN
+- test 
 - security 
 - build
 - deploy
 
+# 2. Tambahkan Langkah Instalasi Dependensi (sebelum lint)
+# Tentukan services atau before_script secara global
+before_script:
+  - npm install # Install semua dependensi yang diperlukan linter/tester
+
 lint:
   stage: lint
   script:
-    - npm run lint
-
+    - npm run lint # Ini sekarang akan memiliki dependensi yang terinstal
+    
 unit_test:
-  stage: test # Sekarang stage ini sudah ada
+  stage: test
   script:
     - npm run test:unit
 
