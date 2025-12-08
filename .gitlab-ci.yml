@@ -1,3 +1,5 @@
+image: node:20.11-alpine 
+
 stages:
   - lint
   - test
@@ -7,7 +9,11 @@ stages:
 
 lint:
   stage: lint
+  
   script:
+    # 1. Pastikan dependensi sudah terinstal
+    - npm install
+    # 2. Jalankan lint
     - npm run lint
 
 security_scan:
