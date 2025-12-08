@@ -6,7 +6,7 @@ import { Layout } from "./components/PelatihanLayout";
 import { Hero } from "../layout/components/Hero";
 import { Content } from "./components/PelatihanContent";
 import { CTA } from "../layout/components/CTA";
-import { BaseButton } from "../layout/components/BaseButton";
+import { Button } from "../layout/components/Button";
 
 export const PelatihanPage = () => {
   return (
@@ -15,7 +15,7 @@ export const PelatihanPage = () => {
         image="/images/hero-pelatihan.jpg"
         title="Pelatihan & Sertifikasi Talenta Digital"
         subtitle="Kami menyediakan program pelatihan dan sertifikasi yang dirancang untuk meningkatkan kompetensi tim Anda. Layanan ini memastikan tenaga profesional Anda siap mengadopsi dan mengoperasionalkan perkembangan teknologi terbaru secara efektif"
-        action={<BaseButton>Jadwalkan Konsultasi</BaseButton>}
+        action={<Button variant="default" radius="normal" size="base">Jadwalkan Konsultasi</Button>}
       />
       <div className="max-w-full mx-auto">
         <Stats />

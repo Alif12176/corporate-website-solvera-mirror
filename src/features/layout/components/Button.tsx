@@ -4,25 +4,33 @@ import { extendVariants, Button as HeroButton } from "@heroui/react";
 
 export const Button = extendVariants(HeroButton, {
     variants: {
-        // Contoh varian warna custom (opsional)
-        color: {
-            olive: "text-[#000] bg-[#84cc16]",
-            orange: "bg-[#ff8c00] text-[#fff]",
+        // Mirip BaseButton: default, alternative, outline
+        variant: {
+            default:
+                "border-2 border-brand-primary bg-brand-primary text-white",
+            alternative:
+                "border-2 border-[#C0CAF2] bg-[#C0CAF2] text-[#1C1C1C]",
+            outline:
+                "border-2 border-brand-primary text-brand-primary bg-[#E7EBFB]",
         },
+
+        // Tambahan opsional: radius
         radius: {
-            normal: "rounded-[6px]", // Contoh hardcoded value
-            // brand: "rounded-brand-medium", // Contoh menggunakan token (pastikan token ada di globals.css)
+            normal: "rounded-[6px]",
         },
-        // Contoh menambahkan varian size baru
-        // size: {
-        //     xs: "px-2 min-w-12 h-6 text-tiny gap-1 rounded-small",
-        // },
+
+        // Tambahan opsional: size mirip BaseButton
+        size: {
+            base: "py-2.5 px-6 font-medium",
+        },
     },
+
+    // Disabled custom (mirip BaseButton: opacity + cursor)
     compoundVariants: [
         {
             isDisabled: "true",
-            class: "!bg-brand-disabled !text-brand-disabled-content opacity-100",
-            // opacity-100 agar warna kita terlihat jelas
+            class:
+                "opacity-50 cursor-not-allowed !bg-brand-disabled !text-brand-disabled-content",
         },
     ],
-}); 
+});
