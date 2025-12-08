@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from './Input'
-import { Button } from './Button'
+import { BaseButton } from './BaseButton'
 
 export const CTA = () => {
   return (
@@ -13,7 +13,7 @@ export const CTA = () => {
             <div className='space-y-4'>
                 <div className='flex gap-4'>
                     <Input placeholder='Alamat Email Anda' type='email'/>
-                    <Button>Bergabung</Button>
+                    <BaseButton>Bergabung</BaseButton>
                 </div>
                     <p className='text-tiny'>Dengan berlangganan, Anda menerima Kebijakan Privasi kami dan setuju untuk menerima pembaruan.</p>
             </div>
