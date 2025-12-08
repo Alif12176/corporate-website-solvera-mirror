@@ -1,4 +1,4 @@
-import { TalentaDigitalPage } from "@/features/talenta-digital/TalentaDigitalPage";
+import { TalentaDigitalPage } from "@/features/talenta-digital/components/TalentaDigitalPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

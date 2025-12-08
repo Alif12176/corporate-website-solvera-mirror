@@ -1,4 +1,4 @@
-import { PelatihanPage } from "@/features/pelatihan/PelatihanPage";
+import { PelatihanPage } from "@/features/pelatihan/components/PelatihanPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

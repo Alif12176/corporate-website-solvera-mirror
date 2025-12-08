@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { Stats } from "./components/PelatihanStat";
-import { Layout } from "./components/PelatihanLayout";
-import { Hero } from "../layout/components/Hero";
-import { Content } from "./components/PelatihanContent";
-import { ConsultationCTA } from "../layout/components/ConsultationCTA";
-import { Button } from "../layout/components/Button";
+import { Stats } from "./PelatihanStat";
+import { Layout } from "./PelatihanLayout";
+import { Hero } from "../../layout/components/Hero";
+import { Content } from "./PelatihanContent";
+import { ConsultationCTA } from "../../layout/components/ConsultationCTA";
+import { Button } from "../../layout/components/Button";
 
 export const PelatihanPage = () => {
   return (

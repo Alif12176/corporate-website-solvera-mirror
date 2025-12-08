@@ -1,10 +1,10 @@
 "use client"
 
-import { ConsultationCTA } from "../layout/components/ConsultationCTA"
-import { Hero } from "../layout/components/Hero"
-import { Layout } from "./components/TalentaLayout"
-import { Content } from "./components/TalentaContent"
-import { Button } from "../layout/components/Button"
+import { ConsultationCTA } from "../../layout/components/ConsultationCTA"
+import { Hero } from "../../layout/components/Hero"
+import { Layout } from "./TalentaLayout"
+import { Content } from "./TalentaContent"
+import { Button } from "../../layout/components/Button"
 
 export const TalentaDigitalPage = () => {
   return (
