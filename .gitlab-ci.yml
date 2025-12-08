@@ -16,17 +16,13 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-# 1. Tambahkan GitLab Security Templates di atas Stages
 include:
-  # Digunakan untuk memenuhi gate 'Secret detection'
   - template: Security/Secret-Detection.gitlab-ci.yml
-  # Digunakan untuk memenuhi gate 'Dependency vulnerability'
   - template: Security/Dependency-Scanning.gitlab-ci.yml
 
 stages:
 - lint
-- test    # Diisi dengan unit/integration/e2e tests
-- security # Diisi dengan pemindaian kode dan image
+- security 
 - build
 - deploy
 
@@ -35,31 +31,25 @@ lint:
   script:
     - npm run lint
 
-# Job Test Fungsional (Baru Ditambahkan)
 unit_test:
   stage: test
   script:
     - npm run test:unit
 
-# security_scan menggunakan semgrep (tetap dipertahankan)
 security_scan:
   stage: security
   script:
     - semgrep scan --config auto .
-    
-# Image Scan (Wajib ditambahkan)
+
 image_scan:
   stage: security
-  # Perlu memastikan Docker image dapat diakses/dibangun kembali di job ini
   script:
-    - docker scan app # Atau tool pemindai image lain
-    
+    - docker scan app 
+
 build:
   stage: build
   script:
-    # Simpan hasil build (image) sebagai artifacts agar bisa diakses security/deploy
     - docker build -t app . 
-    # Pastikan image disimpan di registry jika stage security/deploy di job yang berbeda
 
 deploy_staging:
   stage: deploy
