@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from './Input'
 import { Button } from './Button'
 
-export default function CTA() {
+export const CTA = () => {
   return (
     <div className='md:py-28 py-10 md:px-16 px-6'>
         <div className='flex md:flex-row flex-col gap-8'>

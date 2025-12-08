@@ -5,7 +5,7 @@ import { Stats } from "./components/PelatihanStat";
 import { Layout } from "./components/PelatihanLayout";
 import { Hero } from "../layout/components/Hero";
 import { Content } from "./components/PelatihanContent";
-import CTA from "../layout/components/CTA";
+import { CTA } from "../layout/components/CTA";
 import { BaseButton } from "../layout/components/BaseButton";
 
 export const PelatihanPage = () => {
