@@ -22,6 +22,7 @@ include:
 
 stages:
 - lint
+- test     # <--- DITAMBAHKAN
 - security 
 - build
 - deploy
@@ -32,10 +33,11 @@ lint:
     - npm run lint
 
 unit_test:
-  stage: test
+  stage: test # Sekarang stage ini sudah ada
   script:
     - npm run test:unit
 
+# Job lain (security, build, deploy) tetap sama...
 security_scan:
   stage: security
   script:
