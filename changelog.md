@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.2] - 2025-12-09
+
+### 🧹 Maintenance
+
+- Melakukan standarisasi tipografi menggunakan CSS variables dan menghapus utility class font-weight.
+
+- Menghapus komponen BaseButton dan memigrasikan seluruh fungsionalitas serta penggunaannya ke komponen Button.
+
+- Menghapus komponen CTA dan menyeragamkan penggunaan ConsultationCTA di seluruh halaman.
+
+- Menghapus komponen Input yang sudah tidak digunakan.
+
+- Memperbarui import path untuk seluruh page component agar menggunakan struktur components di dalam folder fitur.
+
 
 ## [0.10.1] - 2025-12-05
 

@@ -1,6 +1,6 @@
-"use client";
-
-import { Button, Input } from "@heroui/react";
+import React from 'react'
+import { Button } from './Button'
+import { Input } from '@heroui/react';
 
 export const ConsultationCTA = () => {
     return (
@@ -45,5 +45,5 @@ export const ConsultationCTA = () => {
                 </div>
             </div>
         </section>
-    );
-};
+    )
+}

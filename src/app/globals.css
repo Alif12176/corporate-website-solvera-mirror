@@ -8,151 +8,123 @@
 }
 
 /* ===================================
-   TYPOGRAPHY SCALE — MOBILE (default)
+   TYPOGRAPHY SYSTEM
    =================================== */
 @layer base {
   h1 {
-    font-size: 44px;
-    line-height: 120%;
+    font-size: var(--text-h1-mobile);
+    line-height: var(--leading-h1);
     font-weight: 600;
   }
 
   h2 {
-    font-size: 40px;
-    line-height: 120%;
+    font-size: var(--text-h2-mobile);
+    line-height: var(--leading-h2);
     font-weight: 600;
   }
 
   h3 {
-    font-size: 32px;
-    line-height: 120%;
+    font-size: var(--text-h3-mobile);
+    line-height: var(--leading-h3);
     font-weight: 600;
   }
 
   h4 {
-    font-size: 24px;
-    line-height: 130%;
+    font-size: var(--text-h4-mobile);
+    line-height: var(--leading-h4);
     font-weight: 600;
   }
 
   h5 {
-    font-size: 20px;
-    line-height: 140%;
+    font-size: var(--text-h5-mobile);
+    line-height: var(--leading-h5);
     font-weight: 600;
   }
 
   h6 {
-    font-size: 18px;
-    line-height: 140%;
+    font-size: var(--text-h6-mobile);
+    line-height: var(--leading-h6);
     font-weight: 600;
   }
-}
 
-/* =======================================
-   TYPOGRAPHY — DESKTOP (≥ 1024px)
-   ======================================= */
-@media (width >= 1024px) {
-  @layer base {
+  /* Desktop Typo Overrides */
+  @media (width >=1024px) {
     h1 {
-      font-size: 72px;
-      line-height: 120%;
+      font-size: var(--text-h1);
     }
 
     h2 {
-      font-size: 52px;
-      line-height: 120%;
+      font-size: var(--text-h2);
     }
 
     h3 {
-      font-size: 44px;
-      line-height: 120%;
+      font-size: var(--text-h3);
     }
 
     h4 {
-      font-size: 36px;
-      line-height: 130%;
+      font-size: var(--text-h4);
     }
 
     h5 {
-      font-size: 28px;
-      line-height: 140%;
+      font-size: var(--text-h5);
     }
 
     h6 {
-      font-size: 22px;
-      line-height: 140%;
+      font-size: var(--text-h6);
     }
   }
 }
 
 /* ===================================
-   TAGLINES
-   =================================== */
-@layer base {
-  .tagline-lg {
-    font-size: 22px;
-    line-height: 150%;
-  }
-  .tagline-md {
-    font-size: 18px;
-    line-height: 150%;
-  }
-  .tagline-sm {
-    font-size: 16px;
-    line-height: 150%;
-  }
-  .tagline-xs {
-    font-size: 14px;
-    line-height: 150%;
-  }
-  .tagline-tiny {
-    font-size: 12px;
-    line-height: 150%;
-  }
-}
-
-/* ===================================
-   TEXT SIZES
-   =================================== */
-@layer base {
-  .text-large {
-    font-size: 22px;
-  }
-  .text-medium {
-    font-size: 18px;
-  }
-  .text-regular {
-    font-size: 16px;
-  }
-  .text-small {
-    font-size: 14px;
-  }
-  .text-tiny {
-    font-size: 12px;
-  }
-}
-
-/* ===================================
-   FONT WEIGHTS
+   CUSTOM UTILITIES
    =================================== */
 @layer utilities {
-  .extra-bold {
-    font-weight: 800;
+
+  /* Taglines */
+  .tagline-lg {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-body-lg);
   }
-  .bold {
-    font-weight: 700;
+
+  .tagline-md {
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
   }
-  .semi-bold {
-    font-weight: 600;
+
+  .tagline-sm {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
   }
-  .medium {
-    font-weight: 500;
+
+  .tagline-xs {
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
   }
-  .normal {
-    font-weight: 400;
+
+  .tagline-tiny {
+    font-size: var(--text-body-tiny);
+    line-height: var(--leading-body-tiny);
   }
-  .light {
-    font-weight: 300;
+
+  /* Text Sizes (Aliases) */
+  .text-large {
+    font-size: var(--text-body-lg);
+  }
+
+  .text-medium {
+    font-size: var(--text-body-md);
+  }
+
+  .text-regular {
+    font-size: var(--text-body);
+  }
+
+  .text-small {
+    font-size: var(--text-body-sm);
+  }
+
+  .text-tiny {
+    font-size: var(--text-body-tiny);
   }
 }
 
@@ -181,7 +153,15 @@
 
   --color-brand-text-secondary: #000804;
 
-  /* Heading Tokens */
+  /* Mobile Heading Tokens */
+  --text-h1-mobile: 44px;
+  --text-h2-mobile: 40px;
+  --text-h3-mobile: 32px;
+  --text-h4-mobile: 24px;
+  --text-h5-mobile: 20px;
+  --text-h6-mobile: 18px;
+
+  /* Desktop Heading Tokens */
   --text-h1: 72px;
   --leading-h1: 120%;
 
