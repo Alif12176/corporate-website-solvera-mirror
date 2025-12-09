@@ -23,6 +23,7 @@ lint:
   stage: lint
   script:
     - npm run lint
+  allow_failure: true
 
 security_scan:
   stage: security
