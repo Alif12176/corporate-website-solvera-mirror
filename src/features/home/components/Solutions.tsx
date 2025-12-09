@@ -320,7 +320,7 @@ export default function Solutions() {
               >
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Image
-                    src="/images/img_group1.jpg"
+                    src="/images/img_group1.webp"
                     alt="Ilustrasi Task"
                     fill
                     className="object-cover"
