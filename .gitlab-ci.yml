@@ -1,6 +1,11 @@
-image: node:20.11-alpine 
+image: node:18-alpine
+
 before_script:
-  - npm install
+  - echo "Cleaning up existing node_modules and cache..."
+  - npm cache clean --force 
+  - rm -rf node_modules
+  - echo "Installing fresh dependencies..."
+  - npm install 
 
 stages:
   - lint
