@@ -3,8 +3,8 @@ import * as nextVitalsModule from "eslint-config-next/core-web-vitals.js";
 import * as nextTsModule from "eslint-config-next/typescript.js";
 
 const eslintConfig = defineConfig([
-  ...nextVitals.default, 
-  ...nextTs.default,
+  ...nextVitalsModule.default, 
+  ...nextTsModule.default,
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
