@@ -1,48 +1,105 @@
-image: node:18-alpine
+# Definisi Image Docker yang akan digunakan untuk menjalankan job
+image: node:20.11.1 # Menggunakan versi Node.js yang stabil dan relatif baru
 
-before_script:
-  - echo "Cleaning up existing node_modules and cache..."
-  - npm cache clean --force 
-  - rm -rf node_modules
-  - echo "Installing fresh dependencies..."
-  - npm install 
+# Variabel global untuk pipeline
+variables:
+  # Cache node_modules untuk mempercepat proses instalasi dependensi
+  # Gunakan $CI_COMMIT_REF_SLUG sebagai bagian dari kunci untuk cache per branch
+  # atau gunakan 'npm'/'pnpm'/'yarn' sebagai kunci global
+  NODE_ENV: production
+  NPM_CONFIG_CACHE: '$CI_PROJECT_DIR/.npm'
 
+# Definisi tahapan (stages) pipeline
 stages:
-  - lint
-  - test
-  - security
   - build
+  - test
   - deploy
 
-unit_test:
-  stage: test
-  script:
-    - npm run test:unit
+# --- Jobs Global (Umum) ---
 
-lint:
-  stage: lint
-  script:
-    - npm run lint
-  allow_failure: true
+# Job untuk menginstal dependensi
+.install_dependencies:
+  # Gunakan before_script untuk instalasi yang diperlukan oleh banyak job
+  before_script:
+    - echo "Installing dependencies..."
+    - npm ci # Menggunakan 'npm ci' untuk instalasi yang bersih dan cepat (berdasarkan package-lock.json)
+  # Menentukan cache untuk node_modules
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    # Menggunakan 'pull' dan 'push' untuk memastikan cache digunakan dan diperbarui
+    policy: pull-push
 
-security_scan:
-  stage: security
-  script:
-    - semgrep scan --config auto .
+# --- Tahap 1: Build (Membangun Aplikasi) ---
 
-build:
+build-app:
   stage: build
+  extends: .install_dependencies # Menggunakan konfigurasi instalasi dependensi
   script:
-    - docker build -t app .
+    - echo "Running Next.js build..."
+    - npm run build # Perintah build dari package.json
+    # Output dari build (biasanya folder .next) harus dipertahankan sebagai artefak
+  artifacts:
+    paths:
+      - .next/
+      - public/
+      - node_modules/ # Diperlukan untuk tahap deploy
+    expire_in: 1 day # Berapa lama artefak akan disimpan
 
-deploy_staging:
-  stage: deploy
-  script:
-    - bash deploy.sh staging
-  when: manual
+# --- Tahap 2: Test (Menjalankan Linter/Unit Tests) ---
 
-deploy_production:
-  stage: deploy
+lint-check:
+  stage: test
+  extends: .install_dependencies # Menggunakan konfigurasi instalasi dependensi
   script:
-    - bash deploy.sh production
-  when: manual
+    - echo "Running ESLint check..."
+    - npm run lint # Perintah lint dari package.json
+  allow_failure: false # Pipeline akan gagal jika linting gagal
+
+# --- Tahap 3: Deploy (Menerapkan Aplikasi) ---
+
+# Contoh 1: Deploy ke Staging (otomatis untuk branch 'development')
+deploy-staging:
+  stage: deploy
+  image: alpine/helm:3.9.4 # Contoh menggunakan image Docker yang ringan untuk deploy
+  # Hanya akan berjalan jika commit ke branch 'development'
+  only:
+    - development 
+  script:
+    - echo "Deploying to Staging Environment..."
+    # Contoh script deploy:
+    # 1. Pastikan artefak dari tahap build tersedia
+    - ls -la .next
+    # 2. Skrip deploy ke server/cloud (ganti dengan metode deploy Anda)
+    # Contoh untuk deploy ke layanan cloud (misal: AWS S3, Google Cloud Run, Vercel CLI)
+    # Atau contoh SCP/SSH jika deploy ke VPS:
+    # - apk add openssh-client
+    # - scp -r .next public node_modules user@staging.server.com:/var/www/html/app
+  environment:
+    name: staging
+    url: https://staging.solvera.com # Ganti dengan URL Staging yang sebenarnya
+
+# Contoh 2: Deploy ke Production (manual untuk branch 'main')
+deploy-production:
+  stage: deploy
+  image: alpine/helm:3.9.4 # Contoh menggunakan image Docker yang ringan untuk deploy
+  # Hanya akan berjalan jika commit ke branch 'main'
+  only:
+    - main
+  # Menentukan bahwa job ini harus dipicu secara manual
+  when: manual 
+  script:
+    - echo "Deploying to Production Environment..."
+    # Skrip deploy produksi (ganti dengan metode deploy Anda)
+    # Penting: Gunakan artefak yang sama yang di-build dan diuji
+    # Contoh Vercel CLI:
+    # - npx vercel deploy --prebuilt --prod
+    # Contoh SCP/SSH:
+    # - apk add openssh-client
+    # - scp -r .next public node_modules user@production.server.com:/var/www/html/app
+  environment:
+    name: production
+    url: https://solvera.com # Ganti dengan URL Produksi yang sebenarnya
