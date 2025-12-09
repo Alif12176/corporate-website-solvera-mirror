@@ -4,7 +4,7 @@ import { ConsultationHero } from "./ConsultationHero";
 import { ConsultationContent } from "./ConsultationContent";
 import { ConsultationProcess } from "./ConsultationProcess";
 import { ConsultationCompetency } from "./ConsultationCompetency";
-import { ConsultationCTA } from "./ConsultationCTA";
+import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
 
 export const ConsultationPage = () => {
     return (

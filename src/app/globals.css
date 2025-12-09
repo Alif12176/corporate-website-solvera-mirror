@@ -7,6 +7,127 @@
   --foreground: #171717;
 }
 
+/* ===================================
+   TYPOGRAPHY SYSTEM
+   =================================== */
+@layer base {
+  h1 {
+    font-size: var(--text-h1-mobile);
+    line-height: var(--leading-h1);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: var(--text-h2-mobile);
+    line-height: var(--leading-h2);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: var(--text-h3-mobile);
+    line-height: var(--leading-h3);
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: var(--text-h4-mobile);
+    line-height: var(--leading-h4);
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: var(--text-h5-mobile);
+    line-height: var(--leading-h5);
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: var(--text-h6-mobile);
+    line-height: var(--leading-h6);
+    font-weight: 600;
+  }
+
+  /* Desktop Typo Overrides */
+  @media (width >=1024px) {
+    h1 {
+      font-size: var(--text-h1);
+    }
+
+    h2 {
+      font-size: var(--text-h2);
+    }
+
+    h3 {
+      font-size: var(--text-h3);
+    }
+
+    h4 {
+      font-size: var(--text-h4);
+    }
+
+    h5 {
+      font-size: var(--text-h5);
+    }
+
+    h6 {
+      font-size: var(--text-h6);
+    }
+  }
+}
+
+/* ===================================
+   CUSTOM UTILITIES
+   =================================== */
+@layer utilities {
+
+  /* Taglines */
+  .tagline-lg {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-body-lg);
+  }
+
+  .tagline-md {
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+  }
+
+  .tagline-sm {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .tagline-xs {
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
+  }
+
+  .tagline-tiny {
+    font-size: var(--text-body-tiny);
+    line-height: var(--leading-body-tiny);
+  }
+
+  /* Text Sizes (Aliases) */
+  .text-large {
+    font-size: var(--text-body-lg);
+  }
+
+  .text-medium {
+    font-size: var(--text-body-md);
+  }
+
+  .text-regular {
+    font-size: var(--text-body);
+  }
+
+  .text-small {
+    font-size: var(--text-body-sm);
+  }
+
+  .text-tiny {
+    font-size: var(--text-body-tiny);
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -32,7 +153,15 @@
 
   --color-brand-text-secondary: #000804;
 
-  /* Heading Tokens */
+  /* Mobile Heading Tokens */
+  --text-h1-mobile: 44px;
+  --text-h2-mobile: 40px;
+  --text-h3-mobile: 32px;
+  --text-h4-mobile: 24px;
+  --text-h5-mobile: 20px;
+  --text-h6-mobile: 18px;
+
+  /* Desktop Heading Tokens */
   --text-h1: 72px;
   --leading-h1: 120%;
 

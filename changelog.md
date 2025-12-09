@@ -5,11 +5,53 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.1] - 2025-12-09
+
+### Detail Versi 0.12.1
+
+- Melakukan refaktor dengan memindahkan komponen terkait bidang industri ke dalam folder feature/bidang-industri/component.
+
+- Menstandarkan struktur komponen agar sesuai pola arsitektur feature-based.
+
+- Memperbarui path dan import komponen untuk menyesuaikan perubahan struktur.
+
+## [0.12.0] - 2025-12-09
+
+### Detail Versi 0.12.0
+
+- Menambahkan halaman baru pada aplikasi sesuai kebutuhan fitur terbaru.
+
+- Penyesuaian routing dan struktur navigasi untuk mendukung halaman baru tersebut.
+
+- Menambahkan komponen pendukung awal yang diperlukan pada halaman baru.
+
+## [0.11.1] - 2025-12-08
+
+### Detail Versi 0.11.1
+
+- Melakukan refaktor dengan mengganti komponen lama menggunakan komponen shared yang sudah tersedia dalam codebase.
+
+- Memindahkan dan merapikan struktur UI component ke dalam folder feature/layout untuk konsistensi arsitektur dan kemudahan pengelolaan.
+
 ## [0.11.0] - 2025-12-07
 
 ### Detail Versi 0.11.0
 
 - Migrasi source code untuk landing page dari repository pribadi ke repository perusahaan.
+
+## [0.10.2] - 2025-12-09
+
+### 🧹 Maintenance
+
+- Melakukan standarisasi tipografi menggunakan CSS variables dan menghapus utility class font-weight.
+
+- Menghapus komponen BaseButton dan memigrasikan seluruh fungsionalitas serta penggunaannya ke komponen Button.
+
+- Menghapus komponen CTA dan menyeragamkan penggunaan ConsultationCTA di seluruh halaman.
+
+- Menghapus komponen Input yang sudah tidak digunakan.
+
+- Memperbarui import path untuk seluruh page component agar menggunakan struktur components di dalam folder fitur.
 
 ## [0.10.1] - 2025-12-05
 

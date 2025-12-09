@@ -1,4 +1,4 @@
-import BidangIndustriPage from "@/features/bidang-industri/BidangIndustriPage";
+import BidangIndustriPage from "@/features/bidang-industri/components/BidangIndustriPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

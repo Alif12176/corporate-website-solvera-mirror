@@ -6,7 +6,7 @@ import Solutions from "./Solutions";
 import WhyChooseUs from "./WhyChooseUs";
 import VisionMission from "./VisionMission";
 import ContactSection from "./ContactSection";
-import NewsletterCTA from "@/components/ui/NewsletterCTA";
+import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
 
 const HomePage = () => {
   return (
@@ -18,7 +18,7 @@ const HomePage = () => {
       <WhyChooseUs />
       <VisionMission />
       <ContactSection />
-      <NewsletterCTA />
+      <ConsultationCTA />
     </div>
   );
 };
