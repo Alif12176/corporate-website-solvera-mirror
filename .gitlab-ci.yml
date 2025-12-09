@@ -1,105 +1,49 @@
-# Definisi Image Docker yang akan digunakan untuk menjalankan job
-image: node:20.11.1 # Menggunakan versi Node.js yang stabil dan relatif baru
+# This file is a template, and might need editing before it works on your project.
+# This is a sample GitLab CI/CD configuration file that should run without any modifications.
+# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
+# it uses echo commands to simulate the pipeline execution.
+#
+# A pipeline is composed of independent jobs that run scripts, grouped into stages.
+# Stages run in sequential order, but jobs within stages run in parallel.
+#
+# For more information, see: https://docs.gitlab.com/ee/ci/yaml/#stages
+#
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/development/cicd/templates/
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
-# Variabel global untuk pipeline
-variables:
-  # Cache node_modules untuk mempercepat proses instalasi dependensi
-  # Gunakan $CI_COMMIT_REF_SLUG sebagai bagian dari kunci untuk cache per branch
-  # atau gunakan 'npm'/'pnpm'/'yarn' sebagai kunci global
-  NODE_ENV: production
-  NPM_CONFIG_CACHE: '$CI_PROJECT_DIR/.npm'
-
-# Definisi tahapan (stages) pipeline
-stages:
+stages:          # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
 
-# --- Jobs Global (Umum) ---
-
-# Job untuk menginstal dependensi
-.install_dependencies:
-  # Gunakan before_script untuk instalasi yang diperlukan oleh banyak job
-  before_script:
-    - echo "Installing dependencies..."
-    - npm ci # Menggunakan 'npm ci' untuk instalasi yang bersih dan cepat (berdasarkan package-lock.json)
-  # Menentukan cache untuk node_modules
-  cache:
-    key:
-      files:
-        - package-lock.json
-    paths:
-      - node_modules
-    # Menggunakan 'pull' dan 'push' untuk memastikan cache digunakan dan diperbarui
-    policy: pull-push
-
-# --- Tahap 1: Build (Membangun Aplikasi) ---
-
-build-app:
+build-job:       # This job runs in the build stage, which runs first.
   stage: build
-  extends: .install_dependencies # Menggunakan konfigurasi instalasi dependensi
   script:
-    - echo "Running Next.js build..."
-    - npm run build # Perintah build dari package.json
-    # Output dari build (biasanya folder .next) harus dipertahankan sebagai artefak
-  artifacts:
-    paths:
-      - .next/
-      - public/
-      - node_modules/ # Diperlukan untuk tahap deploy
-    expire_in: 1 day # Berapa lama artefak akan disimpan
+    - echo "Compiling the code..."
+    - echo "Compile complete."
 
-# --- Tahap 2: Test (Menjalankan Linter/Unit Tests) ---
-
-lint-check:
-  stage: test
-  extends: .install_dependencies # Menggunakan konfigurasi instalasi dependensi
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - echo "Running ESLint check..."
-    - npm run lint # Perintah lint dari package.json
-  allow_failure: false # Pipeline akan gagal jika linting gagal
+    - echo "Running unit tests... This will take about 60 seconds."
+    - sleep 60
+    - echo "Code coverage is 90%"
 
-# --- Tahap 3: Deploy (Menerapkan Aplikasi) ---
-
-# Contoh 1: Deploy ke Staging (otomatis untuk branch 'development')
-deploy-staging:
-  stage: deploy
-  image: alpine/helm:3.9.4 # Contoh menggunakan image Docker yang ringan untuk deploy
-  # Hanya akan berjalan jika commit ke branch 'development'
-  only:
-    - development 
+lint-test-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
-    - echo "Deploying to Staging Environment..."
-    # Contoh script deploy:
-    # 1. Pastikan artefak dari tahap build tersedia
-    - ls -la .next
-    # 2. Skrip deploy ke server/cloud (ganti dengan metode deploy Anda)
-    # Contoh untuk deploy ke layanan cloud (misal: AWS S3, Google Cloud Run, Vercel CLI)
-    # Atau contoh SCP/SSH jika deploy ke VPS:
-    # - apk add openssh-client
-    # - scp -r .next public node_modules user@staging.server.com:/var/www/html/app
-  environment:
-    name: staging
-    url: https://staging.solvera.com # Ganti dengan URL Staging yang sebenarnya
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 10
+    - echo "No lint issues found."
 
-# Contoh 2: Deploy ke Production (manual untuk branch 'main')
-deploy-production:
-  stage: deploy
-  image: alpine/helm:3.9.4 # Contoh menggunakan image Docker yang ringan untuk deploy
-  # Hanya akan berjalan jika commit ke branch 'main'
-  only:
-    - main
-  # Menentukan bahwa job ini harus dipicu secara manual
-  when: manual 
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  environment: production
   script:
-    - echo "Deploying to Production Environment..."
-    # Skrip deploy produksi (ganti dengan metode deploy Anda)
-    # Penting: Gunakan artefak yang sama yang di-build dan diuji
-    # Contoh Vercel CLI:
-    # - npx vercel deploy --prebuilt --prod
-    # Contoh SCP/SSH:
-    # - apk add openssh-client
-    # - scp -r .next public node_modules user@production.server.com:/var/www/html/app
-  environment:
-    name: production
-    url: https://solvera.com # Ganti dengan URL Produksi yang sebenarnya
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
