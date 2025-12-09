@@ -1,4 +1,4 @@
-import ManagedServicesPage from "@/features/managed-services/ManagedServicesPage";
+import ManagedServicesPage from "@/features/managed-services/components/ManagedServicesPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,8 +1,8 @@
-import HeroBanner from "@/components/ui/HeroBanner";
-import NewsletterCTA from "@/components/ui/NewsletterCTA";
 import ExpertTeam from "./ExpertTeam";
 import CoreCompetence from "./CoreCompetence";
 import ManagedServices from "./ManagedServices";
+import HeroBanner from "@/features/layout/components/HeroBanner";
+import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
 
 export default function ManagedServicesPage() {
   return (
@@ -15,7 +15,7 @@ export default function ManagedServicesPage() {
       <ManagedServices />
       <ExpertTeam />
       <CoreCompetence />
-      <NewsletterCTA />
+      <ConsultationCTA />
     </main>
   );
 }
