@@ -43,6 +43,9 @@ export interface Product {
 
 export interface ProductsResponse {
   success: boolean;
-  data: Product[];
+  data: {
+    items: Product[],
+    meta: any
+  };
   error: string | null;
 }

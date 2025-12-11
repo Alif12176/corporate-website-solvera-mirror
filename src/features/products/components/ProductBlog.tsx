@@ -31,7 +31,7 @@ export const Blog = () => {
   }, []);
 
   return (
-    <div className="md:py-12 py-10 md:px-16 px-6 flex justify-between gap-6 w-full">
+    <div className="md:py-12 py-10 md:px-16 px-6 flex justify-between gap-6 w-full max-w-7xl mx-auto">
       {!isMobile && <div className="w-[20%] hidden md:block">
         <Filter filters={filters} setFilters={setFilters} />
       </div>}

@@ -2,11 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../api/products";
 import type { ProductsResponse } from "../types/product";
 
-export function useProducts() {
+export function useProducts(query?:string) {
   return useQuery<ProductsResponse>({
-    queryKey: ["products"],
-    queryFn: getProducts,
-    staleTime: 1000 * 60 * 5,
+    queryKey: ["products", query],
+    queryFn: ()=>getProducts(query),
     refetchOnWindowFocus: false, 
   });
 }

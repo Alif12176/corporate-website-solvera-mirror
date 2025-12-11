@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useEffect, useMemo } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/features/layout/components/Button";
 import { Card } from "./ProductCard";
 import { PiFunnel } from "react-icons/pi";
-import { Input, Pagination } from "@heroui/react";
+import { Input, Pagination, Spinner } from "@heroui/react";
 import { FaArrowRight, FaMagnifyingGlass } from "react-icons/fa6";
 import { useProducts } from "../hooks/useProducts";
 
@@ -98,9 +98,11 @@ const data: BlogItem[] = [
 ];
 
 export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
-  const { data, isLoading, isError } = useProducts();
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category") || "";
 
-  console.log(data)
+  const { data, isLoading, isError } = useProducts('category='+category);
+
   const router = useRouter();
 
   const [searchInput, setSearchInput] = React.useState(filters.search);
@@ -108,24 +110,24 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
   const itemsPerPage = 6;
 
   const filtered = useMemo(() => {
-    const products = data?.data ?? [];
+    if (!data?.data?.items) return [];
 
-    return products
-      .filter((item:any) =>
-        !filters.kategori ? true : item.kategori === filters.kategori
+    return data.data.items
+      .filter((item: any) =>
+        !filters.kategori ? true : item.category === filters.kategori
       )
-      .filter((item:any) =>
+      .filter((item: any) =>
         !filters.industri ? true : item.industri === filters.industri
       )
-      .filter((item:any) =>
+      .filter((item: any) =>
         !filters.segmen ? true : item.segmen === filters.segmen
       )
-      .filter((item:any) =>
+      .filter((item: any) =>
         filters.search
-          ? item.title.toLowerCase().includes(filters.search.toLowerCase())
+          ? item.name.toLowerCase().includes(filters.search.toLowerCase())
           : true
       );
-  }, [filters]);
+  }, [filters, data]);
 
   const start = (filters.page - 1) * itemsPerPage;
   const paginated = filtered.slice(start, start + itemsPerPage);
@@ -152,6 +154,7 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
           <PiFunnel className="h-5" />{" "}
         </Button>
         <Input
+          id="filter"
           type="text"
           radius="sm"
           placeholder="Cari..."
@@ -176,30 +179,34 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
       </div>
 
       {/* CARD LIST */}
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-        {paginated.map((item:any, idx:number) => (
-          <Card
-            key={idx}
-            title={item.title}
-            subtitle={item.subtitle}
-            action={
-              <Button
-                radius="normal"
-                color="primary"
-                onClick={() => router.push("/products/1")}
-              >
-                Pelajari Selengkapnya <FaArrowRight className="h-5" />
-              </Button>
-            }
-          />
-        ))}
-
-      </div>
-        {paginated.length === 0 ? (
-          <p className="col-span-3 text-center py-10 text-gray-500">
-            Tidak ada data ditemukan.
-          </p>
-        ) : (
+      {isLoading ? (
+        <div className="flex justify-center">
+        <Spinner />
+        </div>
+      ) : paginated.length == 0 ? (
+        <p className="col-span-3 text-center py-10 text-gray-500">
+          Tidak ada data ditemukan.
+        </p>
+      ) : (
+        <>
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
+            {paginated.map((item: any) => (
+              <Card
+                key={item.id}
+                title={item.name}
+                subtitle={item.hero_subtitle}
+                action={
+                  <Button
+                    radius="normal"
+                    color="primary"
+                    onClick={() => router.push("/products/" + item.slug)}
+                  >
+                    Pelajari Selengkapnya <FaArrowRight className="h-5" />
+                  </Button>
+                }
+              />
+            ))}
+          </div>
           <div className="flex justify-center">
             <Pagination
               initialPage={filters.page}
@@ -207,7 +214,8 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
               onChange={(p: number) => setFilters({ ...filters, page: p })}
             />
           </div>
-        )}
+        </>
+      )}
     </div>
   );
 };

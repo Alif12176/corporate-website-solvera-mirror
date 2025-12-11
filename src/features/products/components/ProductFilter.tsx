@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/features/layout/components/Button";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import { BiReset } from "react-icons/bi";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
@@ -22,6 +23,9 @@ interface Props {
 }
 
 export const Filter = ({ filters, setFilters }: Props) => {
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category") || "";
+  const router = useRouter();
   const kategori: Option[] = [
     { label: "Produk Utama" },
     { label: "Enterprise" },
@@ -46,8 +50,8 @@ export const Filter = ({ filters, setFilters }: Props) => {
   ];
 
   const [openKategori, setOpenKategori] = React.useState(true);
-  const [openIndustri, setOpenIndustri] = React.useState(true);
-  const [openSegmen, setOpenSegmen] = React.useState(true);
+  // const [openIndustri, setOpenIndustri] = React.useState(true);
+  // const [openSegmen, setOpenSegmen] = React.useState(true);
 
   const resetFilter = () => {
     setFilters({
@@ -57,16 +61,26 @@ export const Filter = ({ filters, setFilters }: Props) => {
       search: "",
       page: 1,
     });
+    router.replace('/products',{scroll: false})
   };
 
   const Chevron = ({ open }: { open: boolean }) =>
-    open ? <FaChevronUp className="h-5 text-primary" /> : <FaChevronDown className="h-5 text-primary" />;
+    open ? (
+      <FaChevronUp className="h-5 text-primary" />
+    ) : (
+      <FaChevronDown className="h-5 text-primary" />
+    );
 
   return (
     <div className="space-y-6 max-w-60">
       <div className="flex justify-between items-center">
         <h5 className="text-primary">Filter</h5>
-        <Button radius='normal' color='primary' className="flex gap-3" onClick={resetFilter}>
+        <Button
+          radius="normal"
+          color="primary"
+          className="flex gap-3"
+          onClick={resetFilter}
+        >
           Reset <HiArrowPath className="h-5" />
         </Button>
       </div>
@@ -74,20 +88,36 @@ export const Filter = ({ filters, setFilters }: Props) => {
       {/* ================== KATEGORI ================== */}
       <hr className="border-[#00080426]" />
       <div>
-        <div className="flex justify-between items-center py-5 cursor-pointer" onClick={() => setOpenKategori(!openKategori)}>
+        <div
+          className="flex justify-between items-center py-5 cursor-pointer"
+          onClick={() => setOpenKategori(!openKategori)}
+        >
           <p className="font-bold text-primary">Kategori Utama</p>
           <Chevron open={openKategori} />
         </div>
 
         {openKategori &&
           kategori.map((k, index) => (
-            <label key={index} className="flex items-center gap-2 py-2 cursor-pointer">
+            <label
+              key={index}
+              className="flex items-center gap-2 py-2 cursor-pointer"
+            >
               <input
                 type="radio"
                 name="kategori-filter"
                 value={k.label}
-                checked={filters.kategori === k.label}
-                onChange={() => setFilters({ ...filters, kategori: k.label, page: 1 })}
+                checked={category=== k.label}
+                onChange={() => {
+                  setFilters({ ...filters, kategori: k.label, page: 1 });
+                  const searchParams = new URLSearchParams(
+                    window.location.search
+                  );
+                  searchParams.set("category", k.label); 
+
+                  router.replace(`/products?${searchParams.toString()}`, {
+                    scroll: false,
+                  });
+                }}
                 className="peer hidden"
               />
               <span className="inline-block shrink-0 w-4 h-4 rounded-full border border-primary bg-border-subtle peer-checked:bg-primary peer-checked:border-primary"></span>
@@ -147,4 +177,4 @@ export const Filter = ({ filters, setFilters }: Props) => {
       </div> */}
     </div>
   );
-}
+};

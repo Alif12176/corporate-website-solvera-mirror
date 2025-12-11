@@ -2,10 +2,10 @@ import type { Product, ProductsResponse } from "../types/product";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL+'api/v1/products';
 
-export async function getProducts(): Promise<ProductsResponse> {
+export async function getProducts(query?: string): Promise<ProductsResponse> {
   try {
-    console.log("Fetching products from:", BASE_URL);
-    const res = await fetch(BASE_URL, { cache: "no-store" });
+    const queryString = new URLSearchParams(query || {}).toString();
+    const res = await fetch(`${BASE_URL}?${queryString}`, { cache: "no-store" });
 
     if (!res.ok) {
       throw new Error(`Failed to fetch products: ${res.status}`);
