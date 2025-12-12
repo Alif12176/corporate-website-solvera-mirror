@@ -101,38 +101,11 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
   const searchParams = useSearchParams();
   const category = searchParams.get("category") || "";
 
-  const { data, isLoading, isError } = useProducts('category='+category);
+  const { data, isLoading, isError } = useProducts({category, search: filters.search, page: filters.page, limit: 6});
 
   const router = useRouter();
 
   const [searchInput, setSearchInput] = React.useState(filters.search);
-
-  const itemsPerPage = 6;
-
-  const filtered = useMemo(() => {
-    if (!data?.data?.items) return [];
-
-    return data.data.items
-      .filter((item: any) =>
-        !filters.kategori ? true : item.category === filters.kategori
-      )
-      .filter((item: any) =>
-        !filters.industri ? true : item.industri === filters.industri
-      )
-      .filter((item: any) =>
-        !filters.segmen ? true : item.segmen === filters.segmen
-      )
-      .filter((item: any) =>
-        filters.search
-          ? item.name.toLowerCase().includes(filters.search.toLowerCase())
-          : true
-      );
-  }, [filters, data]);
-
-  const start = (filters.page - 1) * itemsPerPage;
-  const paginated = filtered.slice(start, start + itemsPerPage);
-
-  const totalPages = Math.ceil(filtered.length / itemsPerPage);
 
   useEffect(() => {
     if (searchInput === "") {
@@ -183,14 +156,14 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
         <div className="flex justify-center">
         <Spinner />
         </div>
-      ) : paginated.length == 0 ? (
+      ) : data?.data.items.length == 0 ? (
         <p className="col-span-3 text-center py-10 text-gray-500">
           Tidak ada data ditemukan.
         </p>
       ) : (
         <>
           <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
-            {paginated.map((item: any) => (
+            {data?.data.items.map((item: any) => (
               <Card
                 key={item.id}
                 title={item.name}
@@ -209,8 +182,8 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
           </div>
           <div className="flex justify-center">
             <Pagination
-              initialPage={filters.page}
-              total={totalPages}
+              initialPage={data?.data.meta.page}
+              total={data?.data.meta.total_pages}
               onChange={(p: number) => setFilters({ ...filters, page: p })}
             />
           </div>
