@@ -24,7 +24,7 @@ export const Hero = ({ image, title, subtitle, action }: Props) => {
 
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center px-6 md:px-16 mt-[72px]">
-        <div className="max-w-3xl text-center text-white space-y-8">
+        <div className="max-w-5xl text-center text-white space-y-8">
           <div className="space-y-4 md:space-y-6">
             <h1 className="font-bold leading-tight">
               {title}
