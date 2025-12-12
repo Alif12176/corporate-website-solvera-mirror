@@ -5,6 +5,60 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.12.1] - 2025-12-09
+
+### Detail Versi 0.13.1
+
+- Melakukan refaktor dengan memindahkan komponen terkait layanan managed service ke dalam folder feature/managed-service/component.
+
+- Menstandarkan struktur komponen agar sesuai pola arsitektur feature-based.
+
+- Memperbarui path dan import komponen untuk menyesuaikan perubahan struktur.
+
+## [0.12.0] - 2025-12-09
+
+### Detail Versi 0.13.0
+
+- Menambahkan halaman layanan managed services.
+
+- Penyesuaian routing dan struktur navigasi untuk mendukung halaman baru tersebut.
+
+- Menambahkan komponen pendukung awal yang diperlukan pada halaman baru.
+
+## [0.12.1] - 2025-12-09
+
+### Detail Versi 0.12.1
+
+- Melakukan refaktor dengan memindahkan komponen terkait bidang industri ke dalam folder feature/bidang-industri/component.
+
+- Menstandarkan struktur komponen agar sesuai pola arsitektur feature-based.
+
+- Memperbarui path dan import komponen untuk menyesuaikan perubahan struktur.
+
+## [0.12.0] - 2025-12-09
+
+### Detail Versi 0.12.0
+
+- Menambahkan halaman baru pada aplikasi sesuai kebutuhan fitur terbaru.
+
+- Penyesuaian routing dan struktur navigasi untuk mendukung halaman baru tersebut.
+
+- Menambahkan komponen pendukung awal yang diperlukan pada halaman baru.
+
+## [0.11.1] - 2025-12-08
+
+### Detail Versi 0.11.1
+
+- Melakukan refaktor dengan mengganti komponen lama menggunakan komponen shared yang sudah tersedia dalam codebase.
+
+- Memindahkan dan merapikan struktur UI component ke dalam folder feature/layout untuk konsistensi arsitektur dan kemudahan pengelolaan.
+
+## [0.11.0] - 2025-12-07
+
+### Detail Versi 0.11.0
+
+- Migrasi source code untuk landing page dari repository pribadi ke repository perusahaan.
+
 ## [0.10.2] - 2025-12-09
 
 ### 🧹 Maintenance
@@ -19,7 +73,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Memperbarui import path untuk seluruh page component agar menggunakan struktur components di dalam folder fitur.
 
-
 ## [0.10.1] - 2025-12-05
 
 ### 🧹 Maintenance
@@ -27,7 +80,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Memindahkan source code dari repository pribadi ke repository perusahaan.
 - Menyesuaikan struktur awal project agar sesuai standar internal tim.
 - Melakukan penyesuaian konfigurasi awal tanpa perubahan fitur maupun bug fix.
-
 
 ## [0.10.0] - 2025-12-04
 
@@ -37,7 +89,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Deskripsi:**
   - Penambahan fitur untuk menampilkan halaman manajemen bisnis dan optimasi proses.
-  
 
 ## [0.9.0] - 2025-12-04
 
@@ -47,7 +98,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Deskripsi:**
   - Penambahan fitur untuk menampilkan halaman blog detail.
-  
 
 ## [0.8.0] - 2025-12-03
 
@@ -58,7 +108,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Deskripsi:**
   - Penambahan fitur untuk menampilkan halaman blog.
 
-
 ## [0.7.0] - 2025-11-30
 
 ### Detail Versi 0.7.0
@@ -67,7 +116,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Deskripsi:**
   - Penambahan fitur untuk membuat email clickable di halaman syarat dan ketentuan.
-
 
 ## [0.6.2] - 2025-11-30
 
@@ -78,7 +126,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Deskripsi:**
   - Bug fix untuk mengatasi masalah z-index mobile table of contents.
 
-
 ## [0.6.1] - 2025-11-30
 
 ### Detail Versi 0.6.1
@@ -87,7 +134,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Deskripsi:**
   - Bug fix untuk mengatasi masalah memecah list sub menu produk di mega menu.
-  
 
 ## [0.6.0] - 2025-11-28
 
@@ -106,7 +152,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Deskripsi:**
   - Penambahan fitur untuk menampilkan halaman syarat dan ketentuan.
-
 
 ## [0.4.0] - 2025-11-28
 
