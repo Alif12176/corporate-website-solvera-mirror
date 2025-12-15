@@ -1,7 +1,7 @@
 "use client";
-import Button from "@/app/components/Button";
-import SectionTitle from "@/app/components/SectionTitle";
-import { CheckIcon } from "@heroicons/react/16/solid";
+import { Button } from "@/features/layout/components/Button";
+import { SectionTitle } from "@/features/layout/components/SectionTitle";
+import { CheckIcon } from "lucide-react";
 import React, { useState } from "react";
 
 export default function Tab() {
