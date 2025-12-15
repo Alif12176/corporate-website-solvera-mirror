@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Accordion, AccordionItem, Link } from "@heroui/react";
+import { Accordion, AccordionItem } from "@heroui/react";
 import { RiListUnordered } from "react-icons/ri";
 
 interface Section {
