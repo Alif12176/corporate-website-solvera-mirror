@@ -4,7 +4,16 @@ import { Link, Button } from "@heroui/react";
 import Image from "next/image";
 import { RiFacebookFill, RiInstagramLine, RiTwitterXFill, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
 
+import { usePathname } from "next/navigation";
+
 export const Footer = () => {
+    const pathname = usePathname();
+
+    // Hide footer on specific pages
+    if (pathname === "/minta-demo") {
+        return null;
+    }
+
     const socialLinks = [
         { icon: RiFacebookFill, href: "#" },
         { icon: RiInstagramLine, href: "#" },
