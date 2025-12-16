@@ -33,10 +33,10 @@ export const Footer = () => {
     ];
 
     const companyLinks = [
-        "Produk Kami",
-        "Berita dan Artikel",
-        "Tentang Kami",
-        "Hubungi Kami"
+        { href: "/produk-kami", label: "Produk Kami" },
+        { href: "/berita-dan-artikel", label: "Berita dan Artikel" },
+        { href: "/tentang-kami", label: "Tentang Kami" },
+        { href: "/hubungi-kami", label: "Hubungi Kami" }
     ];
 
     return (
@@ -107,8 +107,8 @@ export const Footer = () => {
                             <ul className="flex flex-col gap-3">
                                 {companyLinks.map((item, idx) => (
                                     <li key={idx}>
-                                        <Link href="#" color="foreground" className="text-body-sm hover:text-brand-primary">
-                                            {item}
+                                        <Link href={item.href} color="foreground" className="text-body-sm hover:text-brand-primary">
+                                            {item.label}
                                         </Link>
                                     </li>
                                 ))}
