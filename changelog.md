@@ -6,11 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.17.0] - 2025-12-18
+
+### Detail Versi 0.17.0
+
+#### ✨ Fitur baru di `dev` untuk versi 0.17.0
+
+- **Deskripsi:**
+  - Implementasi Navbar baru.
+  - Penambahan component baru di halaman Home Page.
+  - Penambahan component baru di halaman transformasi digital.
+  - Penambahan component baru di halaman managed services.
+  - Penambahan component baru di halaman konsultasi-page.
+
+
 ## [0.16.0] - 2025-12-18
 
 ### Detail Versi 0.16.0
 
-#### ✨ Fitur baru di `main` untuk versi 0.16.0
+#### ✨ Fitur baru di `dev` untuk versi 0.16.0
 
 - **Deskripsi:**
   - Fetching data detail product.
