@@ -17,6 +17,8 @@ export default async function ProductDetail({ params }: ProductDetailProps) {
         notFound();
     }
 
+    console.log("product", product)
+
     return (
         <main className="flex flex-col w-full">
             <ProductDetailPage product={product} />

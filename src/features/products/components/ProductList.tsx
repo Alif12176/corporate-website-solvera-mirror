@@ -101,7 +101,7 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
   const searchParams = useSearchParams();
   const category = searchParams.get("category") || "";
 
-  const { data, isLoading, isError } = useProducts({category, search: filters.search, page: filters.page, limit: 6});
+  const { data, isLoading, isError } = useProducts({ category, search: filters.search, page: filters.page, limit: 6 });
 
   const router = useRouter();
 
@@ -154,7 +154,7 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
       {/* CARD LIST */}
       {isLoading ? (
         <div className="flex justify-center">
-        <Spinner />
+          <Spinner />
         </div>
       ) : data?.data.items.length == 0 ? (
         <p className="col-span-3 text-center py-10 text-gray-500">
