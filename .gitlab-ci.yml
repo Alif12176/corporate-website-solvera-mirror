@@ -24,8 +24,6 @@ variables:
 stages:
   - install
   - lint
-  - build
-  - deploy
 
 install_dependencies:
   stage: install
@@ -50,58 +48,3 @@ lint_code:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
     - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
-
-build_app:
-  stage: build
-  needs: ["install_dependencies"]
-  script:
-    - npm run build 
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-    policy: pull
-  artifacts:
-    expire_in: 1 day
-    paths:
-      - .next/
-      - public/
-      - package.json
-  rules:
-    - if: $CI_COMMIT_BRANCH
-
-deploy_staging:
-  stage: deploy
-  needs: ["build_app"]
-  environment:
-    name: staging
-    url: https://staging.domain-anda.com
-  script:
-    - echo "Deployment script placeholder. Replace with your actual deployment command."
-  only:
-    - dev
-
-deploy_preview:
-  stage: deploy
-  needs: ["build_app"]
-  environment:
-    name: preview/$CI_COMMIT_REF_SLUG 
-    on_stop: stop_preview_environment
-    url: https://preview-$CI_COMMIT_REF_SLUG.domain-anda.com 
-  script:
-    - echo "Preview deployment script placeholder. Replace with your actual script (e.g., Vercel preview deployment)."
-  rules:
-    - if: $CI_COMMIT_BRANCH != "dev" && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
-      when: always
-
-stop_preview_environment:
-  stage: deploy
-  when: manual
-  environment:
-    name: preview/$CI_COMMIT_REF_SLUG
-    action: stop
-  script:
-    - echo "Cleanup script placeholder."
-  rules:
-    - if: $CI_COMMIT_BRANCH
-      when: manual
