@@ -33,9 +33,9 @@ export const Footer = () => {
     ];
 
     const companyLinks = [
-        { href: "/produk-kami", label: "Produk Kami" },
-        { href: "/berita-dan-artikel", label: "Berita dan Artikel" },
-        { href: "/tentang-kami", label: "Tentang Kami" },
+        { href: "/products", label: "Produk Kami" },
+        { href: "/blog", label: "Berita dan Artikel" },
+        { href: "/about-us", label: "Tentang Kami" },
         { href: "/hubungi-kami", label: "Hubungi Kami" }
     ];
 
@@ -126,7 +126,7 @@ export const Footer = () => {
                         <Link href="/kebijakan-privasi" className="text-body-sm text-foreground underline hover:text-brand-primary">
                             Kebijakan Privasi
                         </Link>
-                        <Link href="#" className="text-body-sm text-foreground underline hover:text-brand-primary">
+                        <Link href="/syarat-dan-ketentuan" className="text-body-sm text-foreground underline hover:text-brand-primary">
                             Syarat dan Ketentuan Layanan
                         </Link>
                     </div>

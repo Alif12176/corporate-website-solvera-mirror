@@ -7,6 +7,8 @@ export interface Feature {
   content_description: string;
   benefits: string[];
   sequence: number;
+  type: string;
+  image_url: string;
 }
 
 export interface WhyUsItem {
@@ -32,6 +34,10 @@ export interface Product {
   category: string;
   hero_title: string;
   hero_subtitle: string;
+  hero_image: string;
+  cta_primary_text: string;
+  cta_secondary_text: string;
+  cta_image: string;
 
   features: Feature[];
   why_us: WhyUsItem[];

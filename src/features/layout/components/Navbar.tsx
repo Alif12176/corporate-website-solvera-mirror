@@ -23,12 +23,15 @@ import {
   RiArrowDownSLine,
   RiArrowRightLine,
   RiArrowUpSLine,
+  RiErrorWarningFill,
 } from "react-icons/ri";
+import { FaPhoneAlt } from "react-icons/fa";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPopoverOpenProduct, setIsPopoverOpenProduct] = useState(false);
   const [isPopoverOpenLayanan, setIsPopoverOpenLayanan] = useState(false);
+  const [isPopoverOpenTentangKami, setIsPopoverOpenTentangKami] = useState(false);
   const logoMobile = "/icons/solvera.svg";
   const logoDesktop = "/icons/solvera-logo-text.svg";
 
@@ -56,36 +59,36 @@ export const Navbar = () => {
     {
       title: "Enterprise",
       items: [
-        "Industri & Manufaktur",
-        "Logistik & Transportasi",
-        "Properti & Real Estate",
-        "Kesehatan & Rumah Sakit",
+        { label: "Industri & Manufaktur", href: "/products/industri-dan-manufaktur" },
+        { label: "Logistik & Transportasi", href: "/products/logistic-dan-transportasi " },
+        { label: "Properti & Real Estate", href: "/products/properti-dan-real-estate" },
+        { label: "Kesehatan & Rumah Sakit", href: "/products/konstruksi-dan-proyek" },
       ],
     },
     {
       title: "Service & Commerce",
       items: [
-        "Ritel & Grosir",
-        "Jasa & Profesional",
-        "Hospitality & Restaurant",
-        "Otomotif",
+        { label: "Ritel & Grosir", href: "/products/ritel-dan-grosir" },
+        { label: "Jasa & Profesional", href: "/products/jasa-dan-layanan-profesional" },
+        { label: "Hospitality & Restaurant", href: "/products/hospitality-dan-restoran" },
+        { label: "Otomotif", href: "/products/otomotif-sales-and-aftermarket" },
       ],
     },
     {
       title: "Specialized Industries",
       items: [
-        "Kesehatan & Rumah Sakit",
-        "Energi, Pertambangan & Utilitas",
-        "Keuangan, Perbankan & Asuransi",
-        "Agro & Perkebunan",
+        { label: "Kesehatan & Rumah Sakit", href: "/products/kesehatan-dan-rumah-sakit" },
+        { label: "Energi, Pertambangan & Utilitas", href: "/products/energi-pertambangan-dan-utilitas" },
+        { label: "Keuangan, Perbankan & Asuransi", href: "/products/keuangan-perbankan-dan-asuransi" },
+        { label: "Agro & Perkebunan", href: "/products/agro-dan-perkebunan" },
       ],
     },
     {
       title: "",
       items: [
-        "Pendidikan",
-        "Pemerintahan / Publik",
-        "Media, Telekomunikasi & Kreatif",
+        { label: "Pendidikan", href: "/products/pendidikan" },
+        { label: "Pemerintahan / Publik", href: "/products/pemerintahan-dan-publik" },
+        { label: "Media, Telekomunikasi & Kreatif", href: "/products/media-telekomunikasi-dan-kreatif" },
       ],
     },
   ];
@@ -121,6 +124,17 @@ export const Navbar = () => {
     },
   ];
 
+  const tentangKami = [
+    {
+      name: "Tentang Kami",
+      url: "/about-us",
+    },
+    {
+      name: "Kontak",
+      url: "/hubungi-kami",
+    },
+  ];
+
   return (
     <HeroNavbar
       onMenuOpenChange={handleMenuOpenChange}
@@ -136,7 +150,9 @@ export const Navbar = () => {
       <NavbarContent>
         {/* Desktop Logo */}
         <NavbarBrand className="hidden sm:block">
-          <Image src={logoDesktop} alt="Solvera Logo" width={179} height={56} />
+          <Link href="/">
+            <Image src={logoDesktop} alt="Solvera Logo" width={179} height={56} />
+          </Link>
         </NavbarBrand>
         {/* Mobile Logo */}
         <NavbarBrand className="block sm:hidden">
@@ -157,11 +173,10 @@ export const Navbar = () => {
             <PopoverTrigger>
               <Button
                 disableRipple
-                className={`p-0 bg-transparent data-[hover=true]:bg-transparent text-base ${
-                  isPopoverOpenProduct
-                    ? "text-brand-primary font-semibold"
-                    : "text-foreground"
-                }`}
+                className={`p-0 bg-transparent data-[hover=true]:bg-transparent text-base ${isPopoverOpenProduct
+                  ? "text-brand-primary font-semibold"
+                  : "text-foreground"
+                  }`}
                 endContent={
                   isPopoverOpenProduct ? (
                     <RiArrowUpSLine color="text-brand-primary" />
@@ -187,12 +202,12 @@ export const Navbar = () => {
                         {category.items.map((item, itemIdx) => (
                           <li key={itemIdx}>
                             <Link
-                              href="#"
+                              href={item.href}
                               className="text-foreground flex items-center gap-3 hover:text-brand-primary transition-colors"
                             >
                               <RiBox2Line className="text-xl" />
                               <span className="text-body font-semibold">
-                                {item}
+                                {item.label}
                               </span>
                             </Link>
                           </li>
@@ -206,7 +221,7 @@ export const Navbar = () => {
                     Pelajari Lebih Lanjut Tentang Produk Solvera
                   </span>
                   <Link
-                    href="#"
+                    href="/products"
                     className="text-brand-primary font-bold flex items-center gap-1"
                   >
                     Lihat Semua Produk <RiArrowRightLine />
@@ -228,11 +243,10 @@ export const Navbar = () => {
             <PopoverTrigger>
               <Button
                 disableRipple
-                className={`p-0 bg-transparent data-[hover=true]:bg-transparent text-base ${
-                  isPopoverOpenLayanan
-                    ? "text-brand-primary font-semibold"
-                    : "text-foreground"
-                }`}
+                className={`p-0 bg-transparent data-[hover=true]:bg-transparent text-base ${isPopoverOpenLayanan
+                  ? "text-brand-primary font-semibold"
+                  : "text-foreground"
+                  }`}
                 endContent={
                   isPopoverOpenLayanan ? (
                     <RiArrowUpSLine color="text-brand-primary" />
@@ -275,13 +289,79 @@ export const Navbar = () => {
             </PopoverContent>
           </Popover>
         </NavbarItem>
+        {/* Tentang Kami */}
         <NavbarItem>
-          <Link color="foreground" href="#">
+          <Popover
+            placement="bottom"
+            showArrow={false}
+            offset={20}
+            isOpen={isPopoverOpenTentangKami}
+            onOpenChange={(open) => setIsPopoverOpenTentangKami(open)}
+          >
+            <PopoverTrigger>
+              <Button
+                disableRipple
+                className={`p-0 bg-transparent data-[hover=true]:bg-transparent text-base ${isPopoverOpenTentangKami
+                  ? "text-brand-primary font-semibold"
+                  : "text-foreground"
+                  }`}
+                endContent={
+                  isPopoverOpenTentangKami ? (
+                    <RiArrowUpSLine color="text-brand-primary" />
+                  ) : (
+                    <RiArrowDownSLine />
+                  )
+                }
+                radius="none"
+                variant="light"
+              >
+                Tentang Kami
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80 p-0 rounded-xl overflow-hidden">
+              <div className="w-full bg-brand-primary-subtle p-6">
+                <div className="flex flex-col gap-8">
+                  {tentangKami.map((category, idx) => (
+                    <div key={idx} className="flex items-center gap-4">
+                      <ul className="flex flex-col gap-3">
+                        <li>
+                          <Link
+                            href={category.url}
+                            className="text-foreground flex items-center gap-3 hover:text-brand-primary transition-colors"
+                          >
+                            {category.name === "Tentang Kami" ? (
+                              <RiErrorWarningFill
+                                className="text-xl"
+                                width={24}
+                                height={24}
+                              />
+                            ) : (
+                              <FaPhoneAlt
+                                className="text-xl"
+                                width={24}
+                                height={24}
+                              />
+                            )}
+                            <span className="text-body font-semibold">
+                              {category.name}
+                            </span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="/blog">
             Berita Dan Artikel
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" radius="normal">
+          <Button as={Link} color="primary" href="/hubungi-kami" radius="normal">
             Hubungi Kami
           </Button>
         </NavbarItem>
@@ -298,7 +378,7 @@ export const Navbar = () => {
         <div className="flex flex-col gap-4">
           <Link
             color="foreground"
-            href="#"
+            href="/"
             className="text-body-md font-medium"
           >
             Home
@@ -312,7 +392,7 @@ export const Navbar = () => {
           </Link>
           <Link
             color="foreground"
-            href="#"
+            href="/blog"
             className="text-body-md font-medium"
           >
             Berita Dan Artikel
@@ -340,11 +420,11 @@ export const Navbar = () => {
                       {category.items.map((subItem, subIdx) => (
                         <Link
                           key={subIdx}
-                          href="#"
+                          href={subItem.href}
                           className="text-body-sm text-foreground flex items-center gap-3"
                         >
                           <RiBox2Line className="text-xl" />
-                          {subItem}
+                          {subItem.label}
                         </Link>
                       ))}
                     </div>
