@@ -33,7 +33,13 @@ export const ProductFAQ = ({ faqs }: Props) => {
           </div>
 
           <div>
-            <Button color="primary" radius="normal" className="flex gap-3">
+            <Button
+              as="a"
+              href="https://wa.me/62xxxxxxxx" // Ganti dengan nomor asli
+              target="_blank"
+              color="primary"
+              radius="normal"
+              className="flex gap-3 w-fit">
               <Image
                 src="/icons/WhatsappLogo.svg"
                 alt="wa"

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from '@/features/layout/components/Button'
 import { Product } from '../data/product'
+import Link from 'next/link'
 
 export const ProductCTA = ({ product }: { product: Product }) => {
   return (
@@ -13,8 +14,12 @@ export const ProductCTA = ({ product }: { product: Product }) => {
           <p className='text-medium'>{product.cta_secondary_text}</p>
         </div>
         <div className='flex md:flex-row flex-col gap-4'>
-          <Button color='primary' radius='normal' classNames='w-full md:w-auto'>Mulai Transfer</Button>
-          <Button variant='outline' radius='normal' classNames='w-full md:w-auto'>Konsultasi Gratis dengan Tim Ahli</Button>
+          <Link href={"/minta-demo"} >
+            <Button color='primary' radius='normal' classNames='w-full md:w-auto'>Mulai Transfer</Button>
+          </Link>
+          <Link href={"/hubungi-kami"} >
+            <Button variant='outline' radius='normal' classNames='w-full md:w-auto'>Konsultasi Gratis dengan Tim Ahli</Button>
+          </Link>
         </div>
       </div>
       <div className='md:w-1/2 hidden md:block'>

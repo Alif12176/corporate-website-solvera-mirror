@@ -2,6 +2,7 @@
 import { Button } from "@/features/layout/components/Button";
 import { SectionTitle } from "@/features/layout/components/SectionTitle";
 import { CheckIcon } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface Props {
@@ -75,7 +76,7 @@ const dummySolution = [
 
 export default function Tab({ tab = dummyTab, sectionTitle, solution = dummySolution }: Props) {
   const [activeTab, setActiveTab] = useState(0);
-  console.log("solution", solution)
+  // console.log("solution", solution)
   return (
     <div>
       <div className="pt-16">
@@ -103,7 +104,9 @@ export default function Tab({ tab = dummyTab, sectionTitle, solution = dummySolu
               <h2 className="text-primary">{solution[activeTab]?.heading}</h2>
               <p className="text-medium">{solution[activeTab]?.text}</p>
             </div>
-            <Button variant="default">Hubungi Kami</Button>
+            <Link href={"/hubungi-kami"}>
+              <Button variant="default">Hubungi Kami</Button>
+            </Link>
           </div>
           <div className="space-y-8 md:w-1/2">
             <h5 className="text-primary">Nilai Strategis & Manfaat</h5>
