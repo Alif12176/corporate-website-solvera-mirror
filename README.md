@@ -142,3 +142,4 @@ export default function DashboardPage() {
 2. **Colocation:** Taruh file yang berhubungan berdekatan. Jika sebuah komponen butuh gambar atau data json spesifik, taruh di folder fitur yang sama.
 3. **Shared Components:** Jika ada komponen yang dipakai di BANYAK fitur (misal: Button, Input, Card generic), taruh di `src/features/ui` atau `src/components` (sesuai kesepakatan tim, saat ini bisa gunakan `src/features/layout` untuk komponen layout global atau buat `src/features/common`).
 
+
