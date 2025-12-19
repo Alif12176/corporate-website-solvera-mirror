@@ -71,7 +71,7 @@ interface ProductAdvantagesProps {
 
 export const ProductAdvantages = ({ features = advantages }: ProductAdvantagesProps): React.JSX.Element => {
 
-    console.log("DATA PRODUCT ADVANTAGES", features);
+    // console.log("DATA PRODUCT ADVANTAGES", features);
     return (
         <section className="py-16 md:py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-4 max-w-7xl">
