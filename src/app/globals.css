@@ -1,0 +1,221 @@
+@import "tailwindcss";
+@plugin "../hero.ts";
+@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* ===================================
+   TYPOGRAPHY SYSTEM
+   =================================== */
+@layer base {
+  h1 {
+    font-size: var(--text-h1-mobile);
+    line-height: var(--leading-h1);
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: var(--text-h2-mobile);
+    line-height: var(--leading-h2);
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: var(--text-h3-mobile);
+    line-height: var(--leading-h3);
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: var(--text-h4-mobile);
+    line-height: var(--leading-h4);
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: var(--text-h5-mobile);
+    line-height: var(--leading-h5);
+    font-weight: 600;
+  }
+
+  h6 {
+    font-size: var(--text-h6-mobile);
+    line-height: var(--leading-h6);
+    font-weight: 600;
+  }
+
+  /* Desktop Typo Overrides */
+  @media (width >=1024px) {
+    h1 {
+      font-size: var(--text-h1);
+    }
+
+    h2 {
+      font-size: var(--text-h2);
+    }
+
+    h3 {
+      font-size: var(--text-h3);
+    }
+
+    h4 {
+      font-size: var(--text-h4);
+    }
+
+    h5 {
+      font-size: var(--text-h5);
+    }
+
+    h6 {
+      font-size: var(--text-h6);
+    }
+  }
+}
+
+/* ===================================
+   CUSTOM UTILITIES
+   =================================== */
+@layer utilities {
+
+  /* Taglines */
+  .tagline-lg {
+    font-size: var(--text-body-lg);
+    line-height: var(--leading-body-lg);
+  }
+
+  .tagline-md {
+    font-size: var(--text-body-md);
+    line-height: var(--leading-body-md);
+  }
+
+  .tagline-sm {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+
+  .tagline-xs {
+    font-size: var(--text-body-sm);
+    line-height: var(--leading-body-sm);
+  }
+
+  .tagline-tiny {
+    font-size: var(--text-body-tiny);
+    line-height: var(--leading-body-tiny);
+  }
+
+  /* Text Sizes (Aliases) */
+  .text-large {
+    font-size: var(--text-body-lg);
+  }
+
+  .text-medium {
+    font-size: var(--text-body-md);
+  }
+
+  .text-regular {
+    font-size: var(--text-body);
+  }
+
+  .text-small {
+    font-size: var(--text-body-sm);
+  }
+
+  .text-tiny {
+    font-size: var(--text-body-tiny);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+  --font-mono: var(--font-poppins);
+
+  /* Custom Color Tokens */
+  --color-brand-primary: #1E41C6;
+  --color-brand-primary-subtle: #E7EBFB;
+  --color-brand-border-subtle: #C0CAF2;
+
+  --color-brand-danger: #E14A3E;
+  --color-brand-danger-subtle: #FDECEB;
+
+  --color-brand-success: #4CAF31;
+  --color-brand-success-subtle: #F5FCF7;
+
+  --color-brand-disabled: #C8C8C8;
+  --color-brand-disabled-content: #4A4A4A;
+
+  --color-brand-text-primary: #000000;
+  --color-brand-text-inverse: #FFFFFF;
+
+  --color-brand-text-secondary: #000804;
+
+  /* Mobile Heading Tokens */
+  --text-h1-mobile: 44px;
+  --text-h2-mobile: 40px;
+  --text-h3-mobile: 32px;
+  --text-h4-mobile: 24px;
+  --text-h5-mobile: 20px;
+  --text-h6-mobile: 18px;
+
+  /* Desktop Heading Tokens */
+  --text-h1: 72px;
+  --leading-h1: 120%;
+
+  --text-h2: 52px;
+  --leading-h2: 120%;
+
+  --text-h3: 44px;
+  --leading-h3: 120%;
+
+  --text-h4: 36px;
+  --leading-h4: 130%;
+
+  --text-h5: 28px;
+  --leading-h5: 140%;
+
+  --text-h6: 22px;
+  --leading-h6: 140%;
+
+  /* Body Text Tokens */
+  --text-body-lg: 22px;
+  --leading-body-lg: 150%;
+
+  --text-body-md: 18px;
+  --leading-body-md: 150%;
+
+  --text-body: 16px;
+  --leading-body: 150%;
+
+  --text-body-sm: 14px;
+  --leading-body-sm: 150%;
+
+  --text-body-tiny: 12px;
+  --leading-body-tiny: 150%;
+
+  /* Custom Spacing Tokens */
+  --spacing-page-global: 64px;
+  --spacing-page-mobile: 20px;
+  --spacing-section-large-desktop: 112px;
+  --spacing-section-large-mobile: 64px;
+  --spacing-section-medium-desktop: 80px;
+  --spacing-section-medium-mobile: 48px;
+  --spacing-section-small-desktop: 48px;
+  --spacing-section-small-mobile: 32px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins);
+}
