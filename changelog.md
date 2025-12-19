@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [0.18.0] - 2025-12-19
+
+### Detail Versi 0.18.0
+
+#### ✨ Fitur baru di `dev` untuk versi 0.18.0
+
+- **Deskripsi:**
+  - Implementasi fitur / halaman Solusi (Solutions).
+  
+
 ## [0.17.0] - 2025-12-18
 
 ### Detail Versi 0.17.0
