@@ -19,7 +19,7 @@
 image: node:20.11.1-alpine3.18
 
 variables:
-  APP_ENV: production
+  APP_ENV: staging
 
 stages:
   - install
