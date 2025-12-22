@@ -43,7 +43,7 @@ export const EnterpriseCompliance = () => {
           <motion.h2 
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold text-blue-700 mb-6"
+            className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Standar Enterprise & Kepatuhan
           </motion.h2>
@@ -51,7 +51,7 @@ export const EnterpriseCompliance = () => {
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             variants={fadeInUp}
-            className="text-gray-600 text-lg max-w-3xl mx-auto"
+            className="text-foreground text-lg max-w-3xl mx-auto"
           >
             Kami menerapkan standar global untuk menjamin keamanan data dan tata kelola proyek Anda.
           </motion.p>
@@ -68,16 +68,16 @@ export const EnterpriseCompliance = () => {
             >
               <Card className="border-none shadow-[0_10px_40px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] transition-shadow duration-300 rounded-2xl h-full">
                 <CardBody className="p-8">
-                  <h3 className="text-xl font-bold text-blue-700 mb-8">
+                  <h3 className="text-xl font-bold text-brand-primary mb-8">
                     {item.title}
                   </h3>
                   <div className="flex flex-col gap-5">
                     {item.features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-4 group">
-                        <div className="flex-shrink-0 w-6 h-6 rounded bg-blue-50 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
-                          <RiCheckLine className="text-blue-600 group-hover:text-white transition-colors" strokeWidth={2} />
+                        <div className="flex-shrink-0 w-6 h-6 rounded bg-brand-primary-subtle flex items-center justify-center group-hover:bg-brand-primary transition-colors">
+                          <RiCheckLine className="text-brand-primary group-hover:text-white transition-colors" strokeWidth={2} />
                         </div>
-                        <span className="text-gray-700 font-medium text-sm">
+                        <span className="text-foreground font-medium text-sm">
                           {feature}
                         </span>
                       </div>

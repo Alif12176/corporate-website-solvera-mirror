@@ -1,22 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "@/features/layout/components/Button";
 import Link from "next/link";
 
 interface HeroLayananProps {
   imagePath: string;
   title: string;
   subtitle?: string;
-  ctaText?: string;
-  ctaLink?: string;
 }
 
 export default function HeroBanner({
   imagePath,
   title,
   subtitle = "Integrasikan seluruh operasi industri dalam ekosistem digital yang canggih.",
-  ctaText = "Konsultasi Sekarang",
-  ctaLink = "/contact",
 }: HeroLayananProps) {
   return (
     <section className="relative h-screen flex justify-center items-center overflow-hidden">
@@ -43,12 +40,22 @@ export default function HeroBanner({
         </p>
 
         <div className="animate-in delay-200">
-          <Link
-            href={ctaLink}
-            className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold hover:shadow-lg hover:-translate-y-1 transform duration-200"
+          <Button
+            variant="default"
+            className="px-6 py-2 rounded-md mr-4"
+            as={Link}
+            href='/minta-demo'
           >
-            {ctaText}
-          </Link>
+            Jadwalkan Demo
+          </Button>
+          <Button
+            variant="alternative"
+            className="px-6 py-2 rounded-md"
+            as={Link}
+            href='/hubungi-kami'
+          >
+            Hubungi Kami
+          </Button>
         </div>
       </div>
     </section>

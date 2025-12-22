@@ -17,7 +17,7 @@ export const Stats = () => {
         <div className="space-y-4">
           <p className="text-heading tagline-md font-semibold">Mentor Tim Ahli</p>
           <div className="space-y-6">
-            <h2>Transfer Pengetahuan & Bimbingan Ahli</h2>
+            <h2 className="text-brand-primary">Transfer Pengetahuan & Bimbingan Ahli</h2>
             <p className="text-medium">
               Adopsi teknologi baru agar tetap kompetitif perlu diimbangi dengan keahlian tim. Kami menjembatani kesenjangan keahlian tersebut. Solvera menyediakan mentor ahli dan program edukasi terstruktur untuk melatih karyawan Anda, memastikan mereka siap mengoperasikan teknologi baru secara optimal dan mandiri
             </p>

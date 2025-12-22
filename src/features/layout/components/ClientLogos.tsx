@@ -4,6 +4,23 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const LogoCard = ({ logo, index }: { logo: string; index: number }) => (
+  <div
+    key={`logo-${index}`}
+    // RESPONSIF: h-16 w-32 (Mobile) -> md:h-24 md:w-48 (Desktop)
+    className="shrink-0 h-16 w-32 md:h-24 md:w-48 relative bg-[#E7EBFB] rounded-xl flex items-center justify-center backdrop-blur-sm hover:opacity-60 hover:shadow-md transition-all duration-300 group"
+  >
+    <Image
+      src={logo}
+      alt="Client Logo"
+      fill
+      sizes="(max-width: 768px) 128px, 192px"
+      // RESPONSIF: p-2 (Mobile) -> md:p-3 (Desktop)
+      className="object-contain p-2 md:p-3 transition-all duration-300"
+    />
+  </div>
+);
+
 export const ClientLogos = () => {
     // Shared logo lists
     const logosRow1 = [
@@ -32,7 +49,7 @@ export const ClientLogos = () => {
     ];
 
     // Duplicate for infinite scroll effect
-    const logosRow1Duplicated = [...logosRow1, ...logosRow1];
+    const row1 = [...logosRow1, ...logosRow1];
 
     const logosRow2 = [
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Petrokimia%20Gresik.png",
@@ -58,7 +75,7 @@ export const ClientLogos = () => {
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Indonesia%20Chemical%20Alumina.png",
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Indexim%20Coalindo.png",
     ];
-    const logosRow2Duplicated = [...logosRow2, ...logosRow2];
+    const row2 = [...logosRow2, ...logosRow2];
 
     const logosRow3 = [
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Hutama%20Karya.png",
@@ -86,102 +103,77 @@ export const ClientLogos = () => {
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/Alfamart.png",
         "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/Aerofood%20ACS.png",
     ];
-    const logosRow3Duplicated = [...logosRow3, ...logosRow3];
+    const row3 = [...logosRow3, ...logosRow3];
 
     return (
-        <div className="w-full py-16 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
-                <h5 className="font-medium text-brand-primary mb-2">
-                    Dipercaya oleh Perusahaan Terdepan di Indonesia
-                </h5>
-            </div>
+    // RESPONSIF: py-12 (Mobile) -> md:py-20 (Desktop)
+    <section className="w-full py-12 md:py-20 bg-white overflow-hidden">
+      {/* RESPONSIF: mb-8 (Mobile) -> mb-16 (Desktop) */}
+      <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-16 text-center">
+        <h5 className="font-bold text-xl md:text-2xl text-blue-900 mb-2">
+          Dipercaya oleh Perusahaan Terdepan
+        </h5>
+        <p className="text-gray-500 text-sm md:text-base">Mitra teknologi yang tumbuh bersama kami</p>
+      </div>
 
-            <div className="relative w-full overflow-hidden mask-gradient-x flex flex-col gap-6">
-                {/* Row 1 - Scroll Left */}
-                <div className="flex w-full overflow-hidden">
-                    <motion.div
-                        className="flex gap-8 items-center"
-                        animate={{ x: "-50%" }}
-                        transition={{
-                            duration: 50,
-                            ease: "linear",
-                            repeat: Infinity,
-                        }}
-                    >
-                        {logosRow1Duplicated.map((logo, index) => (
-                            <div
-                                key={`row1-${index}`}
-                                className="shrink-0 h-24 w-48 relative bg-brand-primary-subtle rounded-lg flex items-center justify-center border border-brand-primary-subtle px-2 backdrop-blur-sm hover:bg-brand-primary-subtle/10 transition-colors"
-                            >
-                                <Image
-                                    src={logo}
-                                    alt={decodeURIComponent(logo.split('/').pop()?.replace('.png', '') || 'Client Logo')}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-contain p-2 opacity-80 hover:opacity-100 transition-opacity"
-                                />
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-
-                {/* Row 2 - Scroll Right */}
-                <div className="flex w-full overflow-hidden">
-                    <motion.div
-                        className="flex gap-8 items-center"
-                        animate={{ x: "0%" }}
-                        initial={{ x: "-50%" }}
-                        transition={{
-                            duration: 50,
-                            ease: "linear",
-                            repeat: Infinity,
-                        }}
-                    >
-                        {logosRow2Duplicated.map((logo, index) => (
-                            <div
-                                key={`row2-${index}`}
-                                className="shrink-0 h-24 w-48 relative bg-brand-primary-subtle rounded-lg flex items-center justify-center border border-brand-primary-subtle px-2 backdrop-blur-sm hover:bg-brand-primary-subtle/10 transition-colors"
-                            >
-                                <Image
-                                    src={logo}
-                                    alt={decodeURIComponent(logo.split('/').pop()?.replace('.png', '') || 'Client Logo')}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-contain p-2 opacity-80 hover:opacity-100 transition-opacity"
-                                />
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-
-                {/* Row 3 - Scroll Left */}
-                <div className="flex w-full overflow-hidden">
-                    <motion.div
-                        className="flex gap-8 items-center"
-                        animate={{ x: "-50%" }}
-                        transition={{
-                            duration: 45,
-                            ease: "linear",
-                            repeat: Infinity,
-                        }}
-                    >
-                        {logosRow3Duplicated.map((logo, index) => (
-                            <div
-                                key={`row3-${index}`}
-                                className="shrink-0 h-24 w-48 relative bg-brand-primary-subtle rounded-lg flex items-center justify-center border border-brand-primary-subtle px-2 backdrop-blur-sm hover:bg-brand-primary-subtle/10 transition-colors"
-                            >
-                                <Image
-                                    src={logo}
-                                    alt={decodeURIComponent(logo.split('/').pop()?.replace('.png', '') || 'Client Logo')}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="object-contain p-2 opacity-80 hover:opacity-100 transition-opacity"
-                                />
-                            </div>
-                        ))}
-                    </motion.div>
-                </div>
-            </div>
+      {/* Masking Gradient */}
+      {/* RESPONSIF: gap-4 (Mobile) -> gap-8 (Desktop) */}
+      <div className="relative w-full flex flex-col gap-4 md:gap-8 [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
+        
+        {/* Row 1 - Gerak ke Kiri */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div
+            // RESPONSIF: gap-4 (Mobile) -> md:gap-8 (Desktop)
+            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
+            animate={{ x: "-33.33%" }} // -33.33% cocok dengan duplikasi 3x
+            transition={{
+              duration: 30,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
+            {row1.map((logo, index) => (
+              <LogoCard key={index} logo={logo} index={index} />
+            ))}
+          </motion.div>
         </div>
-    );
+
+        {/* Row 2 - Gerak ke Kanan */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div
+            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
+            initial={{ x: "-33.33%" }}
+            animate={{ x: "0%" }}
+            transition={{
+              duration: 35,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
+            {row2.map((logo, index) => (
+              <LogoCard key={index} logo={logo} index={index} />
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Row 3 - Gerak ke Kiri */}
+        <div className="flex w-full overflow-hidden">
+          <motion.div
+            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
+            animate={{ x: "-33.33%" }}
+            transition={{
+              duration: 40,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+          >
+            {row3.map((logo, index) => (
+              <LogoCard key={index} logo={logo} index={index} />
+            ))}
+          </motion.div>
+        </div>
+
+      </div>
+    </section>
+  );
 };

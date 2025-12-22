@@ -4,6 +4,7 @@ import ManagedServices from "./ManagedServices";
 import HeroBanner from "@/features/layout/components/HeroBanner";
 import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
 import { EnterpriseCompliance } from "./EnterpriseCompliance";
+import { WhatsAppFAB } from "@/features/layout/components/WhatsAppFAB";
 
 export default function ManagedServicesPage() {
   return (
@@ -18,6 +19,7 @@ export default function ManagedServicesPage() {
       <ExpertTeam />
       <CoreCompetence />
       <ConsultationCTA />
+      <WhatsAppFAB />
     </main>
   );
 }

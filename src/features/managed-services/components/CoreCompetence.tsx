@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const skills = [
-  { name: "Managed Service", percentage: 80 },
-  { name: "Staff Augmentation", percentage: 60 },
+  { name: "Managed Service", percentage: 60 },
+  { name: "Staff Augmentation", percentage: 40 },
 ];
 
 export default function CoreCompetence() {
@@ -21,7 +21,7 @@ export default function CoreCompetence() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="flex justify-center items-center"
           >
-            <div className="relative md:w-full w-[350px] max-w-md h-[350px] md:h-[500px] flex items-center justify-center text-gray-400 overflow-hidden">
+            <div className="relative md:w-full w-[350px] max-w-md h-[350px] md:h-[500px] flex items-center justify-center text-foreground overflow-hidden">
               <Image
                 src="/vector/maintenance.svg"
                 alt="Maintenance Illustration"
@@ -39,7 +39,7 @@ export default function CoreCompetence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-sm font-bold text-gray-900 tracking-widest uppercase mb-2 block"
+                className="text-sm font-bold text-foreground tracking-widest uppercase mb-2 block"
               >
                 Kompetensi Inti SOLVERA
               </motion.span>
@@ -49,7 +49,7 @@ export default function CoreCompetence() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1, duration: 0.6 }}
-                className="text-3xl md:text-5xl font-bold text-blue-700 mb-6 leading-tight"
+                className="text-3xl md:text-5xl font-bold text-brand-primary mb-6 leading-tight"
               >
                 Keahlian Terukur di <br /> Setiap Fase Proyek
               </motion.h2>
@@ -59,7 +59,7 @@ export default function CoreCompetence() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                className="text-gray-600 text-lg leading-relaxed"
+                className="text-foreground text-lg leading-relaxed"
               >
                 Kami memiliki keahlian mendalam di setiap tahap proyek, mulai
                 dari perencanaan strategis hingga dukungan pasca implementasi,
@@ -72,15 +72,15 @@ export default function CoreCompetence() {
               {skills.map((skill, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-end mb-2">
-                    <span className="font-semibold text-gray-900">
+                    <span className="font-semibold text-foreground">
                       {skill.name}
                     </span>
-                    <span className="text-sm font-bold text-gray-500">
+                    <span className="text-sm font-bold text-foreground">
                       {skill.percentage}%
                     </span>
                   </div>
 
-                  <div className="w-full bg-blue-100 rounded-full h-3 overflow-hidden">
+                  <div className="w-full bg-brand-border-subtle rounded-full h-3 overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.percentage}%` }}
@@ -90,7 +90,7 @@ export default function CoreCompetence() {
                         ease: "easeOut",
                         delay: 0.3 + index * 0.1,
                       }}
-                      className="bg-blue-700 h-full rounded-full"
+                      className="bg-brand-primary h-full rounded-full"
                     />
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Hero from "./Hero";
-import Clients from "./Clients";
+// import Clients from "./Clients";
+import { ClientLogos } from "@/features/layout/components/ClientLogos";
 import { AboutUsHeader } from './AboutUsHeader'
 import { AboutUsStat } from './AboutUsStat'
 import BusinessFocus from "./BusinessFocus";
@@ -14,7 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
-      <Clients />
+      <ClientLogos />
       <AboutUsHeader />
       <AboutUsStat />
       <BusinessFocus />

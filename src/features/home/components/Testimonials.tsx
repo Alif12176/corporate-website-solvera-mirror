@@ -110,7 +110,7 @@ export default function Testimonials() {
             {TESTIMONIALS.map((item, index) => (
               <motion.div
                 key={item.id}
-                className="min-w-[350px] md:min-w-[400px] bg-blue-50/50 p-8 rounded-2xl border border-blue-100 snap-center flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 "
+                className="min-w-[350px] md:min-w-[400px] bg-brand-primary-subtle p-8 rounded-2xl border border-brand-primary-subtle snap-center flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 "
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -133,7 +133,7 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <blockquote className="text-gray-700 text-lg leading-relaxed italic mb-8 flex-grow">
+                <blockquote className="text-foreground text-lg leading-relaxed italic mb-8 flex-grow">
                   "{item.quote}"
                 </blockquote>
 
@@ -145,11 +145,11 @@ export default function Testimonials() {
                       className="h-full object-contain filter   transition-all duration-300"
                     />
                   </div>
-                  <h4 className="font-bold text-blue-900">{item.name}</h4>
-                  <p className="text-sm text-gray-500 uppercase">{item.role}</p>
-                  <p className="text-xs text-blue-600 font-semibold mt-1">
+                  <h6 className="font-bold text-brand-primary">{item.name}</h6>
+                  <p className="text-xs text-brand-primary font-semibold mt-1">
                     {item.company}
                   </p>
+                  <p className="text-sm text-foreground uppercase">{item.role}</p>
                 </div>
               </motion.div>
             ))}
@@ -168,7 +168,7 @@ export default function Testimonials() {
         >
           <button
             onClick={() => scroll("left")}
-            className="w-12 h-12 flex items-center justify-center rounded-lg border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white shadow-sm"
+            className="w-12 h-12 flex items-center justify-center rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 bg-white shadow-sm"
             aria-label="Previous testimonial"
           >
             <svg
@@ -188,7 +188,7 @@ export default function Testimonials() {
 
           <button
             onClick={() => scroll("right")}
-            className="w-12 h-12 flex items-center justify-center rounded-lg border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white shadow-sm"
+            className="w-12 h-12 flex items-center justify-center rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 bg-white shadow-sm"
             aria-label="Next testimonial"
           >
             <svg

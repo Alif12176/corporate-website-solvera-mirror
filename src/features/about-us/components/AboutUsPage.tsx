@@ -4,9 +4,11 @@ import React from 'react'
 import VisionMission from './AboutUsVisionMission'
 import { AboutUsHeader } from './AboutUsHeader'
 import { AboutUsStat } from './AboutUsStat'
-import { AboutUsContact } from './AboutUsContact'
+// import { AboutUsContact } from './AboutUsContact'
+import { ClientLogos } from "@/features/layout/components/ClientLogos";
 import { AboutUsTim } from './AboutUsTim'
 import { ConsultationCTA } from '@/features/layout/components/ConsultationCTA'
+import { WhatsAppFAB } from '@/features/layout/components/WhatsAppFAB'
 
 export const AboutUsPage = () => {
   return (
@@ -15,9 +17,10 @@ export const AboutUsPage = () => {
         <VisionMission />
         <AboutUsHeader />
         <AboutUsStat />
-        <AboutUsContact />
+        <ClientLogos />
         <AboutUsTim />
         <ConsultationCTA />
+        <WhatsAppFAB />
     </div>
   )
 }
