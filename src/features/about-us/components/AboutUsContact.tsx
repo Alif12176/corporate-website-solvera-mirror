@@ -1,7 +1,7 @@
 "use client";
 
 import { Briefcase, Factory, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 export const AboutUsContact = () => {
@@ -39,7 +39,7 @@ export const AboutUsContact = () => {
 
   return (
     <div className="py-28 px-16 max-w-7xl mx-auto space-y-20">
-      <motion.h5
+      <m.h5
         className="text-brand-primary text-center"
         initial="hidden"
         whileInView="visible"
@@ -48,27 +48,27 @@ export const AboutUsContact = () => {
         variants={fadeInUp}
       >
         Dipercaya oleh Perusahaan Terdepan di Indonesia
-      </motion.h5>
+      </m.h5>
 
       <div className="grid grid-cols-3 gap-2">
         {content.map((c, index) => (
-          <motion.div
+          <m.div
             key={index}
             className="bg-brand-primary-subtle rounded-lg p-3.5 flex justify-center hover:bg-brand-border-subtle"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.5, delay: index*0.1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             variants={fadeInUp}
           >
             <Image src={c} alt="webflow" width={140} height={56} />
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-3 gap-8 border-t border-gray-100 pt-12">
         {STATS.map((stat, index) => (
-          <motion.div
+          <m.div
             key={index}
             className="flex flex-col items-center"
             initial="hidden"
@@ -82,7 +82,7 @@ export const AboutUsContact = () => {
               {stat.value}
             </span>
             <span className="text-sm text-gray-600">{stat.label}</span>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </div>

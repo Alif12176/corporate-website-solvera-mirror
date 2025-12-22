@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RiLightbulbLine, RiRefreshLine, RiHandHeartLine } from "react-icons/ri";
 
 const APPROACH_DATA = [
@@ -33,34 +33,34 @@ export const StructuredApproach = () => {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.h4 
+          <m.h4
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp}
             className="text-sm font-bold text-foreground uppercase tracking-wider mb-4"
           >
             Metodologi Kami
-          </motion.h4>
-          <motion.h2 
+          </m.h4>
+          <m.h2
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp} transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Pendekatan Terstruktur untuk Hasil Terukur
-          </motion.h2>
-          <motion.p 
+          </m.h2>
+          <m.p
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             variants={fadeInUp}
             className="text-foreground text-lg max-w-4xl mx-auto leading-relaxed"
           >
             Kami menerapkan metodologi yang teruji dan transparan, dirancang agar mudah dipahami oleh berbagai jenis bisnis. Spesialis industri kami akan memandu Anda melalui setiap fase, memberikan rekomendasi strategis terbaik untuk memastikan kesuksesan implementasi.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           {APPROACH_DATA.map((item, idx) => (
-            <motion.div
+            <m.div
               key={idx}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
@@ -76,7 +76,7 @@ export const StructuredApproach = () => {
               <p className="text-foreground leading-relaxed">
                 {item.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

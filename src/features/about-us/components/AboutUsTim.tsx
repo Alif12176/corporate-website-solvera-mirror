@@ -8,7 +8,7 @@ import {
   RiLinkedinBoxFill,
   RiTwitterXFill,
 } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export const AboutUsTim = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -50,7 +50,7 @@ export const AboutUsTim = () => {
       `}</style>
 
       {/* ===== Title ===== */}
-      <motion.div
+      <m.div
         className="max-w-7xl mx-auto px-6 md:px-16"
         initial="hidden"
         whileInView="visible"
@@ -63,11 +63,11 @@ export const AboutUsTim = () => {
           title="Tim Profesional Kami"
           subtitle="Didukung oleh tim ahli dan teknologi terkini, kami siap membantu Anda mencapai tujuan bisnis Anda."
         />
-      </motion.div>
+      </m.div>
 
       {/* ===== Slider Wrapper ===== */}
       <div className="relative w-full max-w-7xl mx-auto">
-        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
 
         {/* ===== SLIDER TRACK ===== */}
         <div
@@ -75,7 +75,7 @@ export const AboutUsTim = () => {
           className="hide-scroll flex gap-4 md:gap-6 overflow-x-auto pb-8 pt-2 snap-x snap-mandatory px-6 md:px-16 items-stretch"
         >
           {tim.map((t, index) => (
-            <motion.div
+            <m.div
               key={index}
               className="shrink-0 w-[80vw] md:min-w-0 md:w-[calc(25%-1.2rem)] bg-white rounded-2xl snap-center transition-shadow duration-300 border border-transparent hover:border-gray-100 hover:shadow-lg flex flex-col h-full overflow-hidden select-none p-6"
               initial="hidden"
@@ -106,14 +106,14 @@ export const AboutUsTim = () => {
                 <RiTwitterXFill className="text-xl hover:text-black cursor-pointer" />
                 <RiDribbbleLine className="text-xl hover:text-pink-500 cursor-pointer" />
               </div>
-            </motion.div>
+            </m.div>
           ))}
 
           {/* Spacer Mobile */}
           <div className="w-1 shrink-0 md:hidden" />
         </div>
 
-        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* ===== BUTTONS ===== */}
         <div className="w-full px-6 md:px-16 flex justify-end gap-4 mt-4 md:mt-0">

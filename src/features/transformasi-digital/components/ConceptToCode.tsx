@@ -14,7 +14,7 @@ import {
   RiAddLine,
   RiLightbulbFlashLine,
 } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const SOLUTIONS_DATA = [
   {
@@ -67,7 +67,7 @@ export const ConceptToCode = () => {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -75,8 +75,8 @@ export const ConceptToCode = () => {
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Solusi Dari Konsep ke Kode
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -86,13 +86,13 @@ export const ConceptToCode = () => {
           >
             Kami memadukan strategi konsultasi dengan keahlian rekayasa
             perangkat lunak (Software Engineering).
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {SOLUTIONS_DATA.map((item, idx) => (
-            <motion.div
+            <m.div
               key={idx}
               initial="hidden"
               whileInView="visible"
@@ -103,11 +103,10 @@ export const ConceptToCode = () => {
             >
               <Card
                 shadow="sm"
-                className={`w-full p-4 transition-transform hover:scale-[1.02] rounded-2xl ${
-                  item.isEngineering
-                    ? "border-2 border-brand-primary bg-white"
-                    : "border border-brand-border-subtle bg-white"
-                }`}
+                className={`w-full p-4 transition-transform hover:scale-[1.02] rounded-2xl ${item.isEngineering
+                  ? "border-2 border-brand-primary bg-white"
+                  : "border border-brand-border-subtle bg-white"
+                  }`}
               >
                 <CardHeader className="flex flex-col items-start gap-4 pb-0 relative">
                   {/* Icon Wrapper */}
@@ -132,7 +131,7 @@ export const ConceptToCode = () => {
                 <CardBody className="py-8 flex flex-col gap-4">
                   {item.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex items-center gap-3">
-                      <div className="flex-shrink-0 bg-brand-primary-subtle p-1 rounded-md">
+                      <div className="shrink-0 bg-brand-primary-subtle p-1 rounded-md">
                         <RiCheckLine
                           className="w-4 h-4 text-brand-primary"
                           strokeWidth={3}
@@ -149,7 +148,7 @@ export const ConceptToCode = () => {
                   <CardFooter className="pt-0">
                     <Button
                       fullWidth
-                      variant="default" 
+                      variant="default"
                       size="lg"
                       as="a"
                       href="#konsultasi"
@@ -159,7 +158,7 @@ export const ConceptToCode = () => {
                   </CardFooter>
                 )}
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Users, ArrowDownUp } from "lucide-react";
 
 const services = [
@@ -23,7 +23,7 @@ export default function ManagedServices() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -31,9 +31,9 @@ export default function ManagedServices() {
             className="text-sm font-bold text-foreground tracking-wide uppercase mb-2 block"
           >
             Keahlian Tersedia, Kualitas Terjamin
-          </motion.span>
+          </m.span>
 
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -41,9 +41,9 @@ export default function ManagedServices() {
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Solvera Managed Service
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -54,12 +54,12 @@ export default function ManagedServices() {
             kualitas. Fokus pada bisnis inti Anda sementara tim profesional kami
             mengelola operasional, pemeliharaan, dan optimalisasi infrastruktur
             IT Anda secara menyeluruh.
-          </motion.p>
+          </m.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
-            <motion.div
+            <m.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function ManagedServices() {
               <p className="text-foreground leading-relaxed text-sm md:text-base">
                 {service.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

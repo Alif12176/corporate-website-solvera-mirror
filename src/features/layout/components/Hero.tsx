@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { Button } from "@/features/layout/components/Button";
 import Link from "next/link";
 
 interface Props {
-  image: any;
+  image: string | StaticImageData;
   title: string;
   subtitle?: string;
 }
@@ -17,7 +17,9 @@ export const Hero = ({ image, title, subtitle }: Props) => {
         alt="hero"
         fill
         className="object-cover"
-        priority
+        priority={true}
+        sizes="100vw"
+        quality={85}
       />
 
       {/* Overlay */}

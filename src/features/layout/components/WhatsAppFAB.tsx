@@ -3,20 +3,20 @@
 import React, { useState } from "react";
 import { Button } from "@heroui/react";
 import { RiWhatsappFill } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 
 export const WhatsAppFAB = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
-      className="fixed bottom-8 right-8 z-[9999] flex items-center justify-end"
+    <div
+      className="fixed bottom-8 right-8 z-9999 flex items-center justify-end"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div
+      <m.div
         initial={false}
-        animate={{ 
+        animate={{
           width: isHovered ? "auto" : "64px",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
@@ -32,14 +32,14 @@ export const WhatsAppFAB = () => {
         >
           <div className="flex items-center px-4 gap-3">
             {/* Icon WhatsApp */}
-            <div className="flex min-w-[24px] items-center justify-center">
+            <div className="flex min-w-6 items-center justify-center">
               <RiWhatsappFill size={36} />
             </div>
 
             {/* Teks Animasi */}
             <AnimatePresence>
               {isHovered && (
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 10 }}
@@ -52,12 +52,12 @@ export const WhatsAppFAB = () => {
                   <span className="text-xs font-medium opacity-90">
                     Konsultasikan kebutuhan bisnis Anda sekarang!
                   </span>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
         </Button>
-      </motion.div>
+      </m.div>
     </div>
   );
 };

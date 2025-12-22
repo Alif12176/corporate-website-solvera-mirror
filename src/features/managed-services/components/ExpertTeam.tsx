@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import {
   ClipboardList,
   Award,
@@ -77,7 +77,7 @@ export default function ExpertTeam() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -85,9 +85,9 @@ export default function ExpertTeam() {
             className="text-sm font-bold text-foreground tracking-wider uppercase mb-2 block"
           >
             Dapatkan Keahlian Sesuai Permintaan
-          </motion.span>
+          </m.span>
 
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -95,9 +95,9 @@ export default function ExpertTeam() {
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Akses Tim Ahli Multirole
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -108,10 +108,10 @@ export default function ExpertTeam() {
             profesional spesialis tanpa perlu proses rekrutmen internal yang
             rumit. Kami menyediakan tim ahli berpengalaman untuk memastikan
             proyek Anda berjalan dengan keahlian, kualitas, dan inovasi terbaik.
-          </motion.p>
+          </m.p>
         </div>
 
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -119,7 +119,7 @@ export default function ExpertTeam() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
         >
           {expertRoles.map((role, index) => (
-            <motion.div
+            <m.div
               key={index}
               variants={itemVariants}
               className="flex flex-col items-center text-center px-4"
@@ -135,9 +135,9 @@ export default function ExpertTeam() {
               <p className="text-foreground text-sm leading-relaxed">
                 {role.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -3,7 +3,7 @@
 import React from "react";
 import { Card, CardHeader, CardBody, CardFooter, Chip } from "@heroui/react";
 import { Check, ArrowUp, Plus } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button } from "@/features/layout/components/Button";
 
 const FOCUS_DATA = [
@@ -59,53 +59,52 @@ export default function BusinessFocus() {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.p 
+          <m.p
             variants={fadeInUp} initial="hidden" whileInView="visible" transition={{ duration: 0.5 }}
             className="text-sm font-bold tracking-widest text-gray-900 uppercase mb-4"
           >
             MENGAPA SOLVERA?
-          </motion.p>
-          <motion.h2 
+          </m.p>
+          <m.h2
             variants={fadeInUp} initial="hidden" whileInView="visible" transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Pilih Pendekatan Sesuai Fokus <br className="hidden md:block" /> Bisnis Anda
-          </motion.h2>
-          <motion.p 
+          </m.h2>
+          <m.p
             variants={fadeInUp} initial="hidden" whileInView="visible" transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-600 text-lg max-w-3xl mx-auto"
           >
             Teknologi yang beradaptasi dengan skala tantangan Anda, bukan sebaliknya.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           {FOCUS_DATA.map((item, idx) => (
-            <motion.div
+            <m.div
               key={idx}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               variants={fadeInUp}
               className="relative flex h-full"
             >
-              <Card 
+              <Card
                 shadow="sm"
-                className={`w-full p-4 border-2 transition-transform hover:scale-[1.02] ${
-                  item.isPopular ? "border-blue-700 brand-primary-subtle ring-4 ring-brand-primary/5" : "border-gray-100"
-                }`}
+                className={`w-full p-4 border-2 transition-transform hover:scale-[1.02] ${item.isPopular ? "border-blue-700 brand-primary-subtle ring-4 ring-brand-primary/5" : "border-gray-100"
+                  }`}
               >
                 <CardHeader className="flex flex-col items-start gap-4 pb-0">
                   <div className="w-full flex justify-between items-center">
-                    
+
                     <div className="flex items-center gap-2 bg-brand-primary-subtle px-3 py-1 rounded-md">
                       {item.icon}
                       <span className="text-xs font-bold text-brand-primary">{item.title}</span>
                     </div>
 
                     {item.isPopular && (
-                      <Chip 
-                        color="primary" 
+                      <Chip
+                        color="primary"
                         className="animate-pulse"
                       >
                         PALING POPULER
@@ -138,7 +137,7 @@ export default function BusinessFocus() {
                 </CardBody>
 
                 <CardFooter className="pt-0">
-                  <Button 
+                  <Button
                     fullWidth
                     variant={item.isPopular ? "default" : "outline"}
                     className="font-semibold px-8"
@@ -148,7 +147,7 @@ export default function BusinessFocus() {
                   </Button>
                 </CardFooter>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

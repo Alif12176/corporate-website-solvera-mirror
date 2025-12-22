@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RiCheckLine } from "react-icons/ri";
 
 const STEPS = [
@@ -38,7 +38,7 @@ export const EnterpriseCompliance = () => {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-20">
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -46,8 +46,8 @@ export const EnterpriseCompliance = () => {
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Standar Enterprise & Kepatuhan
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -56,7 +56,7 @@ export const EnterpriseCompliance = () => {
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
             Kami menerapkan standar global untuk menjamin keamanan data dan tata kelola proyek Anda.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Timeline Container */}
@@ -68,7 +68,7 @@ export const EnterpriseCompliance = () => {
             {STEPS.map((item, idx) => {
               const isCheck = item.step === "check";
               return (
-                <motion.div
+                <m.div
                   key={idx}
                   initial="hidden"
                   whileInView="visible"
@@ -82,10 +82,9 @@ export const EnterpriseCompliance = () => {
                     className={`
                       w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center mb-6 
                       relative z-10 transition-transform group-hover:scale-105
-                      ${
-                        isCheck
-                          ? "bg-brand-primary text-white border-4 border-brand-primary shadow-xl shadow-brand-primary/20"
-                          : "bg-brand-primary-subtle text-brand-primary border-2 border-brand-primary"
+                      ${isCheck
+                        ? "bg-brand-primary text-white border-4 border-brand-primary shadow-xl shadow-brand-primary/20"
+                        : "bg-brand-primary-subtle text-brand-primary border-2 border-brand-primary"
                       }
                     `}
                   >
@@ -108,14 +107,14 @@ export const EnterpriseCompliance = () => {
                   {idx !== STEPS.length - 1 && (
                     <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-brand-primary my-4" />
                   )}
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
         </div>
 
         {/* Result Box (Bottom) */}
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -127,7 +126,7 @@ export const EnterpriseCompliance = () => {
             <span className="font-bold text-brand-primary">Hasil Akhir: </span>
             Efisiensi operasional tanpa silo data antar departemen.
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

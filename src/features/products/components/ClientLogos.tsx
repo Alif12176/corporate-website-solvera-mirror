@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export const ClientLogos = () => {
     // Shared logo lists
@@ -99,7 +99,7 @@ export const ClientLogos = () => {
             <div className="relative w-full overflow-hidden mask-gradient-x flex flex-col gap-6">
                 {/* Row 1 - Scroll Left */}
                 <div className="flex w-full overflow-hidden">
-                    <motion.div
+                    <m.div
                         className="flex gap-8 items-center"
                         animate={{ x: "-50%" }}
                         transition={{
@@ -122,12 +122,12 @@ export const ClientLogos = () => {
                                 />
                             </div>
                         ))}
-                    </motion.div>
+                    </m.div>
                 </div>
 
                 {/* Row 2 - Scroll Right */}
                 <div className="flex w-full overflow-hidden">
-                    <motion.div
+                    <m.div
                         className="flex gap-8 items-center"
                         animate={{ x: "0%" }}
                         initial={{ x: "-50%" }}
@@ -151,12 +151,12 @@ export const ClientLogos = () => {
                                 />
                             </div>
                         ))}
-                    </motion.div>
+                    </m.div>
                 </div>
 
                 {/* Row 3 - Scroll Left */}
                 <div className="flex w-full overflow-hidden">
-                    <motion.div
+                    <m.div
                         className="flex gap-8 items-center"
                         animate={{ x: "-50%" }}
                         transition={{
@@ -179,7 +179,7 @@ export const ClientLogos = () => {
                                 />
                             </div>
                         ))}
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RiCheckLine } from "react-icons/ri";
 
 const STEPS = [
@@ -30,7 +30,7 @@ export const ProcessTimeline = () => {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -38,8 +38,8 @@ export const ProcessTimeline = () => {
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Akselerasi Digital: Go-Live dalam Hitungan Hari
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -48,7 +48,7 @@ export const ProcessTimeline = () => {
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
             Proses implementasi yang dirancang untuk UKM: cepat, fokus pada solusi siap pakai, dan tanpa birokrasi.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Timeline Container */}
@@ -58,7 +58,7 @@ export const ProcessTimeline = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
             {STEPS.map((step, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 initial="hidden"
                 whileInView="visible"
@@ -84,7 +84,7 @@ export const ProcessTimeline = () => {
                 {idx !== STEPS.length - 1 && (
                   <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-brand-primary my-4" />
                 )}
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

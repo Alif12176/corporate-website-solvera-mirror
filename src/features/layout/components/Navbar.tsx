@@ -48,7 +48,6 @@ import {
   RiGlobalLine,
   RiUserLine,
 } from "react-icons/ri";
-import { FaPhoneAlt } from "react-icons/fa";
 
 export const Navbar = () => {
   // --- STATE MANAGEMENT ---
@@ -235,7 +234,7 @@ export const Navbar = () => {
                   {productCategories.map((category, idx) => (
                     <div key={idx} className="flex flex-col gap-4">
                       {category.title && (
-                        <h3 className="text-brand-primary font-bold text-body-md pb-[8px] border-b border-brand-border-subtle/20 w-fit">
+                        <h3 className="text-brand-primary font-bold text-body-md pb-2 border-b border-brand-border-subtle/20 w-fit">
                           {category.title}
                         </h3>
                       )}

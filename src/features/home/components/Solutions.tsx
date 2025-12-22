@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/features/layout/components/Button";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Search,
@@ -41,6 +41,9 @@ const INDUSTRI_DATA = [
   },
 ];
 
+const TABS = ["industri", "konsultasi", "talenta"] as const;
+type Tab = typeof TABS[number];
+
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
@@ -48,15 +51,13 @@ const fadeInUp = {
 };
 
 export default function Solutions() {
-  const [activeTab, setActiveTab] = useState<
-    "industri" | "konsultasi" | "talenta"
-  >("industri");
+  const [activeTab, setActiveTab] = useState<Tab>("industri");
 
   return (
     <section className="py-20 bg-white" id="solutions">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -65,9 +66,9 @@ export default function Solutions() {
             className="text-sm font-semibold text-gray-900 uppercase tracking-wide mb-2"
           >
             Produk Dan Layanan Solvera
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -76,9 +77,9 @@ export default function Solutions() {
             className="text-3xl md:text-4xl font-bold text-blue-800 mb-6"
           >
             Solusi Lengkap untuk Transformasi Bisnis Anda
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -88,35 +89,35 @@ export default function Solutions() {
           >
             Jelajahi analisis mendalam, studi kasus, dan strategi praktis untuk
             mendorong transformasi digital di perusahaan Anda.
-          </motion.p>
+          </m.p>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap justify-center gap-4 mb-16"
         >
-          {["industri", "konsultasi", "talenta"].map((tab) => (
+          {TABS.map((tab) => (
             <Button
               variant={`${activeTab === tab ? 'default' : 'outline'}`}
               key={tab}
-              onClick={() => setActiveTab(tab as any)}
+              onClick={() => setActiveTab(tab)}
               className={"px-6 py-2 rounded-md"}
             >
               {tab === "industri"
                 ? "Solusi Sektor Industri"
                 : tab === "konsultasi"
-                ? "Konsultasi & Manajemen"
-                : "Talenta Digital"}
+                  ? "Konsultasi & Manajemen"
+                  : "Talenta Digital"}
             </Button>
           ))}
-        </motion.div>
+        </m.div>
 
         <AnimatePresence mode="wait">
           {activeTab === "industri" && (
-            <motion.div
+            <m.div
               key="industri"
               initial="hidden"
               whileInView="visible"
@@ -126,7 +127,7 @@ export default function Solutions() {
               className="flex flex-wrap justify-center gap-8"
             >
               {INDUSTRI_DATA.map((item, index) => (
-                <motion.div
+                <m.div
                   key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -155,13 +156,13 @@ export default function Solutions() {
                       Pelajari Selengkapnya <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
-            </motion.div>
+            </m.div>
           )}
 
           {activeTab === "konsultasi" && (
-            <motion.div
+            <m.div
               key="konsultasi"
               initial="hidden"
               animate="visible"
@@ -170,7 +171,7 @@ export default function Solutions() {
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-3"
             >
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
@@ -218,9 +219,9 @@ export default function Solutions() {
                 <Button variant="default" className="px-6 py-2 rounded-md">
                   Konsultasi Gratis
                 </Button>
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 className="flex flex-col gap-4 items-center justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -232,7 +233,7 @@ export default function Solutions() {
                   </div>
                 </div>
                 <div className="h-8 w-0.5 bg-blue-500"></div>
-                <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
+                <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-8 border-t-blue-500"></div>
 
                 <div className="w-full max-w-md bg-white border-2 border-blue-500 rounded-xl p-6 text-center shadow-sm relative z-10">
                   <div className="flex items-center justify-center gap-2 text-2xl font-bold text-blue-700">
@@ -240,19 +241,19 @@ export default function Solutions() {
                   </div>
                 </div>
                 <div className="h-8 w-0.5 bg-blue-500"></div>
-                <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
+                <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-8 border-t-blue-500"></div>
 
                 <div className="w-full max-w-md bg-white border-2 border-blue-500 rounded-xl p-6 text-center shadow-sm relative z-10">
                   <div className="flex items-center justify-center gap-2 text-2xl font-bold text-blue-700">
                     <Headphones className="w-6 h-6" /> Dukungan
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           )}
 
           {activeTab === "talenta" && (
-            <motion.div
+            <m.div
               key="talenta"
               initial="hidden"
               animate="visible"
@@ -261,7 +262,7 @@ export default function Solutions() {
               transition={{ duration: 0.4 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-3"
             >
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
@@ -280,7 +281,7 @@ export default function Solutions() {
 
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start gap-4">
-                    <Users className="w-6 h-6 text-brand-primary mt-1 flex-shrink-0" />
+                    <Users className="w-6 h-6 text-brand-primary mt-1 shrink-0" />
                     <div>
                       <h6 className="font-bold text-gray-900">
                         Penyediaan Talenta Ahli (Talent Sourcing)
@@ -292,7 +293,7 @@ export default function Solutions() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <GraduationCap className="w-6 h-6 text-brand-primary mt-1 flex-shrink-0" />
+                    <GraduationCap className="w-6 h-6 text-brand-primary mt-1 shrink-0" />
                     <div>
                       <h6 className="font-bold text-gray-900">
                         Pelatihan & Sertifikasi Karyawan
@@ -308,9 +309,9 @@ export default function Solutions() {
                 <Button className="px-6 py-2 rounded-md" variant="default">
                   Hubungi Tim Kami
                 </Button>
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 className="relative h-[400px] w-full bg-blue-100 rounded-2xl overflow-hidden shadow-xl"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -324,8 +325,8 @@ export default function Solutions() {
                     className="object-cover"
                   />
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>

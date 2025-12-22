@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export const Content = () => {
   const contentData = [
@@ -18,7 +18,7 @@ export const Content = () => {
       <div className="container mx-auto px-4 md:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
           {/* Left Column: Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -34,12 +34,12 @@ export const Content = () => {
                 className="object-contain"
               />
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Column: Content */}
           <div>
             <div className="mb-8">
-              <motion.span
+              <m.span
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -47,8 +47,8 @@ export const Content = () => {
                 className="text-sm font-bold text-gray-900 tracking-widest uppercase mb-2 block"
               >
                 Kompetensi Inti SOLVERA
-              </motion.span>
-              <motion.h2
+              </m.span>
+              <m.h2
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -56,8 +56,8 @@ export const Content = () => {
                 className="text-3xl md:text-5xl font-bold text-blue-900 mb-6 leading-tight"
               >
                 Keahlian Terukur di <br /> Setiap Fase Proyek
-              </motion.h2>
-              <motion.p
+              </m.h2>
+              <m.p
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -68,7 +68,7 @@ export const Content = () => {
                 dari perencanaan strategis hingga dukungan pasca implementasi,
                 untuk memastikan keberhasilan transformasi digital perusahaan
                 Anda.
-              </motion.p>
+              </m.p>
             </div>
 
             <div className="space-y-8">
@@ -84,7 +84,7 @@ export const Content = () => {
                   </div>
                   {/* FIX: Menggunakan warna hardcoded 'blue-100' agar pasti muncul */}
                   <div className="w-full bg-brand-border-subtle rounded-full h-3 overflow-hidden">
-                    <motion.div
+                    <m.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${c.value}%` }}
                       viewport={{ once: true }}

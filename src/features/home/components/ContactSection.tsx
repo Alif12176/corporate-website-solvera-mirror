@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail, Phone, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,7 +14,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
           <div className="space-y-6">
-            <motion.p
+            <m.p
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -23,9 +23,9 @@ export default function ContactSection() {
               className="text-sm font-bold text-foreground"
             >
               Mitra Transformasi Digital Anda
-            </motion.p>
+            </m.p>
 
-            <motion.h2
+            <m.h2
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -34,9 +34,9 @@ export default function ContactSection() {
               className="text-4xl md:text-5xl font-bold text-brand-primary"
             >
               Mari Bicara Strategi
-            </motion.h2>
+            </m.h2>
 
-            <motion.p
+            <m.p
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -47,10 +47,10 @@ export default function ContactSection() {
               Dapatkan sesi konsultasi tanpa biaya untuk memahami tantangan
               bisnis Anda dan menemukan peluang transformasi digital yang paling
               relevan.
-            </motion.p>
+            </m.p>
           </div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -66,11 +66,11 @@ export default function ContactSection() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-24">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -90,10 +90,10 @@ export default function ContactSection() {
             >
               info@solvera.id
             </a>
-          </motion.div>
+          </m.div>
 
           {/* Phone */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -113,10 +113,10 @@ export default function ContactSection() {
             >
               +62 813-9000-9640
             </a>
-          </motion.div>
+          </m.div>
 
           {/* Address */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -136,7 +136,7 @@ export default function ContactSection() {
               Prominence Office Tower Level 28 Unit C, Jl. Jalur Sutera Barat
               No. 15, Kota Tangerang, Banten - 15143.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

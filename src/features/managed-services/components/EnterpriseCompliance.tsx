@@ -3,7 +3,7 @@
 import React from "react";
 import { Card, CardBody } from "@heroui/react";
 import { RiCheckLine } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const COMPLIANCE_DATA = [
   {
@@ -40,27 +40,27 @@ export const EnterpriseCompliance = () => {
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <m.h2
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp}
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Standar Enterprise & Kepatuhan
-          </motion.h2>
-          <motion.p 
+          </m.h2>
+          <m.p
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             variants={fadeInUp}
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
             Kami menerapkan standar global untuk menjamin keamanan data dan tata kelola proyek Anda.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {COMPLIANCE_DATA.map((item, idx) => (
-            <motion.div
+            <m.div
               key={idx}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
@@ -74,7 +74,7 @@ export const EnterpriseCompliance = () => {
                   <div className="flex flex-col gap-5">
                     {item.features.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-4 group">
-                        <div className="flex-shrink-0 w-6 h-6 rounded bg-brand-primary-subtle flex items-center justify-center group-hover:bg-brand-primary transition-colors">
+                        <div className="shrink-0 w-6 h-6 rounded bg-brand-primary-subtle flex items-center justify-center group-hover:bg-brand-primary transition-colors">
                           <RiCheckLine className="text-brand-primary group-hover:text-white transition-colors" strokeWidth={2} />
                         </div>
                         <span className="text-foreground font-medium text-sm">
@@ -85,7 +85,7 @@ export const EnterpriseCompliance = () => {
                   </div>
                 </CardBody>
               </Card>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

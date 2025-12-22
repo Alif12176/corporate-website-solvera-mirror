@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const CLIENTS_DATA = [
   {
@@ -115,7 +115,7 @@ export default function Clients() {
   return (
     <section className="py-20 px-6 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        <motion.h2
+        <m.h2
           className="text-3xl font-bold text-center text-blue-700 mb-12"
           initial="hidden"
           whileInView="visible"
@@ -124,11 +124,11 @@ export default function Clients() {
           variants={fadeInAnimation}
         >
           Dipercaya oleh Perusahaan Terdepan di Indonesia
-        </motion.h2>
+        </m.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {CLIENTS_DATA.map((client, index) => (
-            <motion.div
+            <m.div
               key={client.id}
               className="bg-blue-50 rounded-lg py-8 flex items-center justify-center hover:bg-blue-100 transition-colors duration-300 cursor-default"
               initial="hidden"
@@ -151,7 +151,7 @@ export default function Clients() {
                   {client.name}
                 </span>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

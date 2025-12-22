@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.19.0] - 2025-12-23
+
+### Detail Versi 0.19.0
+
+#### 🚀 Peningkatan Performa & Optimasi di `dev` untuk versi 0.19.0
+
+- **Deskripsi:**
+  - **Core Web Vitals:** Implementasi **Incremental Static Regeneration (ISR)** pada halaman Produk dan Solusi untuk waktu muat yang instan.
+  - **Code Splitting:** Penerapan **Lazy Loading** (`next/dynamic`) pada komponen berat di Halaman Utama.
+  - **Bundle Optimization:** Migrasi animasi ke **LazyMotion** (`m` component) dari Framer Motion.
+  - **Memory Optimization:** Refaktor data statis keluar dari komponen React.
+  - **Image Optimization:** Optimasi loading gambar dengan properti `sizes` dan `priority`.
+  - **UX:** Penambahan `PageLoader` dan perbaikan *Hydration Mismatch*.
+
 
 ## [0.18.1] - 2025-12-22
 

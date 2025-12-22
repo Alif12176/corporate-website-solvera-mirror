@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import {
   Factory,
   Package,
@@ -102,7 +102,7 @@ export default function SectorSolutions() {
     <section className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -110,9 +110,9 @@ export default function SectorSolutions() {
             className="text-sm font-bold text-gray-900 tracking-widest uppercase mb-3"
           >
             Keahlian Lintas Industri
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -121,9 +121,9 @@ export default function SectorSolutions() {
           >
             Solusi Teknologi yang Disesuaikan <br className="hidden md:block" />{" "}
             untuk Sektor Anda
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -134,10 +134,10 @@ export default function SectorSolutions() {
             sektor industri. Melalui Subject Matter Expert (SME) kami yang
             berpengalaman, kami mampu menganalisis tantangan unik Anda dan
             memberikan solusi teknologi yang paling efektif.
-          </motion.p>
+          </m.p>
         </div>
 
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -145,7 +145,7 @@ export default function SectorSolutions() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
         >
           {solutions.map((item, index) => (
-            <motion.div
+            <m.div
               key={index}
               variants={itemVariants}
               className="flex flex-col items-center text-center group"
@@ -158,7 +158,7 @@ export default function SectorSolutions() {
                 {item.title}
               </h3>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+              <p className="text-gray-500 text-sm leading-relaxed mb-6 grow">
                 {item.description}
               </p>
 
@@ -169,9 +169,9 @@ export default function SectorSolutions() {
                 Lihat Solusi Terkait
                 <ArrowRight className="w-4 h-4" />
               </Link>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

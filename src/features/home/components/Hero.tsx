@@ -37,7 +37,7 @@ export default function Hero() {
           <Button variant="default" as={Link} size="lg" href="/minta-demo" className="px-6 py-2 rounded-md mr-4">
             Jadwalkan Demo
           </Button><Button variant="alternative" as={Link} size="lg" href="/hubungi-kami" className="px-6 py-2 rounded-md">
-            Hubungi KamI
+            Hubungi Kami
           </Button>
         </div>
       </div>
