@@ -1,4 +1,6 @@
 "use client";
+import { Button } from "@/features/layout/components/Button";
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -32,9 +34,11 @@ export default function Hero() {
         </p>
 
         <div className="animate-in delay-200">
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold hover:shadow-lg hover:-translate-y-1 transform duration-200">
-            Konsultasi Sekarang (Test)
-          </button>
+          <Button variant="default" as={Link} size="lg" href="/minta-demo" className="px-6 py-2 rounded-md mr-4">
+            Jadwalkan Demo
+          </Button><Button variant="alternative" as={Link} size="lg" href="/hubungi-kami" className="px-6 py-2 rounded-md">
+            Hubungi Kami
+          </Button>
         </div>
       </div>
     </section>

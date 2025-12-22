@@ -1,75 +1,105 @@
 "use client";
 
-import { Progress } from "@heroui/react";
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
+const skills = [
+  { label: "Strategy & Planning", value: 75 },
+  { label: "Development & Implementation", value: 70 },
+  { label: "Transformasi Digital", value: 80 },
+  { label: "Konsultasi & Knowledge Transfer", value: 85 },
+  { label: "Support & Maintenance", value: 90 },
+];
+
 export const ConsultationCompetency = () => {
-    const skills = [
-        { label: "Strategy & Planning", value: 80 },
-        { label: "Development & Implementation", value: 60 },
-        { label: "Transformasi Digital", value: 80 },
-        { label: "Konsultasi & Knowledge Transfer", value: 20 },
-        { label: "Support & Maintenance", value: 40 },
-    ];
-
-    return (
-        <section className="bg-background py-section-large-desktop">
-            <div className="container mx-auto px-page-global">
-                <div className="flex flex-col lg:flex-row gap-16 items-center">
-                    {/* Left Column: Image */}
-                    <div className="w-full lg:w-1/2 flex justify-center">
-                        <div className="relative w-full max-w-[500px] aspect-square">
-                            <Image
-                                src="/vector/undraw_meeting_dunc.svg"
-                                alt="Consultation Competency Illustration"
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
-                    </div>
-
-                    {/* Right Column: Content */}
-                    <div className="w-full lg:w-1/2 flex flex-col gap-8">
-                        <div>
-                            <span className="text-body font-semibold text-brand-text-secondary uppercase tracking-wider mb-2 block">
-                                Kompetensi Inti SOLVERA
-                            </span>
-                            <h2 className="text-4xl md:text-h2 font-medium text-brand-primary leading-tight">
-                                Keahlian Terukur di Setiap Fase Proyek
-                            </h2>
-                            <p className="text-brand-text-secondary text-body-md leading-relaxed mt-4">
-                                Kami memiliki keahlian mendalam di setiap tahap proyek, mulai dari perencanaan strategis hingga dukungan pasca implementasi, untuk memastikan keberhasilan transformasi digital perusahaan Anda.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-col gap-6">
-                            {skills.map((skill, idx) => (
-                                <div key={idx} className="flex flex-col gap-2">
-                                    <div className="flex justify-between items-center">
-                                        <span className="text-body font-semibold text-brand-text-secondary">
-                                            {skill.label}
-                                        </span>
-                                        <span className="text-body-sm text-brand-text-secondary">
-                                            {skill.value}%
-                                        </span>
-                                    </div>
-                                    <Progress
-                                        aria-label={skill.label}
-                                        value={skill.value}
-                                        className="max-w-full"
-                                        classNames={{
-                                            indicator: "bg-brand-primary",
-                                            track: "bg-brand-primary-subtle/50"
-                                        }}
-                                        size="md"
-                                        radius="sm"
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+  return (
+    <section className="py-20 bg-background overflow-hidden">
+      <div className="container mx-auto px-page-global">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left Column: Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex justify-center items-center"
+          >
+            <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center overflow-hidden">
+              <Image
+                src="/vector/undraw_meeting_dunc.svg"
+                alt="Consultation Competency Illustration"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-        </section>
-    );
+          </motion.div>
+
+          {/* Right Column: Content */}
+          <div>
+            <div className="mb-8">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="text-sm font-bold text-brand-text-secondary tracking-widest uppercase mb-2 block"
+              >
+                Kompetensi Inti SOLVERA
+              </motion.span>
+              <motion.h2
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                className="text-3xl md:text-5xl font-medium text-brand-primary mb-6 leading-tight"
+              >
+                Keahlian Terukur di <br /> Setiap Fase Proyek
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                className="text-brand-text-secondary text-lg leading-relaxed"
+              >
+                Kami memiliki keahlian mendalam di setiap tahap proyek, mulai dari
+                perencanaan strategis hingga dukungan pasca implementasi, untuk
+                memastikan keberhasilan transformasi digital perusahaan Anda.
+              </motion.p>
+            </div>
+
+            <div className="space-y-8">
+              {skills.map((skill, index) => (
+                <div key={index}>
+                  <div className="flex justify-between items-end mb-2">
+                    <span className="font-semibold text-brand-text-secondary">
+                      {skill.label}
+                    </span>
+                    <span className="text-sm font-bold text-brand-text-secondary">
+                      {skill.value}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-brand-border-subtle rounded-full h-3 overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.value}%` }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 1.0,
+                        ease: "easeOut",
+                        delay: 0.3 + index * 0.1,
+                      }}
+                      className="bg-brand-primary h-full rounded-full"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };

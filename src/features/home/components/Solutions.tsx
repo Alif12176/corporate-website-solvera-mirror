@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/features/layout/components/Button";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -98,21 +99,18 @@ export default function Solutions() {
           className="flex flex-wrap justify-center gap-4 mb-16"
         >
           {["industri", "konsultasi", "talenta"].map((tab) => (
-            <button
+            <Button
+              variant={`${activeTab === tab ? 'default' : 'outline'}`}
               key={tab}
               onClick={() => setActiveTab(tab as any)}
-              className={`px-6 py-2 rounded-md font-medium transition-all duration-300 capitalize ${
-                activeTab === tab
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "bg-transparent text-gray-600 hover:bg-gray-100"
-              }`}
+              className={"px-6 py-2 rounded-md"}
             >
               {tab === "industri"
                 ? "Solusi Sektor Industri"
                 : tab === "konsultasi"
                 ? "Konsultasi & Manajemen"
                 : "Talenta Digital"}
-            </button>
+            </Button>
           ))}
         </motion.div>
 
@@ -134,7 +132,7 @@ export default function Solutions() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="w-full md:w-[350px] bg-blue-50/30 rounded-2xl p-4 hover:shadow-xl transition-shadow duration-300 border border-transparent hover:border-blue-100 group"
+                  className="w-full md:w-[350px] bg-brand-primary-subtle rounded-2xl p-4 hover:shadow-xl transition-shadow duration-300 border border-transparent hover:border-blue-100 group"
                 >
                   <div className="h-48 bg-gray-200 rounded-xl mb-6 flex items-center justify-center relative overflow-hidden">
                     <svg
@@ -153,9 +151,9 @@ export default function Solutions() {
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 h-20 overflow-hidden">
                       {item.desc}
                     </p>
-                    <button className="w-full bg-blue-700 text-white py-2.5 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-blue-800 transition-colors">
+                    <Button variant="default" className="w-full rounded-md">
                       Pelajari Selengkapnya <ArrowRight className="w-4 h-4" />
-                    </button>
+                    </Button>
                   </div>
                 </motion.div>
               ))}
@@ -177,13 +175,13 @@ export default function Solutions() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
               >
-                <span className="text-sm font-bold text-gray-500 mb-2 block">
+                <span className="text-sm font-bold text-foreground mb-2 block">
                   Konsultasi & Manajemen
                 </span>
-                <h3 className="text-4xl font-bold text-blue-700 mb-6">
+                <h3 className="text-4xl font-bold text-brand-primary mb-6">
                   Strategic Digital Advisory
                 </h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-foreground mb-8 leading-relaxed">
                   Pendekatan konsultatif untuk membangun arsitektur teknologi
                   yang selaras dengan strategi bisnis Anda. Dari assessment
                   hingga implementasi, kami pastikan setiap investasi teknologi
@@ -191,25 +189,25 @@ export default function Solutions() {
                 </p>
 
                 <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3 text-gray-700">
-                    <div className="bg-blue-100 p-2 rounded-full">
-                      <Search className="w-5 h-5 text-blue-600" />
+                  <li className="flex items-center gap-3 text-foreground">
+                    <div className="bg-brand-primary-subtle p-2 rounded-full">
+                      <Search className="w-5 h-5 text-brand-primary" />
                     </div>
                     <span className="font-medium">
                       Audit & Analisis Proses Bisnis
                     </span>
                   </li>
-                  <li className="flex items-center gap-3 text-gray-700">
-                    <div className="bg-blue-100 p-2 rounded-full">
-                      <Wrench className="w-5 h-5 text-blue-600" />
+                  <li className="flex items-center gap-3 text-foreground">
+                    <div className="bg-brand-primary-subtle p-2 rounded-full">
+                      <Wrench className="w-5 h-5 text-brand-primary" />
                     </div>
                     <span className="font-medium">
                       Implementasi Sistem yang Efisien
                     </span>
                   </li>
-                  <li className="flex items-center gap-3 text-gray-700">
-                    <div className="bg-blue-100 p-2 rounded-full">
-                      <Headphones className="w-5 h-5 text-blue-600" />
+                  <li className="flex items-center gap-3 text-foreground">
+                    <div className="bg-brand-primary-subtle p-2 rounded-full">
+                      <Headphones className="w-5 h-5 text-brand-primary" />
                     </div>
                     <span className="font-medium">
                       Manajemen Proyek & Perubahan
@@ -217,9 +215,9 @@ export default function Solutions() {
                   </li>
                 </ul>
 
-                <button className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+                <Button variant="default" className="px-6 py-2 rounded-md">
                   Konsultasi Gratis
-                </button>
+                </Button>
               </motion.div>
 
               <motion.div
@@ -268,13 +266,13 @@ export default function Solutions() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
               >
-                <span className="text-sm font-bold text-gray-500 mb-2 block">
+                <span className="text-sm font-bold text-foreground mb-2 block">
                   Talenta Digital
                 </span>
-                <h3 className="text-4xl font-bold text-blue-700 mb-6">
+                <h3 className="text-4xl font-bold text-brand-primary mb-6">
                   Penyediaan & Pelatihan <br /> Talenta Digital
                 </h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
+                <p className="text-foreground mb-8 leading-relaxed">
                   Kami membantu Anda memenuhi kebutuhan talenta digital. Kami
                   menyediakan layanan rekrutmen ahli serta program pelatihan dan
                   sertifikasi untuk tim operasional Anda.
@@ -282,11 +280,11 @@ export default function Solutions() {
 
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start gap-4">
-                    <Users className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <Users className="w-6 h-6 text-brand-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-gray-900">
+                      <h6 className="font-bold text-gray-900">
                         Penyediaan Talenta Ahli (Talent Sourcing)
-                      </h4>
+                      </h6>
                       <p className="text-sm text-gray-600">
                         Akses ke jaringan developer dan IT profesional siap
                         kerja.
@@ -294,11 +292,11 @@ export default function Solutions() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <GraduationCap className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <GraduationCap className="w-6 h-6 text-brand-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-gray-900">
+                      <h6 className="font-bold text-gray-900">
                         Pelatihan & Sertifikasi Karyawan
-                      </h4>
+                      </h6>
                       <p className="text-sm text-gray-600">
                         Kurikulum berbasis industri untuk upskilling tim
                         internal Anda.
@@ -307,9 +305,9 @@ export default function Solutions() {
                   </div>
                 </div>
 
-                <button className="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-800 transition">
+                <Button className="px-6 py-2 rounded-md" variant="default">
                   Hubungi Tim Kami
-                </button>
+                </Button>
               </motion.div>
 
               <motion.div

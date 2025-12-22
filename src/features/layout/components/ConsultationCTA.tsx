@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button } from "./Button";
+import { Button } from "@/features/layout/components/Button";
 import { Input } from "@heroui/react";
 
 export const ConsultationCTA = () => {
@@ -33,9 +33,8 @@ export const ConsultationCTA = () => {
                 }}
               />
               <Button
-                color="primary"
+                variant="default"
                 size="lg"
-                radius="sm"
                 className="font-semibold px-8"
               >
                 Bergabung

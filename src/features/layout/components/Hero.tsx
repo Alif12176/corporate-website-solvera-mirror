@@ -1,13 +1,14 @@
 import Image from "next/image";
+import { Button } from "@/features/layout/components/Button";
+import Link from "next/link";
 
 interface Props {
   image: any;
   title: string;
   subtitle?: string;
-  action?: React.ReactNode;
 }
 
-export const Hero = ({ image, title, subtitle, action }: Props) => {
+export const Hero = ({ image, title, subtitle }: Props) => {
   return (
     <div className="relative h-screen">
       {/* Background Image */}
@@ -38,7 +39,13 @@ export const Hero = ({ image, title, subtitle, action }: Props) => {
           </div>
 
           {/* Action Button */}
-          <div>{action}</div>
+          <div className="animate-in delay-200">
+            <Button variant="default" as={Link} size="lg" href="/minta-demo" className="px-6 py-2 rounded-md mr-4">
+              Jadwalkan Demo
+            </Button><Button variant="alternative" as={Link} size="lg" href="/hubungi-kami" className="px-6 py-2 rounded-md">
+              Hubungi Kami
+            </Button>
+          </div>
         </div>
       </div>
     </div>

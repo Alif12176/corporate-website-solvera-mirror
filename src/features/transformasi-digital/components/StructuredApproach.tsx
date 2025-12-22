@@ -6,17 +6,17 @@ import { RiLightbulbLine, RiRefreshLine, RiHandHeartLine } from "react-icons/ri"
 
 const APPROACH_DATA = [
   {
-    icon: <RiLightbulbLine className="w-12 h-12 text-blue-600" />,
+    icon: <RiLightbulbLine className="w-12 h-12 text-brand-primary" />,
     title: "Solusi Inovatif & Tepat Guna",
     description: "Kami merancang solusi inovatif yang disesuaikan (customized) dengan kebutuhan unik bisnis Anda, memastikan operasional berjalan lebih optimal dan efisien.",
   },
   {
-    icon: <RiRefreshLine className="w-12 h-12 text-blue-600" />,
+    icon: <RiRefreshLine className="w-12 h-12 text-brand-primary" />,
     title: "Manajemen Bisnis Terintegrasi",
     description: "Teknologi kami menyederhanakan dan mengintegrasikan proses manajemen inti, mulai dari operasional harian hingga tata kelola dokumen bisnis.",
   },
   {
-    icon: <RiHandHeartLine className="w-12 h-12 text-blue-600" />,
+    icon: <RiHandHeartLine className="w-12 h-12 text-brand-primary" />,
     title: "Dukungan Implementasi End-to-End",
     description: "Tim spesialis kami yang berpengalaman memberikan pendampingan penuh, mulai dari fase perencanaan dan implementasi awal hingga proyek dinyatakan selesai dan berjalan optimal.",
   },
@@ -36,14 +36,14 @@ export const StructuredApproach = () => {
           <motion.h4 
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-sm font-bold text-gray-900 uppercase tracking-wider mb-4"
+            className="text-sm font-bold text-foreground uppercase tracking-wider mb-4"
           >
             Metodologi Kami
           </motion.h4>
           <motion.h2 
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp} transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold text-blue-700 mb-6"
+            className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Pendekatan Terstruktur untuk Hasil Terukur
           </motion.h2>
@@ -51,7 +51,7 @@ export const StructuredApproach = () => {
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             variants={fadeInUp}
-            className="text-gray-600 text-lg max-w-4xl mx-auto leading-relaxed"
+            className="text-foreground text-lg max-w-4xl mx-auto leading-relaxed"
           >
             Kami menerapkan metodologi yang teruji dan transparan, dirancang agar mudah dipahami oleh berbagai jenis bisnis. Spesialis industri kami akan memandu Anda melalui setiap fase, memberikan rekomendasi strategis terbaik untuk memastikan kesuksesan implementasi.
           </motion.p>
@@ -67,13 +67,13 @@ export const StructuredApproach = () => {
               variants={fadeInUp}
               className="flex flex-col items-center"
             >
-              <div className="mb-6 p-4 bg-blue-50 rounded-full">
+              <div className="mb-6 p-4 bg-brand-primary-subtle rounded-full">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-bold text-blue-900 mb-4">
+              <h3 className="text-xl font-bold text-brand-primary mb-4">
                 {item.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-foreground leading-relaxed">
                 {item.description}
               </p>
             </motion.div>

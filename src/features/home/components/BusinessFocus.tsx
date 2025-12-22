@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { Button, Card, CardHeader, CardBody, CardFooter, Chip } from "@heroui/react";
+import { Card, CardHeader, CardBody, CardFooter, Chip } from "@heroui/react";
 import { Check, ArrowUp, Plus } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "@/features/layout/components/Button";
 
 const FOCUS_DATA = [
   {
@@ -66,7 +67,7 @@ export default function BusinessFocus() {
           </motion.p>
           <motion.h2 
             variants={fadeInUp} initial="hidden" whileInView="visible" transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-blue-700 mb-6"
+            className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Pilih Pendekatan Sesuai Fokus <br className="hidden md:block" /> Bisnis Anda
           </motion.h2>
@@ -91,36 +92,46 @@ export default function BusinessFocus() {
               <Card 
                 shadow="sm"
                 className={`w-full p-4 border-2 transition-transform hover:scale-[1.02] ${
-                  item.isPopular ? "border-blue-700 bg-blue-50/30 ring-4 ring-blue-700/5" : "border-gray-100"
+                  item.isPopular ? "border-blue-700 brand-primary-subtle ring-4 ring-brand-primary/5" : "border-gray-100"
                 }`}
               >
                 <CardHeader className="flex flex-col items-start gap-4 pb-0">
-                  <div className="flex items-center gap-2 bg-blue-50 px-3 py-1 rounded-md">
-                    {item.icon}
-                    <span className="text-xs font-bold text-blue-900">{item.title}</span>
+                  <div className="w-full flex justify-between items-center">
+                    
+                    <div className="flex items-center gap-2 bg-brand-primary-subtle px-3 py-1 rounded-md">
+                      {item.icon}
+                      <span className="text-xs font-bold text-brand-primary">{item.title}</span>
+                    </div>
+
+                    {item.isPopular && (
+                      <Chip 
+                        color="primary" 
+                        className="animate-pulse"
+                      >
+                        PALING POPULER
+                      </Chip>
+                    )}
                   </div>
-                  {item.isPopular && (
-                    <Chip color="primary" size="sm" className="absolute top-10 right-4 animate-pulse">
-                      PALING POPULER
-                    </Chip>
-                  )}
-                  <h3 className="text-2xl font-bold text-gray-900 mt-2 leading-tight">
-                    {item.heading}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
+
+                  <div className="flex flex-col">
+                    <h3 className="text-2xl font-bold text-brand-primary mt-2 leading-tight">
+                      {item.heading}
+                    </h3>
+                    <p className="text-foreground text-sm leading-relaxed mt-1">
+                      {item.description}
+                    </p>
+                  </div>
                 </CardHeader>
 
                 <CardBody className="py-8 flex flex-col gap-6">
                   {item.features.map((feature, fIdx) => (
                     <div key={fIdx} className="flex gap-4">
-                      <div className="mt-1 bg-blue-100 p-1 rounded-md h-fit">
+                      <div className="mt-1 bg-brand-primary-subtle p-1 rounded-md h-fit">
                         <Check className="w-4 h-4 text-blue-700" strokeWidth={3} />
                       </div>
                       <div>
-                        <p className="font-bold text-gray-900 text-sm">{feature.label}</p>
-                        <p className="text-gray-500 text-xs mt-1">{feature.detail}</p>
+                        <p className="font-bold text-brand-primary text-sm">{feature.label}</p>
+                        <p className="text-foreground text-xs mt-1">{feature.detail}</p>
                       </div>
                     </div>
                   ))}
@@ -128,10 +139,9 @@ export default function BusinessFocus() {
 
                 <CardFooter className="pt-0">
                   <Button 
-                    fullWidth 
-                    color={item.isPopular ? "primary" : "default"}
-                    variant={item.isPopular ? "solid" : "bordered"}
-                    className={`font-bold ${!item.isPopular ? "border-blue-700 text-blue-700" : "shadow-lg shadow-blue-500/30"}`}
+                    fullWidth
+                    variant={item.isPopular ? "default" : "outline"}
+                    className="font-semibold px-8"
                     size="lg"
                   >
                     {item.buttonText}
