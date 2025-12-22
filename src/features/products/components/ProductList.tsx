@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/features/layout/components/Button";
 import { Card } from "./ProductCard";
@@ -182,8 +182,8 @@ export const List = ({ filters, setFilters, onOpenFilter }: ListProps) => {
           </div>
           <div className="flex justify-center">
             <Pagination
-              initialPage={data?.data.meta.page}
-              total={data?.data.meta.total_pages}
+              initialPage={Number(data?.data?.meta?.page) || 1}
+              total={Number(data?.data?.meta?.total_pages) || 1}
               onChange={(p: number) => setFilters({ ...filters, page: p })}
             />
           </div>
