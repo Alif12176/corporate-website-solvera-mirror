@@ -18,8 +18,9 @@
 
 image: node:20.11.1-alpine3.18
 
+# Variabel default
 variables:
-  APP_ENV: staging
+  APP_ENV: development
 
 stages:
   - install
@@ -27,7 +28,13 @@ stages:
 
 install_dependencies:
   stage: install
+  # Mengatur APP_ENV secara dinamis berdasarkan branch
+  variables:
+    APP_ENV: >
+      ${CI_COMMIT_BRANCH == "main" ? "production" : 
+      (CI_COMMIT_BRANCH == "stage" ? "staging" : "development")}
   script:
+    - echo "Running for environment $APP_ENV"
     - npm ci
     - npm install --no-save @eslint/eslintrc
   cache:
@@ -39,10 +46,9 @@ install_dependencies:
     expire_in: 1 hour
     paths:
       - node_modules/
-  # TAMBAHKAN RULES DI SINI
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH
 
 lint_code:
   stage: lint
@@ -51,4 +57,4 @@ lint_code:
     - npm run lint
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH
