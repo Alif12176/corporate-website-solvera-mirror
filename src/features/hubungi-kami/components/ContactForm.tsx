@@ -134,6 +134,9 @@ export const ContactForm = () => {
                         size="lg"
                         className="bg-[#C0CAF2] text-brand-primary font-medium"
                         startContent={<FaWhatsapp className="text-xl" />}
+                        as="a"
+                        href="https://wa.me/62xxxxxxxx" // Ganti dengan nomor asli
+                        target="_blank"
                     >
                         Tanyakan Langsung
                     </Button>

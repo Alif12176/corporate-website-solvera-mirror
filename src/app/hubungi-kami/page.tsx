@@ -1,4 +1,5 @@
-import { ContactForm, ContactHero, ContactInfo, ClientLogos, StrategySection } from "@/features/hubungi-kami";
+import { ContactForm, ContactHero, ContactInfo, StrategySection } from "@/features/hubungi-kami";
+import { ClientLogos } from "@/features/layout/components/ClientLogos";
 import { Metadata } from "next";
 import React from "react";
 

@@ -127,15 +127,15 @@ export const Navbar = () => {
       items: [
         { name: "Sales Management", href: "/solusi/sales-management", icon: <RiShoppingBag3Line /> },
         { name: "CRM", href: "/solusi/crm", icon: <RiCustomerService2Line /> },
-        { name: "Point of Sales", href: "/solusi/point-of-sales", icon: <RiStore3Line /> },
-        { name: "Accounting & Finance", href: "/solusi/accounting-dan-finance", icon: <RiFileList3Line /> },
-        { name: "Purchasing Management", href: "/solusi/purchasing-management", icon: <RiShoppingBag3Line /> },
+        { name: "Point of Sales", href: "/solusi/pos", icon: <RiStore3Line /> },
+        { name: "Accounting & Finance", href: "/solusi/finance-accounting", icon: <RiFileList3Line /> },
+        { name: "Purchasing Management", href: "/solusi/purchasing", icon: <RiShoppingBag3Line /> },
       ]
     },
     {
       items: [
-        { name: "Inventory & Warehouse", href: "/solusi/inventory-dan-warehouse", icon: <RiArchiveDrawerLine /> },
-        { name: "Learning Management (LMS)", href: "/solusi/learning-management-lms", icon: <RiBookOpenLine /> },
+        { name: "Inventory & Warehouse", href: "/solusi/inventory-warehouse", icon: <RiArchiveDrawerLine /> },
+        { name: "Learning Management (LMS)", href: "/solusi/lms", icon: <RiBookOpenLine /> },
         { name: "Quality Control", href: "/solusi/quality-control", icon: <RiServiceLine /> },
         { name: "Document Management", href: "/solusi/document-management", icon: <RiFileList3Line /> },
         { name: "Project Management", href: "/solusi/project-management", icon: <RiHammerLine /> },
@@ -146,7 +146,7 @@ export const Navbar = () => {
         { name: "Fleet Management", href: "/solusi/fleet-management", icon: <RiTruckLine /> },
         { name: "Asset Management", href: "/solusi/asset-management", icon: <RiComputerLine /> },
         { name: "HR Management", href: "/solusi/hr-management", icon: <RiUserSettingsLine /> },
-        { name: "Helpdesk & Ticketing", href: "/solusi/helpdesk-dan-ticketing", icon: <RiCustomerService2Line /> },
+        { name: "Helpdesk & Ticketing", href: "/solusi/helpdesk-ticketing", icon: <RiCustomerService2Line /> },
       ]
     },
   ];
@@ -312,7 +312,7 @@ export const Navbar = () => {
                         {col.items.map((item, itemIdx) => (
                           <li key={itemIdx}>
                             <Link
-                              href="#"
+                              href={item.href}
                               className="text-foreground flex items-center gap-3 hover:text-brand-primary transition-colors group"
                             >
                               <span className="text-xl text-gray-500 group-hover:text-brand-primary transition-colors">
