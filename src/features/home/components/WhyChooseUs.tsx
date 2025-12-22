@@ -8,7 +8,7 @@ import {
   Factory,
   Users,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const FEATURES = [
   {
@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -65,9 +65,9 @@ export default function WhyChooseUs() {
             className="text-sm font-semibold text-gray-900 mb-2"
           >
             Janji Kami
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -76,9 +76,9 @@ export default function WhyChooseUs() {
             className="text-3xl md:text-4xl font-bold text-blue-700"
           >
             Kenapa Memilih Solvera <br /> sebagai Mitra Anda?
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -89,13 +89,13 @@ export default function WhyChooseUs() {
             Solvera menyediakan solusi komprehensif yang mendorong kesuksesan.
             Kami memberdayakan bisnis melalui teknologi inovatif dan dukungan
             khusus.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* --- ANIMASI FEATURES GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {FEATURES.map((item, index) => (
-            <motion.div
+            <m.div
               key={index}
               className="bg-blue-50 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300"
               // Animasi Kartu
@@ -112,13 +112,13 @@ export default function WhyChooseUs() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 {item.desc}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         <div className="grid grid-cols-3 md:grid-cols-3 gap-8 border-t border-gray-100 pt-12">
           {STATS.map((stat, index) => (
-            <motion.div
+            <m.div
               key={index}
               className="flex flex-col items-center"
               initial="hidden"
@@ -132,7 +132,7 @@ export default function WhyChooseUs() {
                 {stat.value}
               </span>
               <span className="text-sm text-gray-600">{stat.label}</span>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

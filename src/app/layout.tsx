@@ -1,9 +1,10 @@
 import { Navbar } from "@/features/layout/components/Navbar";
 import { Providers } from "@/providers";
 import type { Metadata } from "next";
-import { Geist_Mono, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/features/layout/components/Footer";
+import { domAnimation, LazyMotion } from "framer-motion";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -19,6 +20,8 @@ const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -35,12 +38,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${poppins.variable} antialiased`}
+        suppressHydrationWarning={true}
       >
-        <Providers>
-          <Navbar />
-          {children}
-          <Footer />
-        </Providers>
+        <LazyMotion features={domAnimation}>
+          <Providers>
+            <Navbar />
+            {children}
+            <Footer />
+          </Providers>
+        </LazyMotion>
       </body>
     </html>
   );

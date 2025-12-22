@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { RiCheckLine } from "react-icons/ri";
 
 const STEPS = [
@@ -26,29 +26,29 @@ const fadeInUp = {
 
 export const ProcessTimeline = () => {
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header Section */}
         <div className="text-center mb-16">
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-3xl md:text-5xl font-bold text-blue-700 mb-6"
+            className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Akselerasi Digital: Go-Live dalam Hitungan Hari
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             variants={fadeInUp}
-            className="text-gray-600 text-lg max-w-3xl mx-auto"
+            className="text-foreground text-lg max-w-3xl mx-auto"
           >
             Proses implementasi yang dirancang untuk UKM: cepat, fokus pada solusi siap pakai, dan tanpa birokrasi.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Timeline Container */}
@@ -58,7 +58,7 @@ export const ProcessTimeline = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
             {STEPS.map((step, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 initial="hidden"
                 whileInView="visible"
@@ -68,23 +68,23 @@ export const ProcessTimeline = () => {
                 className="flex flex-col items-center text-center"
               >
                 {/* Circle Icon */}
-                <div className="w-24 h-24 bg-blue-700 rounded-full flex items-center justify-center mb-6 shadow-xl shadow-blue-200 border-4 border-white">
-                  <RiCheckLine className="text-white text-4xl" strokeWidth={1} />
+                <div className="w-24 h-24 bg-brand-primary rounded-full flex items-center justify-center mb-6 shadow-xl shadow-brand-primary/20 border-4 border-brand-primary">
+                  <RiCheckLine className="text-background text-4xl" strokeWidth={1} />
                 </div>
 
                 {/* Text Content */}
-                <h3 className="text-xl font-bold text-blue-800 mb-3">
+                <h3 className="text-xl font-bold text-brand-primary mb-3">
                   {step.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed max-w-[250px]">
+                <p className="text-foreground leading-relaxed max-w-[250px]">
                   {step.description}
                 </p>
 
                 {/* Mobile Connector (Mobile Only) */}
                 {idx !== STEPS.length - 1 && (
-                  <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-blue-600 my-4" />
+                  <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-brand-primary my-4" />
                 )}
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>

@@ -6,6 +6,7 @@ import { ConsultationProcess } from "./ConsultationProcess";
 import { ConsultationCompetency } from "./ConsultationCompetency";
 import { ProcessTimeline } from "./ProcessTimeline";
 import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
+import { WhatsAppFAB } from "@/features/layout/components/WhatsAppFAB";
 
 export const ConsultationPage = () => {
     return (
@@ -16,6 +17,7 @@ export const ConsultationPage = () => {
             <ConsultationProcess />
             <ConsultationCompetency />
             <ConsultationCTA />
+            <WhatsAppFAB />
         </main>
     );
 };

@@ -1,6 +1,7 @@
 "use client";
 
-import { Button } from "@heroui/react";
+import { Button } from "@/features/layout/components/Button";
+import Link from "next/link";
 import Image from "next/image";
 
 export const ConsultationHero = () => {
@@ -28,14 +29,24 @@ export const ConsultationHero = () => {
                         yang terukur untuk mendorong efisiensi, skalabilitas, dan pertumbuhan bisnis
                     </p>
                 </div>
-                <Button
-                    color="primary"
-                    size="lg"
-                    radius="sm"
-                    className="font-semibold px-8"
-                >
-                    Jadwalkan Konsultasi
-                </Button>
+                <div className="animate-in delay-200">
+                    <Button
+                        variant="default"
+                        className="px-6 py-2 rounded-md mr-4"
+                        as={Link}
+                        href='/minta-demo'
+                    >
+                        Jadwalkan Demo
+                    </Button>
+                    <Button
+                        variant="alternative"
+                        className="px-6 py-2 rounded-md"
+                        as={Link}
+                        href='/hubungi-kami'
+                    >
+                        Hubungi Kami
+                    </Button>
+                </div>
             </div>
         </section>
     );

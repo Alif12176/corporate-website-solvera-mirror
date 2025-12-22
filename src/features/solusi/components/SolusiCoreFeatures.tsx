@@ -7,7 +7,7 @@ import {
     ClipboardList,
     RefreshCw,
     LineChart,
-    Link
+    Link as LinkIcon
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -48,7 +48,7 @@ const dummyCoreFeatures = [
     {
         title: "Integrasi Inventory & Finance",
         description: "Semua transaksi penjualan tersinkron otomatis dengan stok dan laporan keuangan.",
-        icon: Link,
+        icon: LinkIcon,
     }
 ];
 
@@ -70,28 +70,54 @@ export const SolusiCoreFeatures = ({ core_features = dummyCoreFeatures }: Props)
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
                     {core_features.map((feature, index) => (
                         <div key={index} className="flex flex-col items-center text-center group">
-                            {/* Icon */}
-                            <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                                {typeof feature.icon === "string" && feature.icon.startsWith("http") ? (
-                                    <Image
-                                        src={feature.icon}
-                                        alt={feature.title}
-                                        width={48}
-                                        height={48}
-                                        className="text-blue-700"
-                                    />
-                                ) : (
-                                    (() => {
-                                        const Icon = feature.icon as React.ElementType;
+                            {/* Icon Wrapper */}
+                            <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300 h-12 w-12 flex items-center justify-center">
+                                {(() => {
+                                    // LOGIC PENANGANAN IKON (FIX ERROR DISINI)
+                                    const rawIcon = feature.icon;
+
+                                    // 1. Jika ikon berupa String (URL atau nama file)
+                                    if (typeof rawIcon === 'string') {
+                                        let iconSrc = rawIcon;
+
+                                        // FIX: Membersihkan data kotor dari backend ("chartbarhttps://...")
+                                        if (iconSrc.startsWith('chartbarhttp')) {
+                                            iconSrc = iconSrc.replace('chartbar', '');
+                                        }
+
+                                        // Render sebagai Image jika URL valid
+                                        if (iconSrc.startsWith('http') || iconSrc.startsWith('/')) {
+                                            return (
+                                                <div className="relative w-12 h-12">
+                                                    <Image
+                                                        src={iconSrc}
+                                                        alt={feature.title}
+                                                        fill
+                                                        sizes="48px"
+                                                        className="text-blue-700 object-contain"
+                                                    />
+                                                </div>
+                                            );
+                                        }
+
+                                        // Fallback jika string tidak valid (cegah crash)
+                                        return null;
+                                    }
+
+                                    // 2. Jika ikon berupa React Component (Lucide)
+                                    if (rawIcon) {
+                                        const IconComponent = rawIcon as React.ElementType;
                                         return (
-                                            <Icon
+                                            <IconComponent
                                                 size={48}
                                                 className="text-blue-700"
                                                 strokeWidth={1.5}
                                             />
                                         );
-                                    })()
-                                )}
+                                    }
+
+                                    return null;
+                                })()}
                             </div>
 
                             {/* Title */}

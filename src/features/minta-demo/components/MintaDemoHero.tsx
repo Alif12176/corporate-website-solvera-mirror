@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import { FaCheck } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 export const MintaDemoHero = () => {
     return (
@@ -36,7 +36,7 @@ export const MintaDemoHero = () => {
                         "Rekam Jejak Teruji: Telah dipercaya oleh pemain industri terkemuka."
                     ].map((item, index) => (
                         <li key={index} className="flex items-start gap-4">
-                            <div className="mt-1 min-w-[24px] min-h-[24px] w-6 h-6 rounded-md bg-[#8496F6] flex items-center justify-center text-white text-sm">
+                            <div className="mt-1 min-w-6 min-h-6 w-6 h-6 rounded-md bg-[#8496F6] flex items-center justify-center text-white text-sm">
                                 <FaCheck />
                             </div>
                             <span className="text-neutral-200">{item}</span>
@@ -55,7 +55,7 @@ export const MintaDemoHero = () => {
 
                     {/* Row 1 - Scroll Left */}
                     <div className="flex w-full overflow-hidden">
-                        <motion.div
+                        <m.div
                             className="flex gap-8 items-center"
                             animate={{ x: "-50%" }}
                             transition={{
@@ -89,12 +89,12 @@ export const MintaDemoHero = () => {
                                     />
                                 </div>
                             ))}
-                        </motion.div>
+                        </m.div>
                     </div>
 
                     {/* Row 2 - Scroll Right */}
                     <div className="flex w-full overflow-hidden">
-                        <motion.div
+                        <m.div
                             className="flex gap-8 items-center"
                             animate={{ x: "0%" }}
                             initial={{ x: "-50%" }}
@@ -131,12 +131,12 @@ export const MintaDemoHero = () => {
                                     />
                                 </div>
                             ))}
-                        </motion.div>
+                        </m.div>
                     </div>
 
                     {/* Row 3 - Scroll Left */}
                     <div className="flex w-full overflow-hidden">
-                        <motion.div
+                        <m.div
                             className="flex gap-8 items-center"
                             animate={{ x: "-50%" }}
                             transition={{
@@ -172,7 +172,7 @@ export const MintaDemoHero = () => {
                                     />
                                 </div>
                             ))}
-                        </motion.div>
+                        </m.div>
                     </div>
                 </div>
             </div>

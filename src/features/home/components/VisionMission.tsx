@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 const fadeInUp = {
@@ -14,7 +14,7 @@ export default function VisionMission() {
       <div className="container mx-auto px-6">
         {/* --- HEADER --- */}
         <div className="text-center mb-16">
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -23,9 +23,9 @@ export default function VisionMission() {
             className="text-sm font-semibold text-gray-900 mb-2"
           >
             Solusi Teknologi untuk Bisnis
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -34,9 +34,9 @@ export default function VisionMission() {
             className="text-3xl md:text-4xl font-bold text-blue-700 max-w-3xl mx-auto leading-tight"
           >
             Kami yakin teknologi adalah kunci pertumbuhan bisnis Anda.
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -46,13 +46,13 @@ export default function VisionMission() {
           >
             Solvera membantu bisnis beradaptasi dan berkembang di era digital
             dengan solusi inovatif dan implementasi yang efektif.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* --- CONTENT GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
           {/* --- BAGIAN VISI (KIRI) --- */}
-          <motion.div
+          <m.div
             className="text-center"
             initial="hidden"
             whileInView="visible"
@@ -86,9 +86,9 @@ export default function VisionMission() {
               yang memberdayakan bisnis dan komunitas melalui kemitraan
               strategis.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="text-center"
             initial="hidden"
             whileInView="visible"
@@ -122,7 +122,7 @@ export default function VisionMission() {
               menciptakan peluang kerja yang berarti melalui solusi teknologi
               terintegrasi.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

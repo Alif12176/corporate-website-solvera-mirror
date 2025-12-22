@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { Button, Card, CardBody } from "@heroui/react";
+import { Card, CardBody } from "@heroui/react";
+import { Button } from "@/features/layout/components/Button";
 import { RiCustomerService2Line, RiBarChartGroupedLine, RiDatabase2Line, RiRefreshLine } from "react-icons/ri";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const FEATURES = [
   {
@@ -39,41 +40,41 @@ export const OperationalEffectiveness = () => {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <motion.div 
+          <m.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
             className="flex flex-col gap-6"
           >
-            <h4 className="text-sm font-bold text-blue-700 uppercase tracking-wider">Strategi Digital</h4>
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-900 leading-tight">
+            <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Strategi Digital</h4>
+            <h2 className="text-4xl md:text-5xl font-bold text-brand-primary leading-tight">
               Efektivitas Operasional Lewat Digitalisasi
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-foreground text-lg leading-relaxed">
               Kami membantu bisnis Anda beroperasi secara profesional melalui standar kerja yang terstruktur dan terorganisir. Teknologi dari Solvera menyediakan sistem operasional inti yang dirancang khusus untuk memastikan model bisnis Anda berjalan secara efektif dan optimal.
             </p>
             <div className="mt-4">
-                <Button size="lg" color="primary" className="font-bold px-8" as="a" href="#konsultasi">
-                    Pelajari Detailnya
-                </Button>
+              <Button variant="default" size="lg" color="primary" className="px-6 py-2 rounded-md" as="a" href="#konsultasi">
+                Pelajari Detailnya
+              </Button>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Right Grid Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {FEATURES.map((item, idx) => (
-              <motion.div
+              <m.div
                 key={idx}
                 initial="hidden" whileInView="visible" viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
                 variants={fadeInUp}
               >
-                <Card className="bg-blue-50/50 border-none shadow-sm hover:shadow-md transition-shadow h-full rounded-xl">
+                <Card className="bg-brand-primary-subtle border-none shadow-sm hover:shadow-md transition-shadow h-full rounded-xl">
                   <CardBody className="p-6 flex flex-col gap-4">
-                    <div className="text-blue-700">{item.icon}</div>
-                    <h3 className="text-xl font-bold text-blue-900">{item.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                    <div className="text-foreground">{item.icon}</div>
+                    <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
+                    <p className="text-foreground text-sm leading-relaxed">{item.description}</p>
                   </CardBody>
                 </Card>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
