@@ -47,24 +47,6 @@ export const ProductDetailPage = ({ product }: Props) => {
         }
       />
 
-      {
-        product.category === "Service & Commerce" && (product.name === "Ritel & Grosir" || product.name === "Otomotif (Sales & Aftermarket)") ?
-          <Tab
-            tab={tab}
-            sectionTitle={{
-              title: product.why_us[0]?.section_title || "",
-              subtitle: product.why_us[0]?.section_subtitle || ""
-            }}
-            solution={product.features.map((feature, index) => {
-              return {
-                id: index,
-                heading: feature.content_title,
-                text: feature.content_description,
-                list: feature.benefits,
-              };
-            })}
-          /> : null
-      }
 
       {isListDesaign ? <ProductAdvantages features={product.features.map((feature, index) => {
         return {
@@ -77,7 +59,21 @@ export const ProductDetailPage = ({ product }: Props) => {
           image: feature.image_url,
           imageAlt: feature.content_title
         };
-      })} /> : null}
+      })} /> : <Tab
+        tab={tab}
+        sectionTitle={{
+          title: product.why_us[0]?.section_title || "",
+          subtitle: product.why_us[0]?.section_subtitle || ""
+        }}
+        solution={product.features.map((feature, index) => {
+          return {
+            id: index,
+            heading: feature.content_title,
+            text: feature.content_description,
+            list: feature.benefits,
+          };
+        })}
+      />}
 
       <Header stat={product.why_us} />
 
