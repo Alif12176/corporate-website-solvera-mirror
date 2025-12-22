@@ -1,60 +1,112 @@
-# This file is a template, and might need editing before it works on your project.
-# This is a sample GitLab CI/CD configuration file that should run without any modifications.
-# It demonstrates a basic 3 stage CI/CD pipeline. Instead of real tests or scripts,
-# it uses echo commands to simulate the pipeline execution.
-#
-# A pipeline is composed of independent jobs that run scripts, grouped into stages.
-# Stages run in sequential order, but jobs within stages run in parallel.
-#
-# For more information, see: https://docs.gitlab.com/ee/ci/yaml/#stages
-#
-# You can copy and paste this template into a new `.gitlab-ci.yml` file.
-# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
-#
-# To contribute improvements to CI/CD templates, please follow the Development guide at:
-# https://docs.gitlab.com/development/cicd/templates/
-# This specific template is located at:
-# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
+# Menggunakan image Git yang ringan
+image: bitnami/git:latest
 
-image: node:20.11.1-alpine3.18
-
-# Variabel default
+# ==============================================================================
+# KONFIGURASI VARIABEL
+# ==============================================================================
 variables:
-  APP_ENV: development
+  GIT_DEPTH: 0
 
+# ==============================================================================
+# DEFINISI STAGES
+# ==============================================================================
 stages:
-  - install
-  - lint
+  - mirror-dev
+  - promote-staging
+  - promote-main
 
-install_dependencies:
-  stage: install
-  # Mengatur APP_ENV secara dinamis berdasarkan branch
-  variables:
-    APP_ENV: >
-      ${CI_COMMIT_BRANCH == "main" ? "production" : 
-      (CI_COMMIT_BRANCH == "stage" ? "staging" : "development")}
-  script:
-    - echo "Running for environment $APP_ENV"
-    - npm ci
-    - npm install --no-save @eslint/eslintrc
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
-    policy: pull-push
-  artifacts:
-    expire_in: 1 hour
-    paths:
-      - node_modules/
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH
+# ==============================================================================
+# SCRIPT PERSIAPAN
+# ==============================================================================
+before_script:
+  - echo "⚙️ Memulai konfigurasi Environment..."
+  
+  # Konfigurasi Identitas
+  - git config --global user.email "ci-bot@solvera.com"
+  - git config --global user.name "CI/CD Bot"
+  
+  # Setup Remote GitHub
+  - git remote add github https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$GITHUB_USER/supercontact-web-mirror.git || true
+  
+  # Setup Remote GitLab
+  - git remote set-url origin https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
 
-lint_code:
-  stage: lint
-  needs: ["install_dependencies"]
+  # Fetch Semua Branch
+  - git fetch --all
+  - echo "✅ Konfigurasi selesai."
+
+# ==============================================================================
+# JOB 1: DEVELOPMENT (AUTO SYNC)
+# ==============================================================================
+sync_dev_to_github:
+  stage: mirror-dev
   script:
-    - npm run lint
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH
+    - echo "=================================================="
+    - echo "🔄 [DEV] Memulai Sinkronisasi ke GitHub..."
+    - echo "=================================================="
+    
+    # PERBAIKAN: Memaksa checkout dari 'origin/dev' agar tidak bingung
+    - git checkout -B dev origin/dev
+    
+    # Kirim ke GitHub
+    - git push github dev --force
+    
+    - echo "✅ [SUCCESS] Dev berhasil disinkronkan!"
+  only:
+    - dev
+
+# ==============================================================================
+# JOB 2: PROMOTION (DEV -> STAGING)
+# ==============================================================================
+approve_to_staging:
+  stage: promote-staging
+  script:
+    - echo "=================================================="
+    - echo "🚀 [STAGING] Memproses Merge Request (Dev -> Staging)..."
+    - echo "=================================================="
+    
+    # PERBAIKAN: Memaksa checkout 'staging' dari origin
+    - git checkout -B staging origin/staging
+    
+    # Lakukan Merge
+    - echo "🔀 Merging 'origin/dev' into 'staging'..."
+    - git merge origin/dev --no-edit
+    
+    # Push ke GitLab & GitHub
+    - echo "⬆️ Pushing update..."
+    - git push origin staging
+    - git push github staging --force
+    
+    - echo "✅ [SUCCESS] Staging berhasil diupdate!"
+  only:
+    - dev
+  when: manual
+  allow_failure: false
+
+# ==============================================================================
+# JOB 3: PROMOTION (STAGING -> MAIN)
+# ==============================================================================
+approve_to_production:
+  stage: promote-main
+  script:
+    - echo "=================================================="
+    - echo "🚀 [PRODUCTION] Memproses Release (Staging -> Main)..."
+    - echo "=================================================="
+    
+    # PERBAIKAN: Memaksa checkout 'main' dari origin
+    - git checkout -B main origin/main
+    
+    # Lakukan Merge
+    - echo "🔀 Merging 'origin/staging' into 'main'..."
+    - git merge origin/staging --no-edit
+    
+    # Push ke GitLab & GitHub
+    - echo "⬆️ Pushing update..."
+    - git push origin main
+    - git push github main --force
+    
+    - echo "✅ [SUCCESS] Production berhasil diupdate!"
+  only:
+    - staging
+  when: manual
+  allow_failure: false
