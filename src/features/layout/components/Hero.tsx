@@ -1,14 +1,16 @@
 import Image, { type StaticImageData } from "next/image";
 import { Button } from "@/features/layout/components/Button";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 interface Props {
   image: string | StaticImageData;
   title: string;
   subtitle?: string;
+  action?: ReactNode;
 }
 
-export const Hero = ({ image, title, subtitle }: Props) => {
+export const Hero = ({ image, title, subtitle, action }: Props) => {
   return (
     <div className="relative h-screen">
       {/* Background Image */}
@@ -42,11 +44,18 @@ export const Hero = ({ image, title, subtitle }: Props) => {
 
           {/* Action Button */}
           <div className="animate-in delay-200">
-            <Button variant="default" as={Link} size="lg" href="/minta-demo" className="px-6 py-2 rounded-md mr-4">
-              Jadwalkan Demo
-            </Button><Button variant="alternative" as={Link} size="lg" href="/hubungi-kami" className="px-6 py-2 rounded-md">
-              Hubungi Kami
-            </Button>
+            {action ? (
+              action
+            ) : (
+              <>
+                <Button variant="default" as={Link} size="lg" href="/minta-demo" className="px-6 py-2 rounded-md mr-4">
+                  Jadwalkan Demo
+                </Button>
+                <Button variant="alternative" as={Link} size="lg" href="/hubungi-kami" className="px-6 py-2 rounded-md">
+                  Hubungi Kami
+                </Button>
+              </>
+            )}
           </div>
         </div>
       </div>
