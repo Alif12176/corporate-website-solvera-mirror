@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { m, Variants } from "framer-motion";
 import {
   ClipboardList,
   Award,
@@ -77,41 +77,41 @@ export default function ExpertTeam() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto mb-20">
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-sm font-bold text-gray-800 tracking-wider uppercase mb-2 block"
+            className="text-sm font-bold text-foreground tracking-wider uppercase mb-2 block"
           >
             Dapatkan Keahlian Sesuai Permintaan
-          </motion.span>
+          </m.span>
 
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-3xl md:text-5xl font-bold text-blue-700 mb-6"
+            className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
             Akses Tim Ahli Multirole
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-gray-600 text-base md:text-lg leading-relaxed"
+            className="text-foreground text-base md:text-lg leading-relaxed"
           >
             Layanan kami memberikan akses langsung kepada perusahaan Anda ke
             profesional spesialis tanpa perlu proses rekrutmen internal yang
             rumit. Kami menyediakan tim ahli berpengalaman untuk memastikan
             proyek Anda berjalan dengan keahlian, kualitas, dan inovasi terbaik.
-          </motion.p>
+          </m.p>
         </div>
 
-        <motion.div
+        <m.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -119,25 +119,25 @@ export default function ExpertTeam() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
         >
           {expertRoles.map((role, index) => (
-            <motion.div
+            <m.div
               key={index}
               variants={itemVariants}
               className="flex flex-col items-center text-center px-4"
             >
-              <div className="text-blue-600 mb-6 transform hover:scale-110 transition-transform duration-300">
+              <div className="text-brand-primary mb-6 transform hover:scale-110 transition-transform duration-300">
                 {role.icon}
               </div>
 
-              <h3 className="text-xl font-bold text-blue-700 mb-4">
+              <h3 className="text-xl font-bold text-brand-primary mb-4">
                 {role.title}
               </h3>
 
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-foreground text-sm leading-relaxed">
                 {role.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

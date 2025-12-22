@@ -1,7 +1,7 @@
 "use client";
 
 import { Mail, Phone, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -14,43 +14,43 @@ export default function ContactSection() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
           <div className="space-y-6">
-            <motion.p
+            <m.p
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.5 }}
-              className="text-sm font-bold text-gray-900"
+              className="text-sm font-bold text-foreground"
             >
               Mitra Transformasi Digital Anda
-            </motion.p>
+            </m.p>
 
-            <motion.h2
+            <m.h2
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl font-bold text-blue-700"
+              className="text-4xl md:text-5xl font-bold text-brand-primary"
             >
               Mari Bicara Strategi
-            </motion.h2>
+            </m.h2>
 
-            <motion.p
+            <m.p
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-gray-600 text-lg leading-relaxed"
+              className="text-foreground text-lg leading-relaxed"
             >
               Dapatkan sesi konsultasi tanpa biaya untuk memahami tantangan
               bisnis Anda dan menemukan peluang transformasi digital yang paling
               relevan.
-            </motion.p>
+            </m.p>
           </div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -66,11 +66,11 @@ export default function ContactSection() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mb-24">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -78,22 +78,22 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0 }}
             className="flex flex-col items-center"
           >
-            <Mail className="w-10 h-10 text-blue-700 mb-4" />
-            <h3 className="text-xl font-bold text-blue-700 mb-2">Pertanyaan</h3>
-            <p className="text-gray-600 text-sm mb-2 px-4">
+            <Mail className="w-10 h-10 text-brand-primary mb-4" />
+            <h3 className="text-xl font-bold text-brand-primary mb-2">Pertanyaan</h3>
+            <p className="text-foreground/75 text-sm mb-2 px-4">
               Ada pertanyaan tentang solusi atau layanan kami? Tim dukungan
               pelanggan kami siap membantu Anda.
             </p>
             <a
               href="mailto:info@solvera.id"
-              className="font-semibold text-gray-900 border-b border-gray-900 hover:text-blue-700 hover:border-blue-700 transition"
+              className="font-semibold text-foreground border-b border-foreground hover:text-brand-primary hover:border-brand-primary transition"
             >
               info@solvera.id
             </a>
-          </motion.div>
+          </m.div>
 
           {/* Phone */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -101,22 +101,22 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col items-center"
           >
-            <Phone className="w-10 h-10 text-blue-700 mb-4" />
-            <h3 className="text-xl font-bold text-blue-700 mb-2">Dukungan</h3>
-            <p className="text-gray-600 text-sm mb-2 px-4">
+            <Phone className="w-10 h-10 text-brand-primary mb-4" />
+            <h3 className="text-xl font-bold text-brand-primary mb-2">Dukungan</h3>
+            <p className="text-foreground/75 text-sm mb-2 px-4">
               Butuh bantuan teknis atau panduan penggunaan produk? Hubungi tim
               dukungan teknis kami sekarang.
             </p>
             <a
               href="tel:+6281390009640"
-              className="font-semibold text-gray-900 border-b border-gray-900 hover:text-blue-700 hover:border-blue-700 transition"
+              className="font-semibold text-foreground border-b border-foreground hover:text-brand-primary hover:border-brand-primary transition"
             >
               +62 813-9000-9640
             </a>
-          </motion.div>
+          </m.div>
 
           {/* Address */}
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -124,19 +124,19 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.4 }} // Delay 0.4s
             className="flex flex-col items-center"
           >
-            <MapPin className="w-10 h-10 text-blue-700 mb-4" />
-            <h3 className="text-xl font-bold text-blue-700 mb-2">
+            <MapPin className="w-10 h-10 text-brand-primary mb-4" />
+            <h3 className="text-xl font-bold text-brand-primary mb-2">
               Kunjungi Kami
             </h3>
-            <p className="text-gray-600 text-sm mb-2 px-4">
+            <p className="text-foreground/75 text-sm mb-2 px-4">
               Ingin bertemu langsung dengan tim kami? Kunjungi kantor kami di
               bawah ini.
             </p>
-            <p className="text-xs text-gray-900 font-medium max-w-[250px] underline">
+            <p className="text-xs text-foreground font-medium max-w-[250px] underline">
               Prominence Office Tower Level 28 Unit C, Jl. Jalur Sutera Barat
               No. 15, Kota Tangerang, Banten - 15143.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

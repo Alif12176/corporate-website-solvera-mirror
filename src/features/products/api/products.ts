@@ -7,7 +7,7 @@ export async function getProducts(query?: string, signal?: AbortSignal): Promise
     const queryString = new URLSearchParams(query || {}).toString();
     const res = await fetch(`${BASE_URL}?${queryString}`, {
       method: "GET",
-      cache: "no-store",
+      next: { revalidate: 60 }, // <-- GANTI JADI INI (Cache 1 menit)
       signal
     });
 
@@ -25,7 +25,11 @@ export async function getProducts(query?: string, signal?: AbortSignal): Promise
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   try {
-    const res = await fetch(`${BASE_URL}/${slug}`, { cache: "no-store" });
+    const res = await fetch(`${BASE_URL}/${slug}`, { 
+      next: { 
+        revalidate: 3600 // Cache data selama 1 jam (3600 detik)
+      } 
+    });
     if (!res.ok) {
       throw new Error(`Failed to fetch products: ${res.status}`);
     }

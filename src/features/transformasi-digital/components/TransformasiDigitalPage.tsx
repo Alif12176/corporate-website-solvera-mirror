@@ -7,7 +7,8 @@ import { EnterpriseCompliance } from "./EnterpriseCompliance";
 import { ConceptToCode } from "./ConceptToCode";
 import { StructuredApproach } from "./StructuredApproach";
 import { MeasuredExpertise } from "./MeasuredExpertise";
-import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA"; // Asumsi path CTA global
+import { ConsultationCTA } from "@/features/layout/components/ConsultationCTA";
+import { WhatsAppFAB } from "@/features/layout/components/WhatsAppFAB";
 
 export const TransformasiDigitalPage = () => {
   return (
@@ -19,6 +20,7 @@ export const TransformasiDigitalPage = () => {
       <StructuredApproach />
       <MeasuredExpertise />
       <ConsultationCTA />
+      <WhatsAppFAB />
     </main>
   );
 };

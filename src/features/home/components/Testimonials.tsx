@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
+import Image from "next/image";
 
 const TESTIMONIALS = [
   {
@@ -64,7 +65,7 @@ export default function Testimonials() {
     <section className="py-20 bg-white">
       <div className="px-2 relative">
         <div className="text-center mb-12">
-          <motion.span
+          <m.span
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -73,9 +74,9 @@ export default function Testimonials() {
             className="text-sm font-semibold text-gray-500 uppercase tracking-wider block"
           >
             Testimonial
-          </motion.span>
+          </m.span>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -84,9 +85,9 @@ export default function Testimonials() {
             className="text-4xl font-bold text-blue-900 mt-2 mb-4"
           >
             Apa Kata Mitra Kami
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -96,11 +97,11 @@ export default function Testimonials() {
           >
             Dengarkan langsung dari para pemimpin bisnis yang telah sukses
             bertransformasi bersama solusi dan konsultasi ahli dari Solvera.
-          </motion.p>
+          </m.p>
         </div>
 
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-12 md:w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
 
           <div
             ref={scrollRef}
@@ -108,9 +109,9 @@ export default function Testimonials() {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {TESTIMONIALS.map((item, index) => (
-              <motion.div
+              <m.div
                 key={item.id}
-                className="min-w-[350px] md:min-w-[400px] bg-blue-50/50 p-8 rounded-2xl border border-blue-100 snap-center flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 "
+                className="min-w-[350px] md:min-w-[400px] bg-brand-primary-subtle p-8 rounded-2xl border border-brand-primary-subtle snap-center flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 "
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
@@ -133,33 +134,36 @@ export default function Testimonials() {
                   ))}
                 </div>
 
-                <blockquote className="text-gray-700 text-lg leading-relaxed italic mb-8 flex-grow">
+                <blockquote className="text-foreground text-lg leading-relaxed italic mb-8 grow">
                   "{item.quote}"
                 </blockquote>
 
                 <div className="mt-auto flex flex-col items-center">
                   <div className="h-10 mb-4 flex items-center justify-center">
-                    <img
+                    <Image
                       src={item.logo}
                       alt={item.company}
-                      className="h-full object-contain filter   transition-all duration-300"
+                      width={120}
+                      height={40}
+                      className="h-full object-contain transition-all duration-300"
+                      unoptimized
                     />
                   </div>
-                  <h4 className="font-bold text-blue-900">{item.name}</h4>
-                  <p className="text-sm text-gray-500 uppercase">{item.role}</p>
-                  <p className="text-xs text-blue-600 font-semibold mt-1">
+                  <h6 className="font-bold text-brand-primary">{item.name}</h6>
+                  <p className="text-xs text-brand-primary font-semibold mt-1">
                     {item.company}
                   </p>
+                  <p className="text-sm text-foreground uppercase">{item.role}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
 
           {/* BAYANGAN KANAN (Fade Transparent to White) */}
-          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-12 md:w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -168,7 +172,7 @@ export default function Testimonials() {
         >
           <button
             onClick={() => scroll("left")}
-            className="w-12 h-12 flex items-center justify-center rounded-lg border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white shadow-sm"
+            className="w-12 h-12 flex items-center justify-center rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 bg-white shadow-sm"
             aria-label="Previous testimonial"
           >
             <svg
@@ -188,7 +192,7 @@ export default function Testimonials() {
 
           <button
             onClick={() => scroll("right")}
-            className="w-12 h-12 flex items-center justify-center rounded-lg border border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 bg-white shadow-sm"
+            className="w-12 h-12 flex items-center justify-center rounded-lg border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 bg-white shadow-sm"
             aria-label="Next testimonial"
           >
             <svg
@@ -205,7 +209,7 @@ export default function Testimonials() {
               />
             </svg>
           </button>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

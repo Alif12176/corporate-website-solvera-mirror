@@ -50,8 +50,8 @@ export interface Product {
 export interface ProductsResponse {
   success: boolean;
   data: {
-    items: Product[],
-    meta: any
+    items: Product[];
+    meta: Record<string, unknown>;
   };
   error: string | null;
 }

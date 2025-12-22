@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 
 const fadeInUp = {
@@ -14,45 +14,45 @@ export default function VisionMission() {
       <div className="container mx-auto px-6">
         {/* --- HEADER --- */}
         <div className="text-center mb-16">
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.5 }}
-            className="text-sm font-semibold text-gray-900 mb-2"
+            className="text-sm font-semibold text-foreground mb-2"
           >
             Teknologi untuk Negeri
-          </motion.p>
+          </m.p>
 
-          <motion.h2
+          <m.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-blue-700 max-w-3xl mx-auto leading-tight"
+            className="text-3xl md:text-4xl font-bold text-brand-primary max-w-3xl mx-auto leading-tight"
           >
             Kami yakin teknologi adalah kunci pertumbuhan bisnis Anda.
-          </motion.h2>
+          </m.h2>
 
-          <motion.p
+          <m.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-6 text-gray-600 max-w-2xl mx-auto"
+            className="mt-6 text-foreground max-w-2xl mx-auto"
           >
             Solvera membantu bisnis beradaptasi dan berkembang di era digital
             dengan solusi inovatif dan implementasi yang efektif.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* --- CONTENT GRID --- */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
           {/* --- BAGIAN VISI (KIRI) --- */}
-          <motion.div
+          <m.div
             className="text-center"
             initial="hidden"
             whileInView="visible"
@@ -73,22 +73,22 @@ export default function VisionMission() {
               </div>
             </div>
 
-            <p className="text-sm font-bold text-gray-800 mb-2">
+            <p className="text-sm font-bold text-foreground mb-2">
               Inovasi Tanpa Batas
             </p>
-            <h3 className="text-4xl font-bold text-blue-700 mb-6 uppercase">
+            <h3 className="text-4xl font-bold text-brand-primary mb-6 uppercase">
               VISI
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed px-4">
+            <p className="text-foreground text-sm leading-relaxed px-4">
               Mewujudkan transformasi digital yang inklusif dan kolaboratif
               untuk mendorong pertumbuhan ekonomi B2B dan membuka peluang bagi
               kemajuan bersama. Kami berkomitmen menyediakan solusi teknologi
               yang memberdayakan bisnis dan komunitas melalui kemitraan
               strategis.
             </p>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className="text-center"
             initial="hidden"
             whileInView="visible"
@@ -109,20 +109,20 @@ export default function VisionMission() {
               </div>
             </div>
 
-            <p className="text-sm font-bold text-gray-800 mb-2">
+            <p className="text-sm font-bold text-foreground mb-2">
               Solusi Cerdas
             </p>
-            <h3 className="text-4xl font-bold text-blue-700 mb-6 uppercase">
+            <h3 className="text-4xl font-bold text-brand-primary mb-6 uppercase">
               MISI
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed px-4">
+            <p className="text-foreground text-sm leading-relaxed px-4">
               Membangun masa depan digital yang berkelanjutan di Indonesia
               sebagai mitra teknologi yang andal dan inovatif. Kami berkomitmen
               mendukung pertumbuhan bisnis yang kuat dan berkelanjutan, serta
               menciptakan peluang kerja yang berarti melalui solusi teknologi
               terintegrasi.
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>
