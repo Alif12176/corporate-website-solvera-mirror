@@ -12,9 +12,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
     const [queryClient] = useState(() => new QueryClient({
         defaultOptions: {
             queries: {
-                // Data dianggap segar selama 1 menit (tidak akan refetch otomatis dalam waktu ini)
-                staleTime: 60 * 1000,
-                // Hindari refetch saat user pindah window/tab (hemat resource)
+                // Data dianggap segar selama 5 menit
+                staleTime: 5 * 60 * 1000,
+                // Cache disimpan di memori selama 10 menit sebelum dihapus (garbage collection)
+                gcTime: 10 * 60 * 1000,
                 refetchOnWindowFocus: false,
             },
         },
