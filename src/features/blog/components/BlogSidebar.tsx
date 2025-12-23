@@ -1,36 +1,59 @@
 "use client";
 
 import React from 'react';
-import Link from 'next/link';
-import { Button } from '@/features/layout/components/Button';
+import { Button, Skeleton } from "@heroui/react";
+import { useCategories } from '../hooks/useBlog';
 
-const CATEGORIES = [
-    { name: "Berita keuangan", href: "#" },
-    { name: "Tips investasi", href: "#" },
-    { name: "Analisis pasar", href: "#" },
-    { name: "Profil perusahaan", href: "#" },
-];
+interface BlogSidebarProps {
+    selectedCategory: string;
+    onSelectCategory: (category: string) => void;
+}
 
-export const BlogSidebar = () => {
+export const BlogSidebar = ({ selectedCategory, onSelectCategory }: BlogSidebarProps) => {
+    const { data, isLoading } = useCategories();
+
+    if (isLoading) {
+        return (
+            <div className="flex flex-col gap-4">
+                <Skeleton className="rounded-lg w-1/3 h-6" />
+                <div className="flex flex-col gap-2">
+                    {[1, 2, 3, 4].map((i) => (
+                        <Skeleton key={i} className="rounded-md w-full h-10" />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    const categories = data?.data?.items || [];
+
     return (
         <div className="flex flex-col gap-6">
             <h3 className="text-lg font-semibold text-brand-primary">
-                Jelajahi topik-topik
+                Jelajahi Topik
             </h3>
-            <div className="flex flex-col gap-2 items-start">
+            <div className="flex flex-col gap-2 items-start w-full">
                 <Button
-                    className="w-full justify-start bg-brand-primary text-white font-medium px-4 py-2 rounded-md h-auto"
+                    variant={selectedCategory === "" ? "solid" : "light"}
+                    color={selectedCategory === "" ? "primary" : "default"}
+                    className={`w-full justify-start font-medium px-4 py-2 rounded-md h-auto ${selectedCategory === "" ? "text-white" : "text-brand-text-secondary"
+                        }`}
+                    onClick={() => onSelectCategory("")}
                 >
-                    Lihat semua
+                    Semua Kategori
                 </Button>
-                {CATEGORIES.map((category) => (
-                    <Link
-                        key={category.name}
-                        href={category.href}
-                        className="w-full px-4 py-2 text-sm font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-brand-primary-subtle rounded-md transition-colors"
+
+                {categories.map((category) => (
+                    <Button
+                        key={category.id}
+                        variant={selectedCategory === category.name ? "solid" : "light"}
+                        color={selectedCategory === category.name ? "primary" : "default"}
+                        className={`w-full justify-start font-medium px-4 py-2 rounded-md h-auto ${selectedCategory === category.name ? "text-white" : "text-brand-text-secondary"
+                            }`}
+                        onClick={() => onSelectCategory(category.name)}
                     >
                         {category.name}
-                    </Link>
+                    </Button>
                 ))}
             </div>
         </div>

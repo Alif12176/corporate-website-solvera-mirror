@@ -2,12 +2,12 @@
 
 import React from "react";
 import Image from "next/image";
-import { m } from "framer-motion";
+// Hapus import framer-motion karena ganti pakai CSS
+// import { m } from "framer-motion"; 
 
 const LogoCard = ({ logo, index }: { logo: string; index: number }) => (
   <div
     key={`logo-${index}`}
-    // RESPONSIF: h-16 w-32 (Mobile) -> md:h-24 md:w-48 (Desktop)
     className="shrink-0 h-16 w-32 md:h-24 md:w-48 relative bg-brand-primary-subtle rounded-xl flex items-center justify-center backdrop-blur-sm hover:opacity-60 hover:shadow-md transition-all duration-300 group"
   >
     <Image
@@ -46,8 +46,7 @@ export const ClientLogos = () => {
     "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Pos%20Indonesia%20%28POS%20IND%29.png",
     "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/Solvera/Solvera_Website/Client_Logo/PT%20Polytama%20Propindo.png",
   ];
-
-  // Duplicate for infinite scroll effect
+  // Duplicate for infinite scroll effect (CSS requires seamless duplication)
   const row1 = [...logosRow1, ...logosRow1];
 
   const logosRow2 = [
@@ -105,9 +104,7 @@ export const ClientLogos = () => {
   const row3 = [...logosRow3, ...logosRow3];
 
   return (
-    // RESPONSIF: py-12 (Mobile) -> md:py-20 (Desktop)
     <section className="w-full py-12 md:py-20 bg-white overflow-hidden">
-      {/* RESPONSIF: mb-8 (Mobile) -> mb-16 (Desktop) */}
       <div className="max-w-7xl mx-auto px-6 mb-8 md:mb-16 text-center">
         <h5 className="font-bold text-xl md:text-2xl text-blue-900 mb-2">
           Dipercaya oleh Perusahaan Terdepan
@@ -115,61 +112,34 @@ export const ClientLogos = () => {
         <p className="text-gray-500 text-sm md:text-base">Mitra teknologi yang tumbuh bersama kami</p>
       </div>
 
-      {/* Masking Gradient */}
-      {/* RESPONSIF: gap-4 (Mobile) -> gap-8 (Desktop) */}
-      <div className="relative w-full flex flex-col gap-4 md:gap-8 mask-[linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
+      {/* Masking Gradient agar logo terlihat memudar di kiri kanan */}
+      <div className="relative w-full flex flex-col gap-4 md:gap-8 mask-[linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
 
         {/* Row 1 - Gerak ke Kiri */}
         <div className="flex w-full overflow-hidden">
-          <m.div
-            // RESPONSIF: gap-4 (Mobile) -> md:gap-8 (Desktop)
-            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
-            animate={{ x: "-33.33%" }} // -33.33% cocok dengan duplikasi 3x
-            transition={{
-              duration: 30,
-              ease: "linear",
-              repeat: Infinity,
-            }}
-          >
+          <div className="flex gap-4 md:gap-8 pr-4 md:pr-8 animate-scroll-left pause-on-hover">
             {row1.map((logo, index) => (
-              <LogoCard key={index} logo={logo} index={index} />
+              <LogoCard key={`row1-${index}`} logo={logo} index={index} />
             ))}
-          </m.div>
+          </div>
         </div>
 
         {/* Row 2 - Gerak ke Kanan */}
         <div className="flex w-full overflow-hidden">
-          <m.div
-            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
-            initial={{ x: "-33.33%" }}
-            animate={{ x: "0%" }}
-            transition={{
-              duration: 35,
-              ease: "linear",
-              repeat: Infinity,
-            }}
-          >
+          <div className="flex gap-4 md:gap-8 pr-4 md:pr-8 animate-scroll-right pause-on-hover">
             {row2.map((logo, index) => (
-              <LogoCard key={index} logo={logo} index={index} />
+              <LogoCard key={`row2-${index}`} logo={logo} index={index} />
             ))}
-          </m.div>
+          </div>
         </div>
 
         {/* Row 3 - Gerak ke Kiri */}
         <div className="flex w-full overflow-hidden">
-          <m.div
-            className="flex gap-4 md:gap-8 pr-4 md:pr-8"
-            animate={{ x: "-33.33%" }}
-            transition={{
-              duration: 40,
-              ease: "linear",
-              repeat: Infinity,
-            }}
-          >
+          <div className="flex gap-4 md:gap-8 pr-4 md:pr-8 animate-scroll-left pause-on-hover">
             {row3.map((logo, index) => (
-              <LogoCard key={index} logo={logo} index={index} />
+              <LogoCard key={`row3-${index}`} logo={logo} index={index} />
             ))}
-          </m.div>
+          </div>
         </div>
 
       </div>

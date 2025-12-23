@@ -9,9 +9,18 @@ interface CTA {
 }
 
 export const SectionCTA = ({ cta }: { cta: CTA }) => {
+  // Tambahkan .trim() untuk membuang spasi di awal/akhir URL
+  const cleanImageSrc = cta.cta_image ? cta.cta_image.trim() : '';
+
   return (
     <div className='md:py-28 py-12 md:px-16 px-4 md:flex gap-20 max-w-7xl mx-auto'>
-      <Image src={cta.cta_image} alt='cta' className='h-[400px] w-[600px] object-contain md:hidden' width={400} height={600} />
+      <Image
+        src={cleanImageSrc}
+        alt='cta'
+        className='h-[400px] w-[600px] object-contain md:hidden'
+        width={400}
+        height={600}
+      />
       <div className='space-y-8 md:w-1/2'>
         <div className='space-y-6'>
           <h2 className='text-primary'>{cta.cta_primary_text}</h2>
@@ -22,7 +31,13 @@ export const SectionCTA = ({ cta }: { cta: CTA }) => {
         </div>
       </div>
       <div className='md:w-1/2 hidden md:block'>
-        <Image src={cta.cta_image} alt='cta' className='h-[400px] w-[600px] object-contain' width={400} height={600} />
+        <Image
+          src={cleanImageSrc}
+          alt='cta'
+          className='h-[400px] w-[600px] object-contain'
+          width={400}
+          height={600}
+        />
       </div>
     </div>
   )
