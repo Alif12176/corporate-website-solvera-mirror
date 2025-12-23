@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.0] - 2025-12-23
+
+### Detail Versi 0.20.0
+
+#### ✨ Fitur & Integrasi Baru di `dev` untuk versi 0.20.0
+
+- **Deskripsi:**
+  - **Integrasi Blog API:** Menghubungkan halaman Blog dengan Backend API (menggantikan dummy data).
+  - **React Query Hooks:** Pembuatan custom hooks (`useArticles`, `useCategories`) untuk manajemen state data, filter kategori, dan pagination yang responsif.
+  - **Server-Side SEO:** Implementasi *Dynamic Metadata* pada halaman Detail Blog agar judul dan deskripsi sesuai konten artikel untuk SEO Google.
+
+#### 🚀 Peningkatan Performa & UX di `dev` untuk versi 0.20.0
+
+- **Deskripsi:**
+  - **CSS-Based Animation:** Migrasi animasi *infinite scroll* pada `ClientLogos` dari Framer Motion (Main Thread) ke CSS Keyframes (Compositor Thread/GPU) untuk pengalaman scroll yang mulus.
+  - **Visual Feedback:** Penambahan `nextjs-toploader` (progress bar) untuk navigasi halaman dan *loading overlay* saat filtering data.
+  - **Reading Experience:** Peningkatan *styling* global untuk konten artikel (Typography, Spacing, Blockquote) agar lebih nyaman dibaca dan mendukung format dari Rich Text Editor backend.
+
+#### 🐛 Bug Fix di `dev` untuk versi 0.20.0
+
+- **Deskripsi:**
+  - **Image Handling:** Perbaikan *runtime error* pada Next.js Image akibat URL gambar dari backend yang mengandung spasi (implementasi `.trim()`).
+  - **Metadata:** Memperbarui default metadata (`title`, `description`, `openGraph`) di `layout.tsx` dan `page.tsx` agar sesuai branding Solvera (menghapus "Create Next App").
+  - **Code Quality:** Perbaikan warning ESLint pada *dependency array* `useEffect` dan variabel yang tidak digunakan.
+
 ## [0.19.0] - 2025-12-23
 
 ### Detail Versi 0.19.0

@@ -7,8 +7,8 @@ import { Input } from "@heroui/react";
 export const BlogNewsletter = () => {
     return (
         <section className="bg-background">
-            <div className='container mx-auto py-section-medium-desktop px-page-global'>
-                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+            <div className='container mx-auto py-12 md:py-16 px-page-global'>
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 bg-brand-primary-subtle/30 p-8 md:p-12 rounded-2xl">
                     <div className="flex flex-col gap-4 max-w-[600px]">
                         <h2 className="text-4xl font-semibold text-brand-primary">
                             Siap Optimalkan Bisnis Anda?
