@@ -5,7 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
 ## [0.22.0] - 2025-12-25
 
 ### Detail Versi 0.22.0
@@ -27,7 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Deskripsi:**
   - **Refactor Komponen:** Membersihkan `PromoBanner` dan `MintaDemoHero` dari logika fetching internal. Komponen kini bersifat *pure* (hanya menerima data via props).
   - **Fix TypeScript Error:** Memperbaiki error `implicit any` pada fungsi map dan error modul import pada komponen Hero.
-
+  - **Fix Build Error (ConsultationContent):** Memperbaiki konflik tipe data pada properti `icon` yang menyebabkan gagal build di Vercel. Interface kini diperbarui untuk mendukung `string` (URL dari API) dan `React.ElementType` (Ikon dari dummy data) secara bersamaan.
+  - 
 
 ## [0.21.0] - 2025-12-24
 
