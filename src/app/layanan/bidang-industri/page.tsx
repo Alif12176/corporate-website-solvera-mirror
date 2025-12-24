@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Transformasi tantangan operasional menjadi keunggulan kompetitif dengan layanan konsultasi Solvera.",
 };
 
-export default function Page() {
+export default async function Page() {
   return <BidangIndustriPage />;
 }

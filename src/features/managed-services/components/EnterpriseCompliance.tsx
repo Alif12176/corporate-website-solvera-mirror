@@ -4,6 +4,15 @@ import React from "react";
 import { Card, CardBody } from "@heroui/react";
 import { RiCheckLine } from "react-icons/ri";
 import { m } from "framer-motion";
+import { QuickStepsItem } from "../data/service";
+
+interface EnterpriseComplianceProps {
+  layout: string;
+  heading: string;
+  subheading: string;
+  footer: string;
+  items: QuickStepsItem[];
+}
 
 const COMPLIANCE_DATA = [
   {
@@ -34,7 +43,7 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const EnterpriseCompliance = () => {
+export const EnterpriseCompliance = ({ layout, heading, subheading, footer, items }: EnterpriseComplianceProps) => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -45,7 +54,7 @@ export const EnterpriseCompliance = () => {
             variants={fadeInUp}
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
-            Standar Enterprise & Kepatuhan
+            {heading}
           </m.h2>
           <m.p
             initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -53,13 +62,13 @@ export const EnterpriseCompliance = () => {
             variants={fadeInUp}
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
-            Kami menerapkan standar global untuk menjamin keamanan data dan tata kelola proyek Anda.
+            {subheading}
           </m.p>
         </div>
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {COMPLIANCE_DATA.map((item, idx) => (
+          {items.map((item, idx) => (
             <m.div
               key={idx}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -72,7 +81,7 @@ export const EnterpriseCompliance = () => {
                     {item.title}
                   </h3>
                   <div className="flex flex-col gap-5">
-                    {item.features.map((feature, fIdx) => (
+                    {item.checklist.map((feature, fIdx) => (
                       <div key={fIdx} className="flex items-center gap-4 group">
                         <div className="shrink-0 w-6 h-6 rounded bg-brand-primary-subtle flex items-center justify-center group-hover:bg-brand-primary transition-colors">
                           <RiCheckLine className="text-brand-primary group-hover:text-white transition-colors" strokeWidth={2} />

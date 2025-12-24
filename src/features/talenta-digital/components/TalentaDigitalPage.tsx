@@ -5,13 +5,16 @@ import { Hero } from "../../layout/components/Hero"
 import { Layout } from "./TalentaLayout"
 import { Content } from "./TalentaContent"
 import { WhatsAppFAB } from "@/features/layout/components/WhatsAppFAB"
+import { Service } from "../data/service"
 
-export const TalentaDigitalPage = () => {
+export const TalentaDigitalPage = ({ service }: { service: Service }) => {
+  console.log("service", service)
+
   return (
     <>
-      <Hero image='/images/hero-pelatihan.jpg' title='Akselerasi Bisnis dengan Talenta Digital Unggul' subtitle='Kami membantu Anda membangun dan mengelola tim talenta digital yang kompeten untuk mendukung dan mengakselerasi operasional serta inovasi teknologi bisnis Anda' />
-      <Layout />
-      <Content />
+      <Hero image={service.hero.bg_image} title={service.hero.heading} subtitle={service.hero.tagline} />
+      <Layout tagline={service.focus_section.tagline} heading={service.focus_section.heading} description={service.focus_section.description} items={service.focus_section.items} />
+      <Content heading={service.competency_section.heading} description={service.competency_section.description} footer={service.competency_section.footer} items={service.competency_section.items} />
       <ConsultationCTA />
       <WhatsAppFAB />
     </>
