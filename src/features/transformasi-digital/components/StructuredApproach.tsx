@@ -3,6 +3,16 @@
 import React from "react";
 import { m } from "framer-motion";
 import { RiLightbulbLine, RiRefreshLine, RiHandHeartLine } from "react-icons/ri";
+import { MethodologyItem } from "../data/service";
+import Image from "next/image";
+
+interface StructuredApproachProps {
+  layout: string;
+  heading: string;
+  description: string;
+  footer: string;
+  items: MethodologyItem[];
+}
 
 const APPROACH_DATA = [
   {
@@ -27,7 +37,7 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const StructuredApproach = () => {
+export const StructuredApproach = ({ layout, heading, description, footer, items }: StructuredApproachProps) => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
@@ -38,14 +48,14 @@ export const StructuredApproach = () => {
             variants={fadeInUp}
             className="text-sm font-bold text-foreground uppercase tracking-wider mb-4"
           >
-            Metodologi Kami
+            {footer}
           </m.h4>
           <m.h2
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeInUp} transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
-            Pendekatan Terstruktur untuk Hasil Terukur
+            {heading}
           </m.h2>
           <m.p
             initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -53,13 +63,13 @@ export const StructuredApproach = () => {
             variants={fadeInUp}
             className="text-foreground text-lg max-w-4xl mx-auto leading-relaxed"
           >
-            Kami menerapkan metodologi yang teruji dan transparan, dirancang agar mudah dipahami oleh berbagai jenis bisnis. Spesialis industri kami akan memandu Anda melalui setiap fase, memberikan rekomendasi strategis terbaik untuk memastikan kesuksesan implementasi.
+            {description}
           </m.p>
         </div>
 
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          {APPROACH_DATA.map((item, idx) => (
+          {items.map((item, idx) => (
             <m.div
               key={idx}
               initial="hidden" whileInView="visible" viewport={{ once: true }}
@@ -68,7 +78,12 @@ export const StructuredApproach = () => {
               className="flex flex-col items-center"
             >
               <div className="mb-6 p-4 bg-brand-primary-subtle rounded-full">
-                {item.icon}
+                <Image
+                  src={item.icon}
+                  alt={item.title}
+                  width={38}
+                  height={38}
+                />
               </div>
               <h3 className="text-xl font-bold text-brand-primary mb-4">
                 {item.title}

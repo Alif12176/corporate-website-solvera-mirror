@@ -1,29 +1,16 @@
 "use client";
 
-export const ConsultationProcess = () => {
-    const steps = [
-        {
-            number: "01",
-            title: "Strategy",
-            description: "Strategi ini memberikan panduan komprehensif untuk mengatasi masalah dan mengurangi risiko kesalahan yang mungkin terjadi dalam proses bisnis."
-        },
-        {
-            number: "02",
-            title: "Planning",
-            description: "Implementasi solusi yang efektif memerlukan perencanaan yang cermat untuk memastikan hasil yang optimal dalam konteks bisnis."
-        },
-        {
-            number: "03",
-            title: "Development",
-            description: "Pengembangan sistem dirancang untuk mengatasi tantangan bisnis Anda, dengan kemampuan beradaptasi terhadap perubahan yang cepat dan dinamis."
-        },
-        {
-            number: "04",
-            title: "Quick Launch",
-            description: "Secara konsisten, lakukan pengujian dan luncurkan modul sesuai dengan target yang telah ditetapkan untuk mencapai efisiensi yang lebih baik."
-        }
-    ];
+import { MethodologyItem } from "../data/service";
 
+interface ConsultationProcessProps {
+    layout: string;
+    heading: string;
+    description: string;
+    footer: string;
+    items: MethodologyItem[];
+}
+
+export const ConsultationProcess = ({ layout, heading, description, footer, items }: ConsultationProcessProps) => {
     return (
         <section className="bg-background py-section-large-desktop">
             <div className="container mx-auto px-page-global">
@@ -31,13 +18,13 @@ export const ConsultationProcess = () => {
                     {/* Left Column: Intro */}
                     <div className="lg:w-5/12 lg:sticky lg:top-24 h-fit">
                         <span className="text-body font-semibold text-brand-text-secondary uppercase tracking-wider mb-4 block">
-                            Proses Kami
+                            {footer}
                         </span>
                         <h2 className="text-4xl md:text-h2 font-medium text-brand-primary leading-tight mb-6">
-                            Didesain khusus untuk industri
+                            {heading}
                         </h2>
                         <p className="text-brand-text-secondary text-body-md leading-relaxed">
-                            Strategi memberikan gambaran besar dari alur penyelesaian masalah dan meminimalisir potensi kesalahan
+                            {description}
                         </p>
                     </div>
 
@@ -46,7 +33,7 @@ export const ConsultationProcess = () => {
                         {/* Vertical Line is created by the border-l above */}
 
                         <div className="flex flex-col gap-16">
-                            {steps.map((step, idx) => (
+                            {items.map((step, idx) => (
                                 <div key={idx} className="relative">
                                     {/* Dot Indicator */}
                                     <div className="absolute -left-[41px] top-2 w-5 h-5 rounded-full bg-brand-primary border-4 border-background" />

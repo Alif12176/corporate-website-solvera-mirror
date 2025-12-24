@@ -3,16 +3,17 @@
 import React from "react";
 import { m } from "framer-motion";
 import Image from "next/image";
+import { CompetencySectionItem } from "../data/service";
 
-const skills = [
-  { label: "Strategy & Planning", value: 75 },
-  { label: "Development & Implementation", value: 70 },
-  { label: "Transformasi Digital", value: 80 },
-  { label: "Konsultasi & Knowledge Transfer", value: 85 },
-  { label: "Support & Maintenance", value: 90 },
-];
 
-export const ConsultationCompetency = () => {
+interface ConsultationCompetencyProps {
+  heading: string;
+  description: string;
+  footer: string;
+  items: CompetencySectionItem[];
+}
+
+export const ConsultationCompetency = ({ heading, description, footer, items }: ConsultationCompetencyProps) => {
   return (
     <section className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-page-global">
@@ -46,7 +47,7 @@ export const ConsultationCompetency = () => {
                 transition={{ duration: 0.6 }}
                 className="text-sm font-bold text-brand-text-secondary tracking-widest uppercase mb-2 block"
               >
-                Kompetensi Inti SOLVERA
+                {footer}
               </m.span>
               <m.h2
                 initial={{ opacity: 0, y: 10 }}
@@ -55,7 +56,7 @@ export const ConsultationCompetency = () => {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 className="text-3xl md:text-5xl font-medium text-brand-primary mb-6 leading-tight"
               >
-                Keahlian Terukur di <br /> Setiap Fase Proyek
+                {heading}
               </m.h2>
               <m.p
                 initial={{ opacity: 0 }}
@@ -64,27 +65,25 @@ export const ConsultationCompetency = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-brand-text-secondary text-lg leading-relaxed"
               >
-                Kami memiliki keahlian mendalam di setiap tahap proyek, mulai dari
-                perencanaan strategis hingga dukungan pasca implementasi, untuk
-                memastikan keberhasilan transformasi digital perusahaan Anda.
+                {description}
               </m.p>
             </div>
 
             <div className="space-y-8">
-              {skills.map((skill, index) => (
+              {items.map((item, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-end mb-2">
                     <span className="font-semibold text-brand-text-secondary">
-                      {skill.label}
+                      {item.name}
                     </span>
                     <span className="text-sm font-bold text-brand-text-secondary">
-                      {skill.value}%
+                      {item.percentage}%
                     </span>
                   </div>
                   <div className="w-full bg-brand-border-subtle rounded-full h-3 overflow-hidden">
                     <m.div
                       initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.value}%` }}
+                      whileInView={{ width: `${item.percentage}%` }}
                       viewport={{ once: true }}
                       transition={{
                         duration: 1.0,

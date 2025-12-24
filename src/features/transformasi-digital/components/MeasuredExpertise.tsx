@@ -3,6 +3,14 @@
 import React from "react";
 import { m } from "framer-motion";
 import Image from "next/image";
+import { CompetencySectionItem } from "../data/service";
+
+interface MeasuredExpertiseProps {
+  heading: string;
+  description: string;
+  footer: string;
+  items: CompetencySectionItem[];
+}
 
 const EXPERTISE_DATA = [
   { label: "Strategy & Planning", value: 60 },
@@ -12,7 +20,7 @@ const EXPERTISE_DATA = [
   { label: "Training & Certification", value: 55 },
 ];
 
-export const MeasuredExpertise = () => {
+export const MeasuredExpertise = ({ heading, description, footer, items }: MeasuredExpertiseProps) => {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
@@ -27,7 +35,7 @@ export const MeasuredExpertise = () => {
           >
             <div className="relative w-full max-w-lg h-auto overflow-hidden">
               <Image
-                src="/images/expertise-illustration.svg"
+                src="/vector/expertise-illustration.svg"
                 alt="Keahlian Terukur Solvera"
                 width={600}
                 height={600}
@@ -47,7 +55,7 @@ export const MeasuredExpertise = () => {
                 transition={{ duration: 0.6 }}
                 className="text-sm font-bold text-foreground uppercase tracking-wider mb-2 block"
               >
-                Kompetensi Inti SOLVERA
+                {footer}
               </m.span>
               <m.h2
                 initial={{ opacity: 0, y: 10 }}
@@ -56,8 +64,7 @@ export const MeasuredExpertise = () => {
                 transition={{ delay: 0.1, duration: 0.6 }}
                 className="text-4xl md:text-5xl font-bold text-brand-primary mb-6 leading-tight"
               >
-                Keahlian Terukur di <br className="hidden md:block" /> Setiap
-                Fase Proyek
+                {heading}
               </m.h2>
               <m.p
                 initial={{ opacity: 0 }}
@@ -66,28 +73,25 @@ export const MeasuredExpertise = () => {
                 transition={{ delay: 0.2, duration: 0.6 }}
                 className="text-foreground text-lg leading-relaxed"
               >
-                Kami memiliki keahlian mendalam di setiap tahap proyek, mulai
-                dari perencanaan strategis hingga dukungan pasca implementasi,
-                untuk memastikan keberhasilan transformasi digital perusahaan
-                Anda.
+                {description}
               </m.p>
             </div>
 
             <div className="space-y-8">
-              {EXPERTISE_DATA.map((item, index) => (
+              {items.map((item, index) => (
                 <div key={index}>
                   <div className="flex justify-between items-end mb-2">
                     <span className="font-semibold text-foreground">
-                      {item.label}
+                      {item.name}
                     </span>
                     <span className="text-sm font-bold text-foreground">
-                      {item.value}%
+                      {item.percentage}%
                     </span>
                   </div>
                   <div className="w-full bg-brand-border-subtle rounded-full h-3 overflow-hidden">
                     <m.div
                       initial={{ width: 0 }}
-                      whileInView={{ width: `${item.value}%` }}
+                      whileInView={{ width: `${item.percentage}%` }}
                       viewport={{ once: true }}
                       transition={{
                         duration: 1.0,
