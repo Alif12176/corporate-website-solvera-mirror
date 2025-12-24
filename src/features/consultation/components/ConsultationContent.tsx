@@ -3,18 +3,23 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import { RiLayoutGridFill, RiAwardFill, RiGroupFill, RiShieldCheckFill } from "react-icons/ri";
+import React from "react";
+
+interface FeatureItem {
+    icon: string | React.ElementType;
+    title: string;
+    description: string;
+}
+
+interface FeatureSection {
+    description: string;
+    heading: string;
+    tagline: string;
+    items: FeatureItem[];
+}
 
 interface Content {
-    features: {
-        description: string;
-        heading: string;
-        tagline: string;
-        items: {
-            icon: string;
-            title: string;
-            description: string;
-        }[];
-    };
+    features: FeatureSection;
 }
 
 const dummyFeatures = {
@@ -70,28 +75,37 @@ export const ConsultationContent = ({ features = dummyFeatures }: Content) => {
 
                     {/* Right Column: Grid Cards */}
                     <div className="lg:w-[800px] grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {features.items.map((feature, idx) => (
-                            <div key={idx} className="bg-brand-primary-subtle p-8 rounded-xl flex flex-col gap-4 hover:shadow-lg transition-shadow">
-                                <div className="w-12 h-12 flex items-center justify-center">
-                                    {typeof feature.icon === "string" && feature.icon.startsWith("http") ? (
-                                        <Image
-                                            src={feature.icon}
-                                            alt={feature.title}
-                                            width={48}
-                                            height={48}
-                                        />
-                                    ) : (
-                                        <feature.icon className="text-4xl text-foreground" />
-                                    )}
+                        {features.items.map((feature, idx) => {
+                            const IconToRender = feature.icon;
+                            const isStringIcon = typeof IconToRender === "string";
+
+                            return (
+                                <div key={idx} className="bg-brand-primary-subtle p-8 rounded-xl flex flex-col gap-4 hover:shadow-lg transition-shadow">
+                                    <div className="w-12 h-12 flex items-center justify-center">
+                                        {isStringIcon ? (
+                                            <div className="relative w-12 h-12">
+                                                <Image
+                                                    src={IconToRender as string}
+                                                    alt={feature.title}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
+                                        ) : (
+                                            <div className="text-4xl text-foreground">
+                                                {React.createElement(IconToRender as React.ElementType)}
+                                            </div>
+                                        )}
+                                    </div>
+                                    <h3 className="text-h6 font-medium text-brand-text-secondary">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-body text-brand-text-secondary leading-relaxed">
+                                        {feature.description}
+                                    </p>
                                 </div>
-                                <h3 className="text-h6 font-medium text-brand-text-secondary">
-                                    {feature.title}
-                                </h3>
-                                <p className="text-body text-brand-text-secondary leading-relaxed">
-                                    {feature.description}
-                                </p>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             </div>
