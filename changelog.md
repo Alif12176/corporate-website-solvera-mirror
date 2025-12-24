@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.20.1] - 2025-12-24
+
+### Detail Versi 0.20.1
+
+#### 🐛 Bug Fix di `dev` untuk versi 0.20.1
+
+- **Deskripsi:**
+  - **Null Safety:** Perbaikan *runtime error* (blank page) pada komponen `SolusiAdvantages` dengan menambahkan penanganan kondisi ketika data icon dari API bernilai `null`.
+  - **Routing & Navigation:** Perbaikan link pada komponen `SolusiRelatedIndustries` agar mengarah ke halaman detail internal website (`/solusi/[slug]`) dan bukan ke URL API mentah.
+  - **Type Definitions:** Update interface `Industry` dengan menambahkan properti `slug` untuk mendukung *dynamic routing*.
+
 ## [0.20.0] - 2025-12-23
 
 ### Detail Versi 0.20.0

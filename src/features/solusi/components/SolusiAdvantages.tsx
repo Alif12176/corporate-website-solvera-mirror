@@ -38,8 +38,12 @@ const IconMap: { [key: string]: React.ElementType } = {
 export const SolusiAdvantages = ({ core_solution }: Props) => {
 
     // Helper to render icon
-    const renderIcon = (iconName: string, title: string) => {
-        // Check if it's a URL
+    const renderIcon = (iconName: string | null, title: string) => {
+
+        if (!iconName) {
+            return <Activity size={48} className="text-blue-700" strokeWidth={1.5} />;
+        }
+
         if (iconName.startsWith('/') || iconName.startsWith('http')) {
             return (
                 <Image
@@ -52,8 +56,6 @@ export const SolusiAdvantages = ({ core_solution }: Props) => {
             );
         }
 
-        // Check if it's in our map - Default to Activity if not found (or handle gracefully)
-        // Trying to match partially if exact match fails
         let IconComponent = IconMap[iconName];
         if (!IconComponent) {
             const key = Object.keys(IconMap).find(k => iconName.toLowerCase().includes(k.toLowerCase()));
