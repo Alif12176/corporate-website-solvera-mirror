@@ -7,19 +7,20 @@ import { Hero } from "../../layout/components/Hero";
 import { Content } from "./PelatihanContent";
 import { ConsultationCTA } from "../../layout/components/ConsultationCTA";
 import { WhatsAppFAB } from "../../layout/components/WhatsAppFAB";
+import type { Service } from "../data/service";
 
-export const PelatihanPage = () => {
+export const PelatihanPage = ({ service }: { service: Service }) => {
   return (
     <main>
       <Hero
-        image="/images/hero-pelatihan.jpg"
-        title="Pelatihan & Sertifikasi Talenta Digital"
-        subtitle="Kami menyediakan program pelatihan dan sertifikasi yang dirancang untuk meningkatkan kompetensi tim Anda. Layanan ini memastikan tenaga profesional Anda siap mengadopsi dan mengoperasionalkan perkembangan teknologi terbaru secara efektif"
+        image={service.hero.bg_image}
+        title={service.hero.heading}
+        subtitle={service.hero.tagline}
       />
       <div className="max-w-full mx-auto">
-        <Stats />
-        <Layout />
-        <Content />
+        <Stats tagline={service.focus_section.tagline} heading={service.focus_section.heading} description={service.focus_section.description} items={service.focus_section.items} />
+        <Layout layout={service.methodology_section.layout} heading={service.methodology_section.heading} description={service.methodology_section.description} footer={service.methodology_section.footer} items={service.methodology_section.items} />
+        <Content heading={service.competency_section.heading} description={service.competency_section.description} footer={service.competency_section.footer} items={service.competency_section.items} />
         <ConsultationCTA />
         <WhatsAppFAB />
       </div>

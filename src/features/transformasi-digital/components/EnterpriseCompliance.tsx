@@ -3,6 +3,16 @@
 import React from "react";
 import { m } from "framer-motion";
 import { RiCheckLine } from "react-icons/ri";
+import { QuickStepsItem } from "../data/service";
+
+
+interface EnterpriseComplianceProps {
+  layout: string;
+  heading: string;
+  subheading: string;
+  footer: string;
+  items: QuickStepsItem[];
+}
 
 const STEPS = [
   {
@@ -32,7 +42,7 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0 },
 };
 
-export const EnterpriseCompliance = () => {
+export const EnterpriseCompliance = ({ layout, heading, subheading, footer, items }: EnterpriseComplianceProps) => {
   return (
     <section className="py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
@@ -45,7 +55,7 @@ export const EnterpriseCompliance = () => {
             variants={fadeInUp}
             className="text-4xl md:text-5xl font-bold text-brand-primary mb-6"
           >
-            Standar Enterprise & Kepatuhan
+            {heading}
           </m.h2>
           <m.p
             initial="hidden"
@@ -55,7 +65,7 @@ export const EnterpriseCompliance = () => {
             variants={fadeInUp}
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
-            Kami menerapkan standar global untuk menjamin keamanan data dan tata kelola proyek Anda.
+            {subheading}
           </m.p>
         </div>
 
@@ -65,8 +75,8 @@ export const EnterpriseCompliance = () => {
           <div className="hidden md:block absolute top-10 left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-brand-primary z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-            {STEPS.map((item, idx) => {
-              const isCheck = item.step === "check";
+            {items.map((item, idx) => {
+              const isCheck = item.type === "check";
               return (
                 <m.div
                   key={idx}
@@ -91,7 +101,7 @@ export const EnterpriseCompliance = () => {
                     {isCheck ? (
                       <RiCheckLine className="text-3xl md:text-4xl" strokeWidth={2} />
                     ) : (
-                      <span className="text-2xl md:text-3xl font-bold">{item.step}</span>
+                      <span className="text-2xl md:text-3xl font-bold">{item.label}</span>
                     )}
                   </div>
 
@@ -104,7 +114,7 @@ export const EnterpriseCompliance = () => {
                   </p>
 
                   {/* Mobile Connector (Mobile) */}
-                  {idx !== STEPS.length - 1 && (
+                  {idx !== items.length - 1 && (
                     <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-brand-primary my-4" />
                   )}
                 </m.div>
@@ -124,7 +134,7 @@ export const EnterpriseCompliance = () => {
         >
           <p className="text-foreground text-lg md:text-xl">
             <span className="font-bold text-brand-primary">Hasil Akhir: </span>
-            Efisiensi operasional tanpa silo data antar departemen.
+            {footer}
           </p>
         </m.div>
       </div>
