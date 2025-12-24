@@ -6,16 +6,7 @@ import "./globals.css";
 import { Footer } from "@/features/layout/components/Footer";
 import { domAnimation, LazyMotion } from "framer-motion";
 import NextTopLoader from 'nextjs-toploader';
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+import { getPromoServer } from "@/features/layout/api/getPromoServer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -37,11 +28,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const promoData = await getPromoServer();
+
   return (
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`} suppressHydrationWarning={true}>
@@ -58,7 +52,7 @@ export default function RootLayout({
               speed={200}
               shadow="0 0 10px #1E41C6,0 0 5px #1E41C6"
             />
-            <Navbar />
+            <Navbar promoData={promoData} />
             {children}
             <Footer />
           </Providers>
