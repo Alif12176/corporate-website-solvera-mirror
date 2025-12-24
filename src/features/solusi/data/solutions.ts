@@ -21,6 +21,7 @@ export interface CoreValue {
 
 export interface Industry {
     id: string;
+    slug: string;
     name: string;
     icon: string;
     description: string;
