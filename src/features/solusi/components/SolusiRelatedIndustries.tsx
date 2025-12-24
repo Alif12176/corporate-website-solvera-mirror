@@ -109,7 +109,7 @@ export const SolusiRelatedIndustries = ({ industry_section }: Props) => {
                                     </p>
 
                                     <Link
-                                        href="#"
+                                        href={`/products/${industry.slug}`}
                                         className="inline-flex items-center text-blue-700 font-semibold hover:text-blue-800 transition-colors mt-2"
                                     >
                                         Pelajari Selengkapnya
