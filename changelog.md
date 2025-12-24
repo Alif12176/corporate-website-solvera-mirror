@@ -5,6 +5,39 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [0.22.0] - 2025-12-25
+
+### Detail Versi 0.22.0
+
+#### 🚀 Peningkatan Performa & Arsitektur di `dev` untuk versi 0.22.0
+
+- **Deskripsi:**
+  - **Server-Side Fetching (RSC):** Memindahkan logika pengambilan data *Promo Banner* dari Client-Side (`useEffect`) ke Server-Side (`layout.tsx`). Hal ini menghilangkan *Layout Shift* (tampilan bergeser/lag) saat halaman pertama kali dimuat.
+  - **Next.js Proxy (Rewrites):** Mengonfigurasi `next.config.ts` untuk mem-proxy request API melalui server Next.js. Ini secara efektif menyelesaikan masalah **CORS (Cross-Origin Resource Sharing)** yang memblokir request browser ke backend.
+
+#### ✨ Fitur & Integrasi Baru di `dev` untuk versi 0.22.0
+
+- **Deskripsi:**
+  - **Dynamic Minta Demo Hero:** Halaman "Minta Demo" kini terintegrasi dengan API Promo Marketing. Konten (Judul, Subjudul, Fitur) akan berubah dinamis berdasarkan status promo aktif di backend, dengan *fallback* ke konten default jika promo non-aktif.
+  - **Type Safety:** Penambahan definisi tipe TypeScript (`PromoData`, `PromoBadge`) yang ketat untuk memastikan integritas data antar komponen.
+
+#### 🐛 Bug Fix & Refactor di `dev` untuk versi 0.22.0
+
+- **Deskripsi:**
+  - **Refactor Komponen:** Membersihkan `PromoBanner` dan `MintaDemoHero` dari logika fetching internal. Komponen kini bersifat *pure* (hanya menerima data via props).
+  - **Fix TypeScript Error:** Memperbaiki error `implicit any` pada fungsi map dan error modul import pada komponen Hero.
+
+
+## [0.21.0] - 2025-12-24
+
+### Detail Versi 0.21.0
+
+#### ✨ Fitur & Integrasi Baru di `dev` untuk versi 0.21.0
+
+- **Deskripsi:**
+  - **Integrasi Service API:** Menghubungkan halaman Service dengan Backend API (menggantikan dummy data).
+
 ## [0.20.1] - 2025-12-24
 
 ### Detail Versi 0.20.1

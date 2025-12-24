@@ -2,6 +2,15 @@
 
 import { m } from "framer-motion";
 import { Users, ArrowDownUp } from "lucide-react";
+import { FocusSectionItem } from "../data/service";
+import Image from "next/image";
+
+interface ManagedServicesProps {
+  description: string;
+  heading: string;
+  items: FocusSectionItem[];
+  tagline: string;
+}
 
 const services = [
   {
@@ -18,7 +27,12 @@ const services = [
   },
 ];
 
-export default function ManagedServices() {
+export default function ManagedServices({
+  description,
+  heading,
+  items,
+  tagline,
+}: ManagedServicesProps) {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +44,7 @@ export default function ManagedServices() {
             transition={{ duration: 0.8 }}
             className="text-sm font-bold text-foreground tracking-wide uppercase mb-2 block"
           >
-            Keahlian Tersedia, Kualitas Terjamin
+            {tagline}
           </m.span>
 
           <m.h2
@@ -40,7 +54,7 @@ export default function ManagedServices() {
             transition={{ delay: 0.2, duration: 0.8 }}
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
-            Solvera Managed Service
+            {heading}
           </m.h2>
 
           <m.p
@@ -50,15 +64,12 @@ export default function ManagedServices() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-foreground text-lg leading-relaxed max-w-3xl mx-auto"
           >
-            Optimalkan efisiensi biaya dan waktu Anda tanpa mengorbankan
-            kualitas. Fokus pada bisnis inti Anda sementara tim profesional kami
-            mengelola operasional, pemeliharaan, dan optimalisasi infrastruktur
-            IT Anda secara menyeluruh.
+            {description}
           </m.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
+          {items.map((item, index) => (
             <m.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -71,14 +82,14 @@ export default function ManagedServices() {
               }}
               className="bg-brand-primary-subtle rounded-xl p-10 flex flex-col items-start text-left hover:shadow-md transition-shadow duration-300"
             >
-              <div className="bg-transparent mb-6">{service.icon}</div>
+              <Image src={item.icon} alt={item.title} width={50} height={50} className="mb-6" />
 
               <h3 className="text-xl font-bold text-gray-900 mb-4">
-                {service.title}
+                {item.title}
               </h3>
 
               <p className="text-foreground leading-relaxed text-sm md:text-base">
-                {service.description}
+                {item.description}
               </p>
             </m.div>
           ))}

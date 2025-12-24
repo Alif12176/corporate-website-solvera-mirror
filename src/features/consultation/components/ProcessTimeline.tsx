@@ -3,28 +3,37 @@
 import React from "react";
 import { m } from "framer-motion";
 import { RiCheckLine } from "react-icons/ri";
+import { QuickStepsItem } from "../data/service";
 
-const STEPS = [
-  {
-    title: "Konsultasi Kilat",
-    description: "Analisis kebutuhan utama bisnis Anda (1 Hari).",
-  },
-  {
-    title: "IT Blueprint Design",
-    description: "Instalasi modul ERP/POS siap pakai (3-5 Hari).",
-  },
-  {
-    title: "System Integration",
-    description: "Pelatihan staf dan pendampingan teknis penuh saat beroperasi.",
-  },
-];
+interface ProcessTimelineProps {
+  layout: string;
+  heading: string;
+  subheading: string;
+  footer: string;
+  items: QuickStepsItem[];
+}
+
+// const STEPS = [
+//   {
+//     title: "Konsultasi Kilat",
+//     description: "Analisis kebutuhan utama bisnis Anda (1 Hari).",
+//   },
+//   {
+//     title: "IT Blueprint Design",
+//     description: "Instalasi modul ERP/POS siap pakai (3-5 Hari).",
+//   },
+//   {
+//     title: "System Integration",
+//     description: "Pelatihan staf dan pendampingan teknis penuh saat beroperasi.",
+//   },
+// ];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-export const ProcessTimeline = () => {
+export const ProcessTimeline = ({ layout, heading, subheading, footer, items }: ProcessTimelineProps) => {
   return (
     <section className="py-20 bg-background overflow-hidden">
       <div className="container mx-auto px-6">
@@ -37,7 +46,7 @@ export const ProcessTimeline = () => {
             variants={fadeInUp}
             className="text-3xl md:text-5xl font-bold text-brand-primary mb-6"
           >
-            Akselerasi Digital: Go-Live dalam Hitungan Hari
+            {heading}
           </m.h2>
           <m.p
             initial="hidden"
@@ -47,7 +56,7 @@ export const ProcessTimeline = () => {
             variants={fadeInUp}
             className="text-foreground text-lg max-w-3xl mx-auto"
           >
-            Proses implementasi yang dirancang untuk UKM: cepat, fokus pada solusi siap pakai, dan tanpa birokrasi.
+            {subheading}
           </m.p>
         </div>
 
@@ -57,7 +66,7 @@ export const ProcessTimeline = () => {
           <div className="hidden md:block absolute top-12 left-[15%] right-[15%] h-0.5 border-t-2 border-dashed border-blue-600 z-0" />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
-            {STEPS.map((step, idx) => (
+            {items.map((step, idx) => (
               <m.div
                 key={idx}
                 initial="hidden"
@@ -81,7 +90,7 @@ export const ProcessTimeline = () => {
                 </p>
 
                 {/* Mobile Connector (Mobile Only) */}
-                {idx !== STEPS.length - 1 && (
+                {idx !== items.length - 1 && (
                   <div className="md:hidden w-0.5 h-12 border-l-2 border-dashed border-brand-primary my-4" />
                 )}
               </m.div>

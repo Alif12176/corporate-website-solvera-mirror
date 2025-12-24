@@ -1,5 +1,7 @@
+import { getTransformasiDigitalBySlug } from "@/features/transformasi-digital/api/transformasi-digital";
 import { TransformasiDigitalPage } from "@/features/transformasi-digital/components/TransformasiDigitalPage";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Layanan Transformasi Digital - Solvera.id",
@@ -12,6 +14,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return <TransformasiDigitalPage />;
+export default async function Page() {
+  const data = await getTransformasiDigitalBySlug("transformasi-digital");
+
+  if (!data) {
+    return notFound();
+  }
+
+  return <TransformasiDigitalPage service={data} />;
 }

@@ -3,12 +3,25 @@
 import React from "react";
 import { Input, Button, Select, SelectItem, Checkbox, Textarea } from "@heroui/react";
 import { FaWhatsapp } from "react-icons/fa6"; // Assuming fa6 is available
+import Image from "next/image";
+import NextLink from "next/link";
 
 export const MintaDemoForm = () => {
     return (
         <div className="w-full h-full flex flex-col justify-center p-6 lg:p-12 bg-white">
             <div className="max-w-xl mx-auto w-full">
-                <h1 className="text-3xl lg:text-4xl font-bold text-[#1E41C6] mb-8 text-center lg:text-left">
+                <div className="flex justify-center mb-8">
+                    <NextLink href="/">
+                        <Image
+                            src="/icons/solvera-logo-text.svg"
+                            alt="Solvera Logo"
+                            width={179}
+                            height={56}
+                            priority
+                        />
+                    </NextLink>
+                </div>
+                <h1 className="text-3xl lg:text-4xl font-bold text-[#1E41C6] mb-8 text-center">
                     Minta Demo Gratis
                 </h1>
 
@@ -138,6 +151,7 @@ export const MintaDemoForm = () => {
                             size="lg"
                             className="bg-[#C0CAF2] text-brand-text-primary font-medium"
                             startContent={<FaWhatsapp className="text-xl" />}
+                            onClick={() => window.open("https://api.whatsapp.com/send/?phone=6281390009640&text=Saya%20ingin%20meningkatkan%20performa%20bisnis.", "_blank")}
                         >
                             Tanyakan Langsung
                         </Button>

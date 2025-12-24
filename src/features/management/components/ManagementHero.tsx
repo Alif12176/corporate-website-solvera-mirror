@@ -3,13 +3,19 @@
 import { Button } from "@heroui/react";
 import Image from "next/image";
 
-export const ManagementHero = () => {
+interface ManagementHeroProps {
+    heading: string;
+    tagline: string;
+    bg_image: string;
+}
+
+export const ManagementHero = ({ heading, tagline, bg_image }: ManagementHeroProps) => {
     return (
         <section className="relative w-full h-[800px] md:h-[700px] lg:h-screen flex items-center justify-center overflow-hidden">
             {/* Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/img_group3.webp"
+                    src={bg_image}
                     alt="Manajemen Bisnis Hero"
                     fill
                     className="object-cover"
@@ -21,10 +27,10 @@ export const ManagementHero = () => {
             {/* Content */}
             <div className="relative z-20 container mx-auto px-page-global text-center flex flex-col items-center gap-6 max-w-[900px]">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-white leading-tight">
-                    Manajemen Bisnis & Optimalisasi Proses
+                    {heading}
                 </h1>
                 <p className="text-gray-200 text-body-md md:text-lg max-w-[800px]">
-                    Optimalkan pengelolaan bisnis Anda dengan sistem kustom dari Solvera. Dengan manajemen terstruktur, efisiensi operasional meningkat, mempercepat analisis data untuk pengambilan keputusan strategis yang mendukung keberlanjutan bisnis.
+                    {tagline}
                 </p>
                 <Button
                     color="primary"
