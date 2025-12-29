@@ -1,7 +1,7 @@
 // src/features/blog/api/blog.ts
 import { BlogFilters, BlogResponse, CategoryResponse, SingleBlogResponse } from "../types";
 
-const BASE_URL = "https://solvera-backend-deploy-api.vercel.app/api/v1";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL + "api/v1";
 
 // 1. Get List Articles (Client Side Fetching via React Query)
 export async function getArticles(filters: BlogFilters, signal?: AbortSignal): Promise<BlogResponse> {
