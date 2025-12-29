@@ -6,21 +6,21 @@ import { AboutUsHeader } from './AboutUsHeader'
 import { AboutUsStat } from './AboutUsStat'
 // import { AboutUsContact } from './AboutUsContact'
 import { ClientLogos } from "@/features/layout/components/ClientLogos";
-import { AboutUsTim } from './AboutUsTim'
+// import { AboutUsTim } from './AboutUsTim'
 import { ConsultationCTA } from '@/features/layout/components/ConsultationCTA'
 import { WhatsAppFAB } from '@/features/layout/components/WhatsAppFAB'
 
 export const AboutUsPage = () => {
   return (
     <div>
-        <Hero image='/images/hero_product.webp' title='Mitra Strategis Anda Dalam Transformasi Digital' subtitle='Solvera Indonesia adalah perusahaan inovatif di bidang teknologi informasi. Kami adalah mitra strategis Anda dalam mengarungi era digital, menyediakan solusi teknologi inovatif dan konsultasi ahli untuk pertumbuhan bisnis yang berkelanjutan' action={<Button color='primary' radius='normal'>Hubungi Kami</Button>} />
-        <VisionMission />
-        <AboutUsHeader />
-        <AboutUsStat />
-        <ClientLogos />
-        <AboutUsTim />
-        <ConsultationCTA />
-        <WhatsAppFAB />
+      <Hero image='/images/hero_product.webp' title='Mitra Strategis Anda Dalam Transformasi Digital' subtitle='Solvera Indonesia adalah perusahaan inovatif di bidang teknologi informasi. Kami adalah mitra strategis Anda dalam mengarungi era digital, menyediakan solusi teknologi inovatif dan konsultasi ahli untuk pertumbuhan bisnis yang berkelanjutan' action={<Button color='primary' radius='normal'>Hubungi Kami</Button>} />
+      <VisionMission />
+      <AboutUsHeader />
+      <AboutUsStat />
+      <ClientLogos />
+      {/* <AboutUsTim /> */}
+      <ConsultationCTA />
+      <WhatsAppFAB />
     </div>
   )
 }
