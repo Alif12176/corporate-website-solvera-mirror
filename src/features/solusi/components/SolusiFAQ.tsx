@@ -41,6 +41,10 @@ export const SolusiFAQ = ({ faqs }: Props) => {
                         Pertanyaan yang Sering Diajukan
                     </p>
                     <Button
+                        as="a"
+                        href="https://wa.me/6281390009640"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         color="primary"
                         radius="normal"
                         className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800"

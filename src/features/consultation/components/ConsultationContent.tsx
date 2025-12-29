@@ -22,6 +22,8 @@ interface Content {
     features: FeatureSection;
 }
 
+const whatsappUrl = "https://api.whatsapp.com/send/?phone=6281390009640&text=Saya%20ingin%20meningkatkan%20performa%20bisnis.";
+
 const dummyFeatures = {
     tagline: "Pendekatan Konsultatif Kami",
     heading: "Fokus Pada Solusi Bernilai Tinggi",
@@ -67,7 +69,16 @@ export const ConsultationContent = ({ features = dummyFeatures }: Content) => {
                             {features.description}
                         </p>
                         <div className="pt-4">
-                            <Button color="primary" size="lg" radius="sm" className="font-semibold">
+                            <Button
+                                as="a"
+                                href={whatsappUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                color="primary"
+                                size="lg"
+                                radius="sm"
+                                className="font-semibold"
+                            >
                                 Konsultasi Sekarang
                             </Button>
                         </div>

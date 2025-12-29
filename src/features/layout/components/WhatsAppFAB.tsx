@@ -8,6 +8,8 @@ import { m, AnimatePresence } from "framer-motion";
 export const WhatsAppFAB = () => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const whatsappUrl = "https://api.whatsapp.com/send/?phone=6281390009640&text=Saya%20ingin%20meningkatkan%20performa%20bisnis.";
+
   return (
     <div
       className="fixed bottom-8 right-8 z-9999 flex items-center justify-end"
@@ -24,8 +26,9 @@ export const WhatsAppFAB = () => {
       >
         <Button
           as="a"
-          href="https://wa.me/62xxxxxxxx" // Ganti dengan nomor asli
+          href={whatsappUrl}
           target="_blank"
+          rel="noopener noreferrer"
           variant="flat"
           className="h-[64px] min-w-[64px] border-none bg-transparent p-0 text-white"
           disableRipple
