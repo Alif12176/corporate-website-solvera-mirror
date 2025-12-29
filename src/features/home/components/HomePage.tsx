@@ -22,7 +22,7 @@ const HomePage = () => {
       <AboutUsStat />
       <BusinessFocus />
       <Solutions />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <ContactSection />
       <ConsultationCTA />
       <WhatsAppFAB />
