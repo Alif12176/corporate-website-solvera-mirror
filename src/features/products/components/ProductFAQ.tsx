@@ -35,7 +35,7 @@ export const ProductFAQ = ({ faqs }: Props) => {
           <div>
             <Button
               as="a"
-              href="https://wa.me/62xxxxxxxx" // Ganti dengan nomor asli
+              href="https://wa.me/6281390009640"
               target="_blank"
               color="primary"
               radius="normal"

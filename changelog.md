@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.1] - 2025-12-29
+
+### Detail Versi 0.22.1
+
+#### ✨ Fitur & Peningkatan UX pada Form di `dev` untuk versi 0.22.1
+
+- **Deskripsi:**
+  - **Form Validation & Security:** Implementasi **Google ReCAPTCHA v2** dan logika validasi *real-time* pada halaman `ContactForm` dan `MintaDemoForm`. Tombol submit kini otomatis *disabled* hingga seluruh field wajib dan Captcha terisi valid.
+  - **WhatsApp Integration:** Mengaktifkan tombol "Tanyakan Langsung" dengan *direct link* ke WhatsApp API (`wa.me`) untuk mempermudah user memulai percakapan instan.
+  - **Custom Feedback UI:** Menggantikan penggunaan `window.alert` dengan **HeroUI Modal** untuk notifikasi status pengiriman (Sukses/Gagal) yang lebih konsisten dengan desain sistem.
+  - **Improved Input Handling:** Menambahkan validasi format URL pada field Website dan Regex email yang lebih ketat.
+
+#### 🐛 Bug Fix & Styling di `dev` untuk versi 0.22.1
+
+- **Deskripsi:**
+  - **Checkbox Alignment:** Memperbaiki isu layout pada *Checkbox Syarat & Ketentuan* yang tidak rata tengah (*center-aligned*) dengan teks dan link, serta memastikan link dapat diklik tanpa memicu checkbox.
+  - **Code Quality:** Memperbaiki error linting `no-explicit-any` pada *catch block* fetch request dan menghapus penggunaan reserved keyword (`new`) yang menyebabkan build error.
+  - **Loading State:** Menambahkan indikator loading pada tombol submit untuk mencegah *double-submit*.
+
 ## [0.22.0] - 2025-12-25
 
 ### Detail Versi 0.22.0
