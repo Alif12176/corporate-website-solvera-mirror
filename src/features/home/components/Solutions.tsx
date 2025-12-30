@@ -12,32 +12,43 @@ import {
   GraduationCap,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const INDUSTRI_DATA = [
   {
     id: 1,
     title: "Logistic dan Transportasi",
     desc: "Optimalkan rute dalam sistem ERP terintegrasi untuk meningkatkan efisiensi operasional dan pengiriman.",
+    image: "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/SolveraWeb/Assets/Homepage/Logistic%20%26%20Tansportasi.png",
+    href: "/products/logistic-dan-transportasi"
   },
   {
     id: 2,
     title: "Industri dan Manufaktur",
     desc: "Meningkatkan efisiensi produksi, akurasi perencanaan, pengendalian persediaan, hingga distribusi.",
+    image: "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/SolveraWeb/Assets/Homepage/Industri%20%26%20Manufaktur.png",
+    href: "/products/industri-dan-manufaktur"
   },
   {
     id: 3,
     title: "Jasa & Layanan Profesional",
     desc: "Meningkatkan efisiensi operasional, mempercepat layanan, dan mengelola proyek dengan lebih baik.",
+    image: "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/SolveraWeb/Assets/Homepage/Jasa%20%26%20Layanan%20Profesional.png",
+    href: "/products/jasa-dan-layanan-profesional"
   },
   {
     id: 4,
     title: "Perbankan & Asuransi",
     desc: "Mengelola operasional secara menyeluruh. Dari pengajuan sampai pelunasan—semua transparan.",
+    image: "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/SolveraWeb/Assets/Homepage/Perbankan%20%26%20Asuransi.png",
+    href: "/products/keuangan-perbankan-dan-asuransi"
   },
   {
     id: 5,
     title: "Media, Telekomunikasi & IT",
     desc: "Mengelola konten, campaign, pelanggan, dan operasional secara lebih cepat, efisien, dan terukur.",
+    image: "https://gqxmce8d8pkarsyu.public.blob.vercel-storage.com/SolveraWeb/Assets/Homepage/Media%2C%20Telekomunikasi.png",
+    href: "/products/media-telekomunikasi-dan-kreatif"
   },
 ];
 
@@ -135,16 +146,17 @@ export default function Solutions() {
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="w-full md:w-[350px] bg-brand-primary-subtle rounded-2xl p-4 hover:shadow-xl transition-shadow duration-300 border border-transparent hover:border-blue-100 group"
                 >
-                  <div className="h-48 bg-gray-200 rounded-xl mb-6 flex items-center justify-center relative overflow-hidden">
-                    <svg
-                      className="w-16 h-16 text-gray-400"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z" />
-                    </svg>
-                    <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/5 transition-colors duration-300"></div>
+                  <div className="h-48 bg-gray-100 rounded-xl mb-6 flex items-center justify-center relative overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300"></div>
                   </div>
+
                   <div className="px-2 pb-2">
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
                       {item.title}
@@ -152,9 +164,13 @@ export default function Solutions() {
                     <p className="text-gray-600 text-sm leading-relaxed mb-6 h-20 overflow-hidden">
                       {item.desc}
                     </p>
-                    <Button variant="default" className="w-full rounded-md">
-                      Pelajari Selengkapnya <ArrowRight className="w-4 h-4" />
-                    </Button>
+
+                    <Link href={item.href} passHref>
+                      <Button variant="default" className="w-full rounded-md">
+                        Pelajari Selengkapnya <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+
                   </div>
                 </m.div>
               ))}
@@ -216,9 +232,16 @@ export default function Solutions() {
                   </li>
                 </ul>
 
-                <Button variant="default" className="px-6 py-2 rounded-md">
-                  Konsultasi Gratis
-                </Button>
+                <Link
+                  href="https://api.whatsapp.com/send/?phone=6281390009640&text=Saya%20ingin%20meningkatkan%20performa%20bisnis."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="default" className="px-6 py-2 rounded-md">
+                    Konsultasi Gratis
+                  </Button>
+                </Link>
+
               </m.div>
 
               <m.div
@@ -306,9 +329,12 @@ export default function Solutions() {
                   </div>
                 </div>
 
-                <Button className="px-6 py-2 rounded-md" variant="default">
-                  Hubungi Tim Kami
-                </Button>
+                <Link href="/hubungi-kami">
+                  <Button className="px-6 py-2 rounded-md" variant="default">
+                    Hubungi Tim Kami
+                  </Button>
+                </Link>
+
               </m.div>
 
               <m.div

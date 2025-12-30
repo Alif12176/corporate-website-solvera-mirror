@@ -5,10 +5,11 @@ import { Card, CardHeader, CardBody, CardFooter, Chip } from "@heroui/react";
 import { Check, ArrowUp, Plus } from "lucide-react";
 import { m } from "framer-motion";
 import { Button } from "@/features/layout/components/Button";
+import Link from "next/link";
 
 const FOCUS_DATA = [
   {
-    title: "FOKUS: EFISIENSI",
+    title: "Fast-to-Value",
     icon: <ArrowUp className="w-5 h-5 text-blue-600" />,
     heading: "Solusi Praktis & Siap Pakai",
     description: "Hilangkan hambatan teknis. Ideal untuk operasional yang lincah tanpa perlu membangun tim IT besar.",
@@ -18,10 +19,11 @@ const FOCUS_DATA = [
       { label: "Biaya Terukur", detail: "Model berlangganan tanpa biaya kejutan." },
     ],
     buttonText: "Lihat Paket Kilat",
+    href: "https://api.whatsapp.com/send/?phone=6281390009640&text=Saya%20ingin%20meningkatkan%20performa%20bisnis.",
     isPopular: false,
   },
   {
-    title: "FOKUS: INTEGRASI",
+    title: "Integrated Transformation",
     icon: <Plus className="w-5 h-5 text-blue-600" />,
     heading: "Transformasi End-to-End",
     description: "Hubungkan silo antar departemen. Mitra strategis dari perencanaan hingga support jangka panjang.",
@@ -31,10 +33,11 @@ const FOCUS_DATA = [
       { label: "SLA Enterprise-Class", detail: "Managed Services 24/7 transparan." },
     ],
     buttonText: "Konsultasi Transformasi",
+    href: "/minta-demo",
     isPopular: true,
   },
   {
-    title: "FOKUS: TATA KELOLA",
+    title: "Enterprise-Ready",
     icon: <ArrowUp className="w-5 h-5 text-blue-600" />,
     heading: "Standar Global, Eksekusi Lokal",
     description: "Manajemen kompleksitas tinggi untuk multi-entitas dengan standar kepatuhan yang ketat.",
@@ -44,6 +47,7 @@ const FOCUS_DATA = [
       { label: "Extended IT Team", detail: "Mitra IT strategis jangka panjang." },
     ],
     buttonText: "Hubungi Corporate Team",
+    href: "/hubungi-kami",
     isPopular: false,
   },
 ];
@@ -57,7 +61,6 @@ export default function BusinessFocus() {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6">
-        {/* Header Section */}
         <div className="text-center mb-16">
           <m.p
             variants={fadeInUp} initial="hidden" whileInView="visible" transition={{ duration: 0.5 }}
@@ -81,74 +84,85 @@ export default function BusinessFocus() {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {FOCUS_DATA.map((item, idx) => (
-            <m.div
-              key={idx}
-              initial="hidden" whileInView="visible" viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              variants={fadeInUp}
-              className="relative flex h-full"
-            >
-              <Card
-                shadow="sm"
-                className={`w-full p-4 border-2 transition-transform hover:scale-[1.02] ${item.isPopular ? "border-blue-700 brand-primary-subtle ring-4 ring-brand-primary/5" : "border-gray-100"
-                  }`}
+          {FOCUS_DATA.map((item, idx) => {
+            const isExternal = item.href.startsWith("http");
+
+            return (
+              <m.div
+                key={idx}
+                initial="hidden" whileInView="visible" viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                variants={fadeInUp}
+                className="relative flex h-full"
               >
-                <CardHeader className="flex flex-col items-start gap-4 pb-0">
-                  <div className="w-full flex justify-between items-center">
+                <Card
+                  shadow="sm"
+                  className={`w-full p-4 border-2 transition-transform hover:scale-[1.02] ${item.isPopular ? "border-blue-700 brand-primary-subtle ring-4 ring-brand-primary/5" : "border-gray-100"
+                    }`}
+                >
+                  <CardHeader className="flex flex-col items-start gap-4 pb-0">
+                    <div className="w-full flex justify-between items-center">
 
-                    <div className="flex items-center gap-2 bg-brand-primary-subtle px-3 py-1 rounded-md">
-                      {item.icon}
-                      <span className="text-xs font-bold text-brand-primary">{item.title}</span>
+                      <div className="flex items-center gap-2 bg-brand-primary-subtle px-3 py-1 rounded-md">
+                        {item.icon}
+                        <span className="text-xs font-bold text-brand-primary uppercase">{item.title}</span>
+                      </div>
+
+                      {item.isPopular && (
+                        <Chip
+                          color="primary"
+                          className="animate-pulse"
+                        >
+                          PALING POPULER
+                        </Chip>
+                      )}
                     </div>
 
-                    {item.isPopular && (
-                      <Chip
-                        color="primary"
-                        className="animate-pulse"
+                    <div className="flex flex-col">
+                      <h3 className="text-2xl font-bold text-brand-primary mt-2 leading-tight">
+                        {item.heading}
+                      </h3>
+                      <p className="text-foreground text-sm leading-relaxed mt-1">
+                        {item.description}
+                      </p>
+                    </div>
+                  </CardHeader>
+
+                  <CardBody className="py-8 flex flex-col gap-6">
+                    {item.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex gap-4">
+                        <div className="mt-1 bg-brand-primary-subtle p-1 rounded-md h-fit">
+                          <Check className="w-4 h-4 text-blue-700" strokeWidth={3} />
+                        </div>
+                        <div>
+                          <p className="font-bold text-brand-primary text-sm">{feature.label}</p>
+                          <p className="text-foreground text-xs mt-1">{feature.detail}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </CardBody>
+
+                  <CardFooter className="pt-0">
+                    <Link
+                      href={item.href}
+                      className="w-full block"
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                    >
+                      <Button
+                        fullWidth
+                        variant={item.isPopular ? "default" : "outline"}
+                        className="font-semibold px-8 pointer-events-none"
+                        size="lg"
                       >
-                        PALING POPULER
-                      </Chip>
-                    )}
-                  </div>
-
-                  <div className="flex flex-col">
-                    <h3 className="text-2xl font-bold text-brand-primary mt-2 leading-tight">
-                      {item.heading}
-                    </h3>
-                    <p className="text-foreground text-sm leading-relaxed mt-1">
-                      {item.description}
-                    </p>
-                  </div>
-                </CardHeader>
-
-                <CardBody className="py-8 flex flex-col gap-6">
-                  {item.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex gap-4">
-                      <div className="mt-1 bg-brand-primary-subtle p-1 rounded-md h-fit">
-                        <Check className="w-4 h-4 text-blue-700" strokeWidth={3} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-brand-primary text-sm">{feature.label}</p>
-                        <p className="text-foreground text-xs mt-1">{feature.detail}</p>
-                      </div>
-                    </div>
-                  ))}
-                </CardBody>
-
-                <CardFooter className="pt-0">
-                  <Button
-                    fullWidth
-                    variant={item.isPopular ? "default" : "outline"}
-                    className="font-semibold px-8"
-                    size="lg"
-                  >
-                    {item.buttonText}
-                  </Button>
-                </CardFooter>
-              </Card>
-            </m.div>
-          ))}
+                        {item.buttonText}
+                      </Button>
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </m.div>
+            );
+          })}
         </div>
       </div>
     </section>

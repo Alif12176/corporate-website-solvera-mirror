@@ -8,7 +8,7 @@ import { AboutUsStat } from './AboutUsStat'
 // Lazy Load komponen yang berat/ada di bawah
 const BusinessFocus = dynamic(() => import("./BusinessFocus"));
 const Solutions = dynamic(() => import("./Solutions"));
-const Testimonials = dynamic(() => import("./Testimonials"), { loading: () => <div className="h-96 w-full bg-gray-50 animate-pulse" /> });
+// const Testimonials = dynamic(() => import("./Testimonials"), { loading: () => <div className="h-96 w-full bg-gray-50 animate-pulse" /> });
 const ContactSection = dynamic(() => import("./ContactSection"));
 const ConsultationCTA = dynamic(() => import("@/features/layout/components/ConsultationCTA").then(mod => mod.ConsultationCTA));
 import { WhatsAppFAB } from "@/features/layout/components/WhatsAppFAB";

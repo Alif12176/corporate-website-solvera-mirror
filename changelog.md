@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.2] - 2025-12-30
+
+### Detail Versi 0.22.2
+
+#### 🚀 Peningkatan UI/UX & Navigasi Homepage
+
+- **Deskripsi:**
+  - **Solutions Section Revamp:** Mengganti ikon SVG statis pada tab "Industri" dengan **Next.js Image** yang terintegrasi dengan **Vercel Blob Storage** untuk visualisasi yang lebih menarik.
+  - **Dynamic Routing:** Mengaktifkan navigasi pada setiap kartu solusi:
+    - Tab **Industri** kini mengarah ke halaman detail produk spesifik (contoh: `/products/logistic-dan-transportasi`).
+    - Tab **Konsultasi** ("Strategic Digital Advisory") kini terhubung langsung ke **WhatsApp API** via tab baru.
+    - Tab **Talenta Digital** kini mengarah ke halaman `/hubungi-kami`.
+  - **Business Focus Interactivity:** Mengubah kartu pada bagian "Business Focus" menjadi komponen navigasi aktif:
+    - Paket **Fast-to-Value** terhubung ke WhatsApp.
+    - Paket **Integrated Transformation** terhubung ke `/minta-demo`.
+    - Paket **Enterprise-Ready** terhubung ke `/hubungi-kami`.
+  - **Link Handling:** Menambahkan logika deteksi link eksternal (`target="_blank"`) vs internal pada komponen Card.
+
+#### 🛠️ Technical Updates
+
+- **Deskripsi:**
+  - **Button Wrapping:** Memperbaiki struktur HTML dengan membungkus komponen `Button` di dalam `Next/Link` untuk aksesibilitas yang benar.
+  - **Pointer Events:** Menambahkan class `pointer-events-none` pada Button di dalam Card untuk mencegah konflik event klik ganda (*nested click issues*).
+
 ## [0.22.1] - 2025-12-29
 
 ### Detail Versi 0.22.1
