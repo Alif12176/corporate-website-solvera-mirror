@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.3] - 2025-12-30
+
+### Detail Versi 0.22.3
+
+#### 📧 Newsletter & Integrasi Odoo
+- **Deskripsi:**
+  - **New Hook (`useNewsletter`):** Membuat custom hook untuk menangani logika berlangganan newsletter dengan validasi input dan *state management* (loading, success, error).
+  - **Smart Subscription Logic:** Mengimplementasikan pengecekan ganda ke backend Odoo (`check_newsletter` -> `submit_newsletter`) untuk menangani email yang sudah terdaftar atau *inactive*.
+  - **Component Integration:** Mengintegrasikan hook newsletter ke dalam komponen:
+    - `ConsultationCTA` & `ManagementCTA`
+    - `BlogNewsletter` & `BlogDetailContent`
+  - **UX Improvement:** Menambahkan *loading state* pada tombol submit dan pesan umpan balik (feedback message) yang muncul di bawah input/tombol.
+
+#### 📝 Blog Navigation
+- **Deskripsi:**
+  - **View All Link:** Menambahkan tombol "Lihat Semua" pada bagian *Related Posts* yang mengarahkan pengguna kembali ke halaman utama Blog (`/blog`).
+
 ## [0.22.2] - 2025-12-30
 
 ### Detail Versi 0.22.2

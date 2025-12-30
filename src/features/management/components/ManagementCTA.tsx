@@ -1,8 +1,11 @@
 "use client";
 
 import { Button, Input } from "@heroui/react";
+import { useNewsletter } from "@/features/hooks/useNewsletter";
 
 export const ManagementCTA = () => {
+    const { email, setEmail, isLoading, status, message, subscribe } = useNewsletter();
+
     return (
         <section className="bg-background py-section-large-desktop">
             <div className="container mx-auto px-page-global">
@@ -16,26 +19,50 @@ export const ManagementCTA = () => {
                         </p>
                     </div>
 
-                    <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4 items-center">
-                        <Input
-                            type="email"
-                            placeholder="Alamat Email Anda"
-                            className="w-full sm:w-[300px]"
-                            classNames={{
-                                inputWrapper: "bg-[#EEF2FF] border border-blue-200 h-[48px]",
-                            }}
-                        />
+                    <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                        <div className="w-full sm:w-[300px]">
+                            <Input
+                                type="email"
+                                placeholder="Alamat Email Anda"
+                                className="w-full"
+                                value={email}
+                                onValueChange={setEmail}
+                                isDisabled={isLoading}
+                                isInvalid={status === "error"}
+                                errorMessage={status === "error" ? message : ""}
+                                classNames={{
+                                    inputWrapper: "bg-[#EEF2FF] border border-blue-200 h-[48px]",
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') subscribe();
+                                }}
+                            />
+                            {(status === "success" || status === "info") && (
+                                <p className={`text-xs font-medium mt-1 sm:hidden ${status === "success" ? "text-success" : "text-blue-600"}`}>
+                                    {message}
+                                </p>
+                            )}
+                        </div>
+
                         <Button
-                            color="primary"
+                            color={status === "success" ? "success" : "primary"}
                             size="lg"
                             radius="sm"
                             className="w-full sm:w-auto font-semibold px-8 h-[48px]"
+                            isLoading={isLoading}
+                            onPress={subscribe}
                         >
-                            Bergabung
+                            {status === "success" ? "Berhasil" : "Bergabung"}
                         </Button>
                     </div>
                 </div>
+
                 <div className="mt-4 text-right md:text-right w-full">
+                    {(status === "success" || status === "info") && (
+                        <p className={`text-xs font-medium mb-1 hidden sm:block ${status === "success" ? "text-success" : "text-blue-600"}`}>
+                            {message}
+                        </p>
+                    )}
                     <p className="text-[10px] text-brand-text-secondary max-w-[400px] ml-auto">
                         Dengan berlangganan, Anda menerima Kebijakan Privasi kami dan setuju untuk menerima pembaruan.
                     </p>

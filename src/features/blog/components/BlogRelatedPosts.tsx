@@ -4,6 +4,7 @@ import React from 'react';
 import { BlogCard } from './BlogCard';
 import { Button, Skeleton } from '@heroui/react';
 import { useArticles } from '../hooks/useBlog';
+import Link from 'next/link';
 
 // Update Interface agar menerima currentSlug
 interface BlogRelatedPostsProps {
@@ -56,9 +57,11 @@ export const BlogRelatedPosts = ({ currentSlug }: BlogRelatedPostsProps) => {
                             <h2 className="text-4xl font-medium text-brand-primary">Berita Terkait</h2>
                             <p className="text-body text-brand-text-secondary">Berita dan wawasan terbaru lainnya.</p>
                         </div>
-                        <Button className="hidden md:flex bg-brand-primary text-white px-6">
-                            Lihat semua
-                        </Button>
+                        <Link href="/blog">
+                            <Button className="hidden md:flex bg-brand-primary text-white px-6">
+                                Lihat semua
+                            </Button>
+                        </Link>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -76,9 +79,11 @@ export const BlogRelatedPosts = ({ currentSlug }: BlogRelatedPostsProps) => {
                         ))}
                     </div>
 
-                    <Button className="md:hidden w-full bg-brand-primary text-white mt-4">
-                        Lihat semua
-                    </Button>
+                    <Link href="/blog" className="md:hidden w-full">
+                        <Button className="w-full bg-brand-primary text-white mt-4">
+                            Lihat semua
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </section>
