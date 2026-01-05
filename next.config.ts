@@ -22,7 +22,7 @@ const nextConfig: NextConfig = {
         // Tangkap link dari QR Code (https://solvera.id/certificates/...)
         source: "/certificates/:id",
         // Lempar ke Aplikasi Storage (Halaman Verify)
-        destination: "https://solvera-storage.vercel.app/verify/:id", 
+        destination: "https://solvera-storage-ruby.vercel.app/verify/:id", 
         permanent: false, // false = 307 Temporary Redirect (Lebih aman jika nanti berubah lagi)
       },
     ];
