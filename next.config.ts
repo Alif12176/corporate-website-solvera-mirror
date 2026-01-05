@@ -16,11 +16,23 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        // Tangkap link dari QR Code (https://solvera.id/certificates/...)
+        source: "/certificates/:id",
+        // Lempar ke Aplikasi Storage (Halaman Verify)
+        destination: "https://solvera-storage.vercel.app/verify/:id", 
+        permanent: false, // false = 307 Temporary Redirect (Lebih aman jika nanti berubah lagi)
+      },
+    ];
+  },
+  // Bagian Rewrites Tetap Ada (Jangan Dihapus)
   async rewrites() {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: `${API_URL}/api/v1/:path*`, 
+        destination: `${API_URL}/api/v1/:path*`,
       },
     ];
   },
