@@ -14,6 +14,21 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "gqxmce8d8pkarsyu.public.blob.vercel-storage.com",
       },
+      {
+        protocol: "http",
+        hostname: "147.139.132.60",
+        port: "18021", 
+      },
+      {
+        protocol: "http",
+        hostname: "147.139.132.60",
+        port: "18022",
+      },
+      {
+        protocol: "http",
+        hostname: "147.139.132.60",
+        port: "18023",
+      },
     ],
   },
   async redirects() {
