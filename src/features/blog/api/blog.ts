@@ -1,7 +1,6 @@
 // src/features/blog/api/blog.ts
 import { BlogFilters, BlogResponse, CategoryResponse, SingleBlogResponse } from "../types";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL + "api/v1";
+import { getApiBaseUrl } from "@/utils/api-url";
 
 // 1. Get List Articles (Client Side Fetching via React Query)
 export async function getArticles(filters: BlogFilters, signal?: AbortSignal): Promise<BlogResponse> {
@@ -17,7 +16,7 @@ export async function getArticles(filters: BlogFilters, signal?: AbortSignal): P
   // Jika backend mendukung search, tambahkan di sini
   // if (filters.search) params.append("search", filters.search);
 
-  const res = await fetch(`${BASE_URL}/articles?${params.toString()}`, {
+  const res = await fetch(`${getApiBaseUrl()}/articles?${params.toString()}`, {
     method: "GET",
     signal, // Penting untuk cancel request jika user pindah halaman cepat
     headers: { "Content-Type": "application/json" },
@@ -29,7 +28,7 @@ export async function getArticles(filters: BlogFilters, signal?: AbortSignal): P
 
 // 2. Get Categories (Client Side Fetching)
 export async function getCategories(signal?: AbortSignal): Promise<CategoryResponse> {
-  const res = await fetch(`${BASE_URL}/categories`, {
+  const res = await fetch(`${getApiBaseUrl()}/categories`, {
     method: "GET",
     signal,
   });
@@ -41,7 +40,7 @@ export async function getCategories(signal?: AbortSignal): Promise<CategoryRespo
 // 3. Get Single Article (Server Side Fetching)
 export async function getArticleBySlug(slug: string): Promise<SingleBlogResponse | null> {
   try {
-    const res = await fetch(`${BASE_URL}/articles/${slug}`, {
+    const res = await fetch(`${getApiBaseUrl()}/articles/${slug}`, {
       method: "GET",
       next: { revalidate: 60 }, // Cache 60 detik (ISR)
     });

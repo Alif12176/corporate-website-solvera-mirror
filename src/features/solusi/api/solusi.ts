@@ -1,9 +1,8 @@
 import type { Solution} from "../data/solutions";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL + "api/v1"; 
+import { getApiBaseUrl } from "@/utils/api-url"; 
 export async function getSolutionBySlug(slug: string): Promise<Solution | null> {
   try {
-    const url = `${BASE_URL}/solusi-${slug}`;    
+    const url = `${getApiBaseUrl()}/solusi-${slug}`;    
     console.log("🛠️ FETCHING URL:", url); 
 
     const res = await fetch(url, { 

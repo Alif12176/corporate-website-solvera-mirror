@@ -1,9 +1,8 @@
 import type { Service } from "../data/service";
-
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL + "api/v1";
+import { getApiBaseUrl } from "@/utils/api-url";
 export async function getManagementBySlug(slug: string): Promise<Service | null> {
   try {
-    const url = `${BASE_URL}/services/${slug}`;
+    const url = `${getApiBaseUrl()}/services/${slug}`;
 
     const res = await fetch(url, {
       next: { revalidate: 3600 }
