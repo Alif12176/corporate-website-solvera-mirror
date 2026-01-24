@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.22.4] - 2026-01-24
+
+### Detail Versi 0.22.4
+
+#### 🐛 Bug Fix & Security
+
+- **Deskripsi:**
+  - **Fix Mixed Content Error:** Memperbaiki error "Mixed Block" pada halaman `/blog` di production. Website HTTPS (`https://solvera.id`) sebelumnya melakukan request langsung ke API HTTP (`http://147.139.132.60:18023`) yang diblokir oleh browser.
+  - **New API URL Utility (`src/utils/api-url.ts`):** Membuat utility function `getApiBaseUrl()` yang secara otomatis mendeteksi environment:
+    - **Client-side (Browser):** Menggunakan path proxy `/api/proxy/` untuk menghindari Mixed Content.
+    - **Server-side (SSR/ISR):** Menggunakan URL API lengkap untuk performa optimal.
+  - **Refactor API Modules:** Memperbarui 10 file API untuk menggunakan utility baru:
+    - `blog.ts`, `transformasi-digital.ts`, `talenta.ts`, `products.ts`, `solusi.ts`
+    - `pelatihan.ts`, `management.ts`, `managed-services.ts`, `getPromoServer.ts`, `consultation.ts`
+
 ## [0.22.3] - 2025-12-30
 
 ### Detail Versi 0.22.3

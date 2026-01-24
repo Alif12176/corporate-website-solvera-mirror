@@ -1,10 +1,9 @@
 import { PromoData } from "../types/promo";
+import { getApiBaseUrl } from "@/utils/api-url";
 
 export const getPromoServer = async (): Promise<PromoData | null> => {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
-    
-    const endpoint = `${baseUrl.replace(/\/$/, "")}/api/v1/marketing-promo`;
+    const endpoint = `${getApiBaseUrl()}/marketing-promo`;
 
     const res = await fetch(endpoint, {
       cache: "no-store", 
