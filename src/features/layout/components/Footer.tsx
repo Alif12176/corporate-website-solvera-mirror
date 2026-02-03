@@ -1,6 +1,6 @@
 "use client";
 
-import { Link, Button } from "@heroui/react";
+import { Link } from "@heroui/react";
 import Image from "next/image";
 import { RiFacebookFill, RiInstagramLine, RiTwitterXFill, RiLinkedinFill, RiYoutubeFill } from "react-icons/ri";
 
@@ -47,7 +47,7 @@ export const Footer = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                         {/* Brand Column */}
                         <div className="lg:col-span-5 flex flex-col gap-6">
-                            <div className="relative w-[180px] h-[56px]">
+                            <div className="relative w-[180px] h-14">
                                 <Image
                                     src="/icons/solvera-logo-text.svg"
                                     alt="Solvera Logo"
@@ -120,7 +120,7 @@ export const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-4 border-t border-transparent">
                     <p className="text-body-sm text-foreground">
-                        Solvera © 2025 All rights reserved
+                        Solvera © {new Date().getFullYear()} All rights reserved
                     </p>
                     <div className="flex items-center gap-6">
                         <Link href="/kebijakan-privasi" className="text-body-sm text-foreground underline hover:text-brand-primary">

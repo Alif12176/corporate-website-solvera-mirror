@@ -396,7 +396,7 @@ export const MintaDemoForm = () => {
                     </div>
 
                     <p className="text-center text-xs text-gray-500 mt-4">
-                        Solvera © 2025 All rights reserved
+                        Solvera © {new Date().getFullYear()} All rights reserved
                     </p>
                 </form>
 
